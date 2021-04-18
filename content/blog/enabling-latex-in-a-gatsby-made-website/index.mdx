@@ -1,0 +1,82 @@
+---
+title: Enabling Latex in A Gatsby-Made Website
+type: "blog"
+date: 2021-02-13
+published: true
+---
+
+This blog is useful only if you have a website made with Gatsby.JS, and MDX included in the project.
+
+# 1. Install the Dependencies
+```bash:title=terminal
+# npm
+npm install --save gatsby-remark-katex katex remark-math remark-html-katex 
+
+#yarn
+yarn install gatsby-remark-katex katex remark-math remark-html-katex
+```
+
+# 2. Include the Dependencies
+```javascript:title=./gatsby-config.js
+module.exports = {
+    plugins: [
+        {
+            resolve: `gatsby-remark-mdx`
+            options: {
+                options: [`.mdx`, `.md`],
+            },
+            gatsbyRemarkPlugins: [
+                {
+                    resolve: `gatsby-remark-katex`,
+                    options: {
+                        strict: `ignore`,
+                        ...
+                        ...  
+                    },
+                },
+            ],
+            remarkPlugins: [
+                require('remark-math'),
+                require('remark-html-katex')
+            ],
+        }
+    ],
+}
+```
+
+
+On the [official webpage](https://www.gatsbyjs.com/plugins/gatsby-remark-katex/), it doesn't say to install `remark-math` & `remark-html-katex`.
+However, I had to install those two dependencies in the case of making my own. 
+
+`remark-math` is a plugin that converts mathematical equations into HTML elements and `remark-katex-html` is used to wrap those HTML elements in the `<div class="katex-html">...</div>`. 
+Without both of these, mathematical equations won't be shown in Latex format.
+
+As for the options, there is a thorough documentation in the link [here](https://katex.org/docs/options.html).
+
+# 3. Customize Markdown Elements
+There are many ways to customize the markdown elements, but this is going to be an easy one.
+
+```javascript:title=./src/templates/blogpost-template.js
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from '@mdx-js/react'
+
+const component = {
+    ol: (props) => { 
+        <ol {...props} className="list" />
+    },
+    h1: ({ children, props }) => {
+        <h1 {...props} style={{...}}>{children}</h1>
+    },
+    ...
+}
+
+export default function Template({data}) {
+    return (
+        <MDXProvider components={components}>
+            <MDXRenderer>
+                {data.mdx.body}
+            </MDXRenderer>
+        </MDXProvider>
+    )
+}
+```

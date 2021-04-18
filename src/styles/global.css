@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('../fonts/Inconsolata.woff2') format('woff2'),
+    url('../fonts/Inconsolata.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('../fonts/Share\ Tech\ Mono.woff2') format('woff2'),
+    url('../fonts/Share\ Tech\ Mono.woff') format('woff');
+  font-display: swap;
+}
+
+html {
+  box-sizing: border-box;
+  background: rgb(25, 25, 25);
+  text-size-adjust: 100%;
+  line-height: 1.5;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  color: #ffffff;
+  font-family: 'Inconsolata', sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 2rem 0 2rem 0;
+  max-width: 768px;
+  margin: auto;
+}
+
+/* Menu links */
+.link {
+  transition-duration: 0.3s;
+}
+
+.link:hover {
+  color: #ffffff !important;
+}
+
+/* HTML Body */
+a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+img {
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.01);
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+figcaption {
+  font-size: 0.75rem;
+  font-style: italic;
+  text-align: center;
+}
+
+figcaption::before {
+  content: 'figure: ';
+}
+
+.inlineMath{
+  font-size: 0.8rem;
+}
+
+/* Markdown code */
+.grvsc-container {
+  padding: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+}
+
+.grvsc-source {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding: 0 !important;
+  font-family: 'Share Tech Mono', sans-serif;
+}
+
+.gatsby-code-title {
+  background: #fff1d0;
+  color: #121212;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-family: 'Share Tech Mono', sans-serif;
+}
+
+/* Markdown elements */
+.md-headers {
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+blockquote {
+  background: inherit;
+  border-left: 0.5rem solid #696969;
+  margin: 1.5em 0;
+  padding: 0.5em 10px;
+  font-style: italic;
+}
+
+th {
+  font-weight: 700 !important;
+}
+
+th,
+td {
+  font-size: 1rem;
+  padding: 0.5rem !important;
+  border: 2px solid #ffffff;
+}
+
+.gatsby-resp-image-figure {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  p {
+    line-height: 1.5rem;
+  }
+  main {
+    padding: 0.5rem;
+  }
+  table {
+    overflow-x: auto;
+  }
+}
