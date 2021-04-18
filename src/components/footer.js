@@ -17,7 +17,8 @@ export default function Footer() {
     const styles = {
         footer: {
             margin: `0`,
-            padding: `0`
+            padding: `0`,
+            fontSize: `0.85rem`
         },
         container: {
             margin: `2rem 0 0 0`,
@@ -48,7 +49,7 @@ function Links({email, link}) {
     return (
         <div>
             <Link
-                href="https://github.com/nathansetyawan96"
+                url="https://www.github.com/nathansetyawan96/"
                 name="Github"
             />
             &nbsp;
