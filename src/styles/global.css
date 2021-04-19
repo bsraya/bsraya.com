@@ -147,7 +147,7 @@ td {
 
 @media (max-width: 768px) {
   p {
-    line-height: 1.5rem;
+    line-height: 1.25rem;
   }
   main {
     padding: 0.5rem;
