@@ -77,7 +77,7 @@ function Link({ url, name }) {
             itemType="http://schema.org/Url"
             href={url}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener noreferrer"
             style={{fontSize: `0.9rem`}}
         >
             {name}

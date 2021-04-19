@@ -7,7 +7,7 @@ published: true
 
 This blog is useful only if you have a website made with Gatsby.JS, and MDX included in the project.
 
-# 1. Install the Dependencies
+# Install the Dependencies
 ```bash:title=terminal
 # npm
 npm install --save gatsby-remark-katex katex remark-math remark-html-katex 
@@ -16,7 +16,7 @@ npm install --save gatsby-remark-katex katex remark-math remark-html-katex
 yarn install gatsby-remark-katex katex remark-math remark-html-katex
 ```
 
-# 2. Include the Dependencies
+# Include the Dependencies
 ```javascript:title=./gatsby-config.js
 module.exports = {
     plugins: [
@@ -44,7 +44,6 @@ module.exports = {
 }
 ```
 
-
 On the [official webpage](https://www.gatsbyjs.com/plugins/gatsby-remark-katex/), it doesn't say to install `remark-math` & `remark-html-katex`.
 However, I had to install those two dependencies in the case of making my own. 
 
@@ -53,7 +52,7 @@ Without both of these, mathematical equations won't be shown in Latex format.
 
 As for the options, there is a thorough documentation in the link [here](https://katex.org/docs/options.html).
 
-# 3. Customize Markdown Elements
+# Customize Markdown Elements
 There are many ways to customize the markdown elements, but this is going to be an easy one.
 
 ```javascript:title=./src/templates/blogpost-template.js

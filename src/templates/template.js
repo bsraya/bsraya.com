@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import MarkdownComponents from "../components/markdown_elements"
+import CustomMdxElement from "../components/custom-mdx-element"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
@@ -27,7 +27,7 @@ export default function Template({ data }) {
             {data.mdx.frontmatter.date}
           </small>
         </div>
-        <MDXProvider components={MarkdownComponents}>
+        <MDXProvider components={CustomMdxElement}>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </article>
