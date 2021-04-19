@@ -16,7 +16,7 @@ export default function Footer() {
 
     const styles = {
         footer: {
-            margin: `0`,
+            margin: `2em 0 0 0`,
             padding: `0`,
             fontSize: `0.85rem`
         },
@@ -27,7 +27,8 @@ export default function Footer() {
         },
         small: {
             margin: `0`,
-            color: `grey`
+            color: `grey`,
+            fontSize: `1em`
         }
     }
 
@@ -79,6 +80,7 @@ function Link({ url, name }) {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
+            style={{fontSize: `1.25em`}}
         >
             {name}
         </a>

@@ -6,9 +6,9 @@
 }
 
 @font-face {
-  font-family: 'Share Tech Mono';
-  src: url('../fonts/Share\ Tech\ Mono.woff2') format('woff2'),
-    url('../fonts/Share\ Tech\ Mono.woff') format('woff');
+  font-family: 'Share';
+  src: url('../fonts/Share.woff2') format('woff2'),
+    url('../fonts/Share.woff') format('woff');
   font-display: swap;
 }
 
@@ -16,7 +16,6 @@ html {
   box-sizing: border-box;
   background: rgb(25, 25, 25);
   scroll-behavior: smooth;
-  line-height: 1.5;
   height: 100%;
 }
 
@@ -26,6 +25,7 @@ body {
   color: #ffffff;
   font-family: 'Inconsolata', sans-serif;
   text-rendering: optimizeLegibility;
+  font-size: 1.25em;
 }
 
 main {
@@ -75,10 +75,6 @@ img:hover {
   transform: scale(1.01);
 }
 
-small {
-  font-size: 0.75rem;
-}
-
 figcaption {
   font-size: 0.75rem;
   font-style: italic;
@@ -90,7 +86,7 @@ figcaption::before {
 }
 
 .inlineMath {
-  font-size: 0.8rem;
+  font-size: 1em;
 }
 
 /* Markdown code */
@@ -103,7 +99,7 @@ figcaption::before {
   font-size: 0.85rem;
   line-height: 1.5;
   padding: 0 !important;
-  font-family: 'Share Tech Mono', sans-serif;
+  font-family: 'Share', sans-serif;
 }
 
 .gatsby-code-title {
@@ -112,7 +108,7 @@ figcaption::before {
   padding: 0.75rem 1rem 0.75rem 1rem;
   font-size: 0.85rem;
   border-radius: 0.5rem 0.5rem 0 0;
-  font-family: 'Share Tech Mono', sans-serif;
+  font-family: 'Share', sans-serif;
 }
 
 /* Markdown elements */
