@@ -23,7 +23,7 @@ export default function Template({ data }) {
           <h1 style={{ margin: `0` }}>
             {data.mdx.frontmatter.title}
           </h1>
-          <small style={{fontSize: `1rem`}}>
+          <small>
             {data.mdx.frontmatter.date}
           </small>
         </div>
