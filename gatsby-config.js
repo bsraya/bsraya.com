@@ -66,6 +66,21 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     {
+      resolve: `gatsby-remark-images`,
+      options: {
+        maxWidth: 568,
+        showCaptions: true,
+        loading: `lazy`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src`,
+        name: 'src',
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
@@ -73,16 +88,6 @@ module.exports = {
           default: require.resolve(`${__dirname}/src/templates/template.js`),
         },
         gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `ignore`,
-              minRuleThickness: 0.06,
-              displayMode: true,
-              throwOnError: true,
-              colorIsTextColor: true,
-            },
-          },
           `gatsby-remark-smartypants`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-copy-linked-files`,
@@ -124,13 +129,23 @@ module.exports = {
             },
           },
           {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
+              minRuleThickness: 0.06,
+              displayMode: true,
+              throwOnError: true,
+              colorIsTextColor: true,
+            },
+          },
+          {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
               title: `Bijon Setyawan Raya`,
               titleFontSize: 105,
               fontColor: `#fff1d0`,
-              background: require.resolve('./content/assets/base.png'),
-              fontStlye: require.resolve('./src/fonts/Inconsolata.woff2'),
+              background: require.resolve(`${__dirname}/content/assets/base.png`),
+              fontStlye: require.resolve(`${__dirname}/src/fonts/Inconsolata.woff2`),
             },
           },
           {
@@ -147,21 +162,6 @@ module.exports = {
           require('remark-math'),
           require('remark-html-katex')
         ]
-      },
-    },
-    {
-      resolve: `gatsby-remark-images`,
-      options: {
-        maxWidth: 568,
-        showCaptions: true,
-        loading: `lazy`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src`,
-        name: 'src',
       },
     },
     {
@@ -193,11 +193,11 @@ module.exports = {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
               author: 'Bijon Setyawan Raya',
-              background: require.resolve(`./content/assets/base.png`),
+              background: require.resolve(`${__dirname}/content/assets/base.png`),
               fontColor: `#fff1d0`,
               titleFontSize: 105,
               subtitleFontSize: 60,
-              fontStyle: require.resolve('./src/fonts/Inconsolata.woff2'),
+              fontStyle: require.resolve(`${__dirname}/src/fonts/Inconsolata.woff2`),
             },
           },
         ],

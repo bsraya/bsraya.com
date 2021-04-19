@@ -1,8 +1,10 @@
 import React from "react"
 
 const MarkdownElements = {
-  ol: ({children}) => 
-    <ol style={{marginLeft: `2.5em`}}>{children}</ol>,
+  ol: ({children, props}) => 
+    <ol {...props} style={{marginLeft: `2.5em`}}>{children}</ol>,
+  ul: ({children, props}) => 
+    <ul {...props} style={{marginLeft: `2.5em`}}>{children}</ul>,
   li: (props) =>
     <li {...props} style={{ fontSize: `1em`, margin: `0` }} />,
   hr: () =>
@@ -30,7 +32,7 @@ const MarkdownElements = {
       style={{
         fontSize: `1rem`,
         whiteSpace: `nowrap`,
-        fontFamily: [`Share`, `sans-serif`],
+        fontFamily: `Share, sans-serif`,
         color: `#FE4450`,
         padding: `0.1rem 0.3rem`,
         backgroundColor: `#262335`,

@@ -15,7 +15,6 @@ export default function Portfolio({data}) {
 
 function Posts({ metadata }) {
     const posts = metadata.allMdx.edges
-
     const styles = {
         ol: {
             listStyle: `none`,
@@ -26,7 +25,6 @@ function Posts({ metadata }) {
             marginBottom: `3em` 
         }
     }
-
     return (
         <ol style={styles.ol} itemScope itemType="http://schema.org/Portfolios">
             {
@@ -53,7 +51,8 @@ function Post({ link, title, date }) {
             margin: `0`
         },
         link: {
-            textDecoration: `none`, color: `inherit`
+            textDecoration: `none`, 
+            color: `inherit`
         }
     }
     return (

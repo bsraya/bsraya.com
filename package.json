@@ -2,6 +2,10 @@
   "name": "bijonsetyawanraya",
   "description": "Bijon Setyawan's personal website",
   "author": "Bijon Setyawan Raya <nathan.setyawan96@gapp.nthu.edu.tw>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathansetyawan96/bsraya.com"
+  },
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -52,9 +56,5 @@
   },
   "devDependencies": {
     "prettier": "^2.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nathansetyawan96/bsraya.com"
   }
 }

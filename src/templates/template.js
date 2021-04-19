@@ -20,7 +20,7 @@ export default function Template({ data }) {
         itemType="http://schema.org/Post"
       >
         <div style={{ marginBottom: rhythm(1) }}>
-          <h1 style={{ margin: `0`, textDecoration: `underline`}}>
+          <h1 style={{ margin: `0` }}>
             {data.mdx.frontmatter.title}
           </h1>
           <small>
@@ -34,7 +34,6 @@ export default function Template({ data }) {
     </Layout>
   )
 }
-
 
 export const pageQuery = graphql`
   query BlogPostQuery($slug: String) {
