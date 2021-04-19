@@ -10,7 +10,7 @@ export default function Home({data}){
     <Layout>
       <Seo title="Home" type="website" slug="/" />
       <article itemScope itemType="http://schema.org/Author">
-        <h1 style={{ marginBottom: rhythm(0.2), fontSize: `2em` }} itemProp="author" name={author}>
+        <h1 style={{ marginBottom: rhythm(0.2) }} itemProp="author" name={author}>
           {author}
         </h1>
         <p style={{ marginBottom: rhythm(0.25) }} itemProp="description">

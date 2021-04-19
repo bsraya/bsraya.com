@@ -18,7 +18,6 @@ export default function Footer() {
         footer: {
             margin: `2em 0 0 0`,
             padding: `0`,
-            fontSize: `0.85rem`
         },
         container: {
             margin: `2rem 0 0 0`,
@@ -27,7 +26,7 @@ export default function Footer() {
         small: {
             margin: `0`,
             color: `grey`,
-            fontSize: `1rem`
+            fontSize: `0.75rem`
         }
     }
 
@@ -79,7 +78,7 @@ function Link({ url, name }) {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            style={{fontSize: `1.1rem`}}
+            style={{fontSize: `0.9rem`}}
         >
             {name}
         </a>

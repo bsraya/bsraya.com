@@ -54,7 +54,7 @@ a {
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.5rem;
 }
 
@@ -68,6 +68,30 @@ h6 {
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+
+h1 {
+  font-size: 1.85rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.65rem;
+}
+
+h4 {
+  font-size: 1.55rem;
+}
+
+h5 {
+  font-size: 1.45rem;
+}
+
+h6 {
+  font-size: 1.35rem;
 }
 
 img {
@@ -147,6 +171,9 @@ td {
 }
 
 @media (max-width: 768px) {
+  .footerLinks {
+    font-size: 0.75rem;
+  }
   main {
     padding: 0.5rem;
   }

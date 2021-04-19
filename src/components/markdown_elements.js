@@ -2,17 +2,17 @@ import React from "react"
 
 const MarkdownElements = {
   ol: ({children, props}) => 
-    <ol {...props} style={{marginLeft: `2.5em`}}>{children}</ol>,
+    <ol {...props} style={{marginLeft: `2.5rem`}}>{children}</ol>,
   ul: ({children, props}) => 
-    <ul {...props} style={{marginLeft: `2.5em`}}>{children}</ul>,
+    <ul {...props} style={{marginLeft: `2.5rem`}}>{children}</ul>,
   li: (props) =>
-    <li {...props} style={{ fontSize: `1.1rem`, margin: `0` }} />,
+    <li {...props} style={{ fontSize: `1rem`, margin: `0` }} />,
   hr: () =>
     <hr style={{ borderTop: `2px solid #fff1d0` }} />,
   h1: ({ children, props }) =>
-    <h1 {...props} className="md-headers" style={{ fontSize: `2rem` }}>{children}</h1>,
+    <h1 {...props} className="md-headers" style={{ fontSize: `1.85rem` }}>{children}</h1>,
   h2: ({ children, props }) =>
-    <h2 {...props} className="md-headers" style={{ fontSize: `1.85rem` }}>{children}</h2>,
+    <h2 {...props} className="md-headers" style={{ fontSize: `1.75rem` }}>{children}</h2>,
   h3: ({ children, props }) =>
     <h3 {...props} className="md-headers" style={{ fontSize: `1.65rem` }}>{children}</h3>,
   h4: ({ children, props }) =>
