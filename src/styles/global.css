@@ -14,7 +14,7 @@
 
 html {
   box-sizing: border-box;
-  background: rgb(25, 25, 25);
+  background: rgb(50,50,50);
   scroll-behavior: smooth;
   height: 100%;
 }
@@ -54,7 +54,8 @@ a {
 }
 
 p {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
 }
 
 p,
@@ -79,7 +80,7 @@ img:hover {
 }
 
 figcaption {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-style: italic;
   text-align: center;
 }
@@ -146,9 +147,6 @@ td {
 }
 
 @media (max-width: 768px) {
-  p {
-    line-height: 1.25rem;
-  }
   main {
     padding: 0.5rem;
   }
