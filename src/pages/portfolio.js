@@ -28,22 +28,23 @@ function Posts({ metadata }) {
     }
 
     return (
-        <ol style={styles.ol} itemScope itemType="http://schema.org/Portfolios">
-            {
-                posts.map(
-                    post => {
-                        const title = post.node.frontmatter.title || post.node.fields.slug
-                        const link = post.node.fields.slug
-                        const date = post.node.frontmatter.date
-                        return (
-                            <li key={link} style={styles.li}>
-                                <Post link={link} title={title} date={date}/>
-                            </li>
-                        )
-                    }
-                )
-            }
-        </ol>
+        // <ol style={styles.ol} itemScope itemType="http://schema.org/Portfolios">
+        //     {
+        //         posts.map(
+        //             post => {
+        //                 const title = post.node.frontmatter.title || post.node.fields.slug
+        //                 const link = post.node.fields.slug
+        //                 const date = post.node.frontmatter.date
+        //                 return (
+        //                     <li key={link} style={styles.li}>
+        //                         <Post link={link} title={title} date={date}/>
+        //                     </li>
+        //                 )
+        //             }
+        //         )
+        //     }
+        // </ol>
+        <h1>Coming soon!</h1>
     )
 }
 
