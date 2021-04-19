@@ -21,7 +21,8 @@ function Menu({ links }) {
         li: {
             marginRight: rhythm(0.4),
             listStyleType: `none`,
-            marginBottom: `0`
+            marginBottom: `0`,
+            fontSize: `1.25rem`
         }
     }
 

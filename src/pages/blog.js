@@ -25,7 +25,6 @@ function Posts({ metadata }) {
             marginBottom: `3em` 
         }
     }
-
     return (
         <ol style={styles.ol} itemScope itemType="http://schema.org/Blogs">
             {
@@ -56,7 +55,6 @@ function Post({ link, title, date }) {
             color: `inherit`
         }
     }
-
     return (
         <>
             <h1 style={styles.title}>
@@ -76,7 +74,7 @@ function Post({ link, title, date }) {
                     <span itemProp="headline">{title}</span>
                 </Link>
             </h1>
-            <small itemProp="datePosted">{date}</small> 
+            <small style={{ fontSize: `1rem`}} itemProp="datePosted">{date}</small> 
         </>
     )
 }

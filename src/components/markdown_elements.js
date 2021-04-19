@@ -6,21 +6,21 @@ const MarkdownElements = {
   ul: ({children, props}) => 
     <ul {...props} style={{marginLeft: `2.5em`}}>{children}</ul>,
   li: (props) =>
-    <li {...props} style={{ fontSize: `1em`, margin: `0` }} />,
+    <li {...props} style={{ fontSize: `1.25rem`, margin: `0` }} />,
   hr: () =>
     <hr style={{ borderTop: `2px solid #fff1d0` }} />,
   h1: ({ children, props }) =>
-    <h1 {...props} className="md-headers" style={{ fontSize: `35px` }}>{children}</h1>,
+    <h1 {...props} className="md-headers" style={{ fontSize: `2rem` }}>{children}</h1>,
   h2: ({ children, props }) =>
-    <h2 {...props} className="md-headers" style={{ fontSize: `32px` }}>{children}</h2>,
+    <h2 {...props} className="md-headers" style={{ fontSize: `1.85rem` }}>{children}</h2>,
   h3: ({ children, props }) =>
-    <h3 {...props} className="md-headers" style={{ fontSize: `29px` }}>{children}</h3>,
+    <h3 {...props} className="md-headers" style={{ fontSize: `1.65rem` }}>{children}</h3>,
   h4: ({ children, props }) =>
-    <h4 {...props} className="md-headers" style={{ fontSize: `26px` }}>{children}</h4>,
+    <h4 {...props} className="md-headers" style={{ fontSize: `1.55rem` }}>{children}</h4>,
   h5: ({ children, props }) =>
-    <h5 {...props} className="md-headers" style={{ fontSize: `23px` }}>{children}</h5>,
+    <h5 {...props} className="md-headers" style={{ fontSize: `1.45rem` }}>{children}</h5>,
   h6: ({ children, props }) =>
-    <h6 {...props} className="md-headers" style={{ fontSize: `21px` }}>{children}</h6>,
+    <h6 {...props} className="md-headers" style={{ fontSize: `1.35rem` }}>{children}</h6>,
   table: ({ children, props }) =>
     <div style={{ overflowX: `auto`, marginBottom: `20px` }}>
       <table {...props} style={{ margin: `auto` }}>

@@ -28,7 +28,7 @@ export default function Footer() {
         small: {
             margin: `0`,
             color: `grey`,
-            fontSize: `1em`
+            fontSize: `1rem`
         }
     }
 

@@ -53,6 +53,10 @@ a {
   color: inherit;
 }
 
+p {
+  font-size: 1.25rem;
+}
+
 p,
 h1,
 h2,
@@ -85,7 +89,7 @@ figcaption::before {
 }
 
 .inlineMath {
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 /* Markdown code */
