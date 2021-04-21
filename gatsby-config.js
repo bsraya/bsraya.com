@@ -48,7 +48,7 @@ module.exports = {
         name: `Bijon Setyawan Raya`,
         short_name: `Bijon S. R.`,
         start_url: `/`,
-        background_color: `#121212`,
+        background_color: `#505050`,
         theme_color: `#FFFFFF`,
         display: `standalone`,
         legacy: true,
