@@ -2,8 +2,8 @@ import Typography from "typography"
 import "../styles/global.css"
 
 const typography = new Typography({
-    baseFontSize: `20px`,
-    baseLineHeight: 1.5,
+    baseFontSize: `22px`,
+    baseLineHeight: 2,
     headerFontFamily: [
         "Inconsolata",
         "sans-serif"

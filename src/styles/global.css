@@ -55,6 +55,7 @@ a {
 p {
   font-size: 1rem;
   line-height: 1.5rem;
+  max-width: 75ch;
 }
 
 p,
@@ -99,7 +100,7 @@ img {
 }
 
 img:hover {
-  transform: scale(1.009);
+  transform: scale(1.01);
 }
 
 figcaption {
