@@ -14,7 +14,7 @@
 
 html {
   box-sizing: border-box;
-  background: rgb(50,50,50);
+  background: rgb(50, 50, 50);
   height: 100%;
 }
 
@@ -95,11 +95,11 @@ h6 {
 
 img {
   cursor: pointer;
-  transition: transform 0.5s ease-in-out;
+  transition: all 0.1s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 img:hover {
-  transform: scale(1.01);
+  transform: scale(1.009);
 }
 
 figcaption {
