@@ -14,14 +14,13 @@
 
 html {
   box-sizing: border-box;
-  background: rgb(50, 50, 50);
+  background: #161616;
   height: 100%;
 }
-
 body {
   margin: 0;
   height: 100%;
-  color: #ffffff;
+  color: #aaaaaa;
   font-family: 'Inconsolata', sans-serif;
   text-rendering: optimizeLegibility;
 }
@@ -49,16 +48,18 @@ main {
 /* HTML Body */
 a {
   text-decoration: underline;
-  color: inherit;
+  color: white;
 }
 
 p {
   font-size: 1rem;
   line-height: 1.5rem;
   max-width: 75ch;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
-p,
 h1,
 h2,
 h3,
@@ -68,6 +69,7 @@ h6 {
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
+  color: white;
 }
 
 h1 {

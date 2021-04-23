@@ -56,7 +56,7 @@ function Button({ url, name }) {
                                 (
                                     name === 'Home' ? isCurrent : isPartiallyCurrent
                                 )
-                                ? `#ffffff` : `grey`,
+                                ? `#ffffff` : `#aaaaaa`,
                             textDecoration: `none`,
                         },
                     }

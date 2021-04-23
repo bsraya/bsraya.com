@@ -33,7 +33,7 @@ const CustomMdxElements = {
         fontSize: `1rem`,
         whiteSpace: `nowrap`,
         fontFamily: `Share, sans-serif`,
-        color: `#FE4450`,
+        color: `#D56BBA`,
         padding: `0.1rem 0.3rem`,
         backgroundColor: `#262335`,
         borderRadius: `10px`,
