@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import Toggler from './themeToggler'
+import Toggler from './toggler'
 
 export default function Header({menuLinks}) {
     return (
