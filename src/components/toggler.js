@@ -9,9 +9,9 @@ function Toggler() {
       {({ theme, toggleTheme }) => (
         <label style={{ marginLeft: `auto`}} for='checkbox'>
           <Toggle
-            type="checkbox"
             onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
             checked={theme === 'dark'}
+            unchecked={theme === 'light'}
           />{' '}
           <div className="slider round"></div>
         </label>
