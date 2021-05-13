@@ -33,7 +33,7 @@ body {
   font-family: 'Inconsolata', sans-serif;
   text-rendering: optimizeLegibility;
   filter: var(--filter);
-  transition: all 0.3 ease-out 0.5;
+  transition: all 1s ease-out;
 }
 
 body.dark {
