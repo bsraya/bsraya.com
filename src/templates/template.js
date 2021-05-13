@@ -7,6 +7,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from '@mdx-js/react'
 import { rhythm } from "../utils/typography"
 
+import "katex/dist/katex.min.css"
+
 export default function Template({ data }) {
   return (
     <Layout itemScope itemType="http://schema.org/PostLayout">
