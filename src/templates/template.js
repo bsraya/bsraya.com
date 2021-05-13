@@ -1,13 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
-import CustomMdxElement from "../components/custom-mdx-element"
+import CustomMdxElement from "../components/customMdxElements"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from '@mdx-js/react'
 import { rhythm } from "../utils/typography"
-
-import "katex/dist/katex.min.css"
 
 export default function Template({ data }) {
   return (

@@ -74,7 +74,7 @@ function Post({ link, title, date }) {
                     <span itemProp="headline">{title}</span>
                 </Link>
             </h1>
-            <small itemProp="datePosted">{date}</small> 
+            <small style={{ color: `#808080` }} itemProp="datePosted">{date}</small>
         </>
     )
 }
