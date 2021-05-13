@@ -2,21 +2,21 @@ import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { rhythm } from "../utils/typography"
+import * as styles from './index.module.css'
 
 export default function Home({data}){
   const author = data.site.siteMetadata.author
   return (
     <Layout>
       <Seo title="Home" type="website" slug="/" />
-      <article itemScope itemType="http://schema.org/Author">
-        <h1 style={{ marginBottom: rhythm(0.2) }} itemProp="author" name={author}>
+      <article itemScope itemType="http://schema.org/Author" style={{ textAlign: `left` }}>
+        <p className={styles.author} itemProp="author" name={author}>
           {author}
-        </h1>
-        <p style={{ marginBottom: rhythm(0.25) }} itemProp="description">
+        </p>
+        <p className={styles.description} itemProp="description" name>
           An aspiring Machine Learning engineer
         </p>
-        <p itemProp="description">
+        <p className={styles.description} itemProp="description">
           A Front-End developer 
         </p>
       </article>

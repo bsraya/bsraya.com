@@ -32,13 +32,22 @@ const CustomMdxElements = {
       style={{
         fontSize: `1rem`,
         whiteSpace: `nowrap`,
-        fontFamily: `Share, sans-serif`,
-        color: `#D56BBA`,
-        padding: `0.1rem 0.3rem`,
-        backgroundColor: `#262335`,
+        fontFamily: `'Share', sans-serif`,
+        color: `var(--codeColor)`,
         borderRadius: `10px`,
+        transition: `color 0.2s ease-out`,
       }}
     />,
+  p: ({ children, props }) =>
+    <p {...props}
+      style={{
+        fontSize: `1rem`,
+        lineHeight: `1.5rem`,
+        wordWrap: `break-word`,
+        overflowWrap: `break-word`,
+        hyphens: `auto`
+      }}
+    >{children}</p>
 }
 
 export default CustomMdxElements

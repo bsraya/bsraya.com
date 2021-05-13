@@ -14,15 +14,39 @@
 
 html {
   box-sizing: border-box;
-  background: #161616;
-  height: 100%;
 }
+
 body {
+  --backgroundColor: #f3f3f3;
+  --fontColor: black;
+  --headerColor: #131313;
+  --linkColor: #b24a29;
+  --codeColor: #7d3856;
+  --activeLink: #131313;
+  --inactiveLink: #a6a6a6;
+  --codeblockTitle: #e6d9bb;
+  --filter: opacity(1), contrast(1);
   margin: 0;
   height: 100%;
-  color: #aaaaaa;
+  background: var(--backgroundColor);
+  color: var(--fontColor);
   font-family: 'Inconsolata', sans-serif;
   text-rendering: optimizeLegibility;
+  filter: var(--filter);
+  transition: 0.3 ease-out;
+}
+
+body.dark {
+  --backgroundColor: #222;
+  --fontColor: #eee;
+  --headerColor: white;
+  --linkColor: #fbd8cd;
+  --codeColor: #ff72b0;
+
+  --activeLink: white;
+  --inactiveLink: #808080;
+  --codeblockTitle: #fff1d0;
+  --filter: opacity(0.8), contrast(1.2);
 }
 
 main {
@@ -37,27 +61,24 @@ main {
 }
 
 /* Menu links */
-.link {
-  transition-duration: 0.3s;
+.headerLink {
+  text-decoration: none;
+  transition: color 0.3s ease-out;
 }
 
-.link:hover {
-  color: #ffffff !important;
+.headerLink:hover {
+  color: var(--activeLink) !important;
+}
+
+/* footer links */
+.footerLink:hover {
+  color: var(--activeLink) !important;
 }
 
 /* HTML Body */
 a {
   text-decoration: underline;
-  color: white;
-}
-
-p {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  max-width: 75ch;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
+  color: var(--linkColor);
 }
 
 h1,
@@ -66,10 +87,10 @@ h3,
 h4,
 h5,
 h6 {
+  color: var(--headerColor);
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: white;
 }
 
 h1 {
@@ -94,15 +115,6 @@ h5 {
 
 h6 {
   font-size: 1.35rem;
-}
-
-img {
-  cursor: pointer;
-  transition: all 0.1s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-img:hover {
-  transform: scale(1.01);
 }
 
 figcaption {
@@ -133,7 +145,7 @@ figcaption::before {
 }
 
 .gatsby-code-title {
-  background: #fff1d0;
+  background: var(--codeblockTitle);
   color: #121212;
   padding: 0.75rem 1rem 0.75rem 1rem;
   font-size: 0.85rem;
@@ -145,6 +157,7 @@ figcaption::before {
 .md-headers {
   margin-top: 2rem;
   margin-bottom: 0.25rem;
+  color: var(--headerColor) !important;
 }
 
 blockquote {
@@ -163,7 +176,7 @@ th,
 td {
   font-size: 1rem;
   padding: 0.5rem !important;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--fontColor);
 }
 
 .gatsby-resp-image-figure {
@@ -173,13 +186,36 @@ td {
 }
 
 @media (max-width: 768px) {
-  .footerLinks {
-    font-size: 0.75rem;
-  }
   main {
     padding: 0.5rem;
   }
   table {
     overflow-x: auto;
+  }
+}
+
+@media (min-width: 1080px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 2.1rem;
+  }
+
+  h3 {
+    font-size: 2.0rem;
+  }
+
+  h4 {
+    font-size: 1.9rem;
+  }
+
+  h5 {
+    font-size: 1.8rem;
+  }
+
+  h6 {
+    font-size: 1.7rem;
   }
 }

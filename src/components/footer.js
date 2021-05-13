@@ -18,14 +18,14 @@ export default function Footer() {
         footer: {
             margin: `2em 0 0 0`,
             padding: `0`,
+            color: `var(--inactiveLink)`,
         },
         container: {
             margin: `2rem 0 0 0`,
         },
         small: {
             margin: `0`,
-            color: `grey`,
-            fontSize: `0.75rem`
+            fontSize: `0.9rem`
         }
     }
 
@@ -77,7 +77,8 @@ function Link({ url, name }) {
             href={url}
             target="_blank"
             rel="nofollow noopener noreferrer"
-            style={{ fontSize: `0.9rem` }}
+            style={{ fontSize: `1rem`, color: `var(--inactiveLink)`, textDecoration: `none`, }}
+            className="footerLink"
         >
             {name}
         </a>

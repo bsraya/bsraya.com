@@ -1,6 +1,6 @@
-import { Link } from "gatsby"
-import React from "react"
-import { rhythm } from '../utils/typography';
+import { Link } from 'gatsby'
+import React from 'react'
+import Toggler from './ThemeToggler'
 
 export default function Header({menuLinks}) {
     return (
@@ -16,13 +16,11 @@ function Menu({ links }) {
             display: `flex`,
             flex: `1`,
             margin: `0`,
-            padding: `0`
+            padding: `0`,
         },
         li: {
-            marginRight: rhythm(0.4),
             listStyleType: `none`,
-            marginBottom: `0`,
-            fontSize: `1rem`
+            margin: `0 10px 0 0`
         }
     }
 
@@ -38,6 +36,7 @@ function Menu({ links }) {
                         )
                     )
                 }
+                <Toggler />
             </ul>
         </nav>
     )
@@ -48,7 +47,7 @@ function Button({ url, name }) {
         <Link
             to = {url}
             itemProp = "url"
-            className="link"
+            className="headerLink"
             getProps = {
                 ({ isCurrent, isPartiallyCurrent }) => ({
                         style: {
@@ -56,9 +55,8 @@ function Button({ url, name }) {
                                 (
                                     name === 'Home' ? isCurrent : isPartiallyCurrent
                                 )
-                                ? `#ffffff` : `#aaaaaa`,
-                            textDecoration: `none`,
-                        },
+                                ? `var(--activeLink)` : `var(--inactiveLink)`,
+                        }
                     }
                 )
             }

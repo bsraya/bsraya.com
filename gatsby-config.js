@@ -65,6 +65,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
+    `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-remark-images`,
       options: {
