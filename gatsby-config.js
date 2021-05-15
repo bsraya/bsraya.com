@@ -160,7 +160,6 @@ module.exports = {
           },
         ],
         remarkPlugins: [
-          //require('remark-math'),
           require('remark-html-katex')
         ]
       },
