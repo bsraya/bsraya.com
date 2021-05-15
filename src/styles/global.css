@@ -37,7 +37,7 @@ body {
   --fontColor: black;
   --headerColor: #131313;
   --linkColor: #0000bf;
-  --codeColor: #7d3856;
+  --codeColor: #d23669;
   --activeLink: #131313;
   --inactiveLink: #a6a6a6;
   --codeblockTitle: #e6d9bb;
@@ -51,7 +51,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   filter: var(--filter);
-  transition: background 1s ease-in-out;
+  transition: background 0.3s ease-in-out;
 }
 
 body.dark {
@@ -59,7 +59,7 @@ body.dark {
   --fontColor: #eee;
   --headerColor: white;
   --linkColor: #9999ff;
-  --codeColor: #ff72b0;
+  --codeColor: #ffa7c4;
   --activeLink: white;
   --inactiveLink: #808080;
   --codeblockTitle: #fff1d0;
