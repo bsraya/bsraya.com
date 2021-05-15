@@ -37,7 +37,7 @@ body {
   --backgroundColor: #f3f3f3;
   --fontColor: black;
   --headerColor: #131313;
-  --linkColor: #b24a29;
+  --linkColor: #0000bf;
   --codeColor: #7d3856;
   --activeLink: #131313;
   --inactiveLink: #a6a6a6;
@@ -59,7 +59,7 @@ body.dark {
   --backgroundColor: #222;
   --fontColor: #eee;
   --headerColor: white;
-  --linkColor: #fbd8cd;
+  --linkColor: #9999ff;
   --codeColor: #ff72b0;
   --activeLink: white;
   --inactiveLink: #808080;
