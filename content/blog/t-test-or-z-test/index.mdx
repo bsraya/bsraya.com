@@ -12,7 +12,7 @@ To make things simple, I am only going to discuss the difference between T-Test 
 Before we jump into the definitions of those two, we should know the definition of hypothesis testing.
 Hypothesis testing is a way to verify our assumption on a population.
 
-Let's say one day, we wanted to verify if the average waiting time in a certain bus stop is 5 minutes,
+Let's say we wanted to verify if the average waiting time in a certain bus stop is 5 minutes,
 and that's when a hypothesis testing is needed.
 First, we define the null hypothesis and the alternative hypothesis.
 In this case, the null hypothesis is <u>_the average waiting time is 5 minutes_</u>,
@@ -132,7 +132,7 @@ t.test(random_sample, mu = 8.4, alternative = "two.sided")
 #   10.3428
 ```
 
-It seems like the p-value `0.3824913` acquired from manual T-test and the p-value `0.4299` from `t.test()` don't differ that much.
+It seems like the p-value of `0.3824913` acquired from manual T-test and the p-value of `0.4299` from `t.test()` don't differ that much.
 Thus, we can accept the null hypothesis and conclude that <u>_ILEC's average repair time is 8.4 seconds_</u>.
 
 ## 1.2 Two Sample T-Test
