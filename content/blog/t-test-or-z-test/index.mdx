@@ -27,7 +27,7 @@ Note that there are two ways of hypothesis testing:
 2. Two samples hypothesis testing
 
 Most importantly, this tutorial will be done in R.
-Before reading further, please install the dataset with `install.packages(resampleData)` in your R console.
+Before reading further, please install the dataset with `install.packages(resampledata)` in your R console.
 It will install all the data sets used in a book called [Mathematical Statistics with Resampling and R](https://sites.google.com/site/chiharahesterberg/home)
 
 # 1. T-Test
@@ -55,7 +55,7 @@ The _null hypothesis_ is <u>_ILEC's average service time is 8.4 seconds_</u>, an
 We then prepare the data set,
 
 ```r:title=load_dataset.r
-library(resampleData) # load up Verizon dataset
+library(resampledata) # load up Verizon dataset
 ilec <- as.data.frame(Verizon[Verizon$Group == "ILEC", ])
 ```
 
