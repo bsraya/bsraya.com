@@ -25,6 +25,8 @@ Note that there are two ways of hypothesis testing:
 1. One sample hypothesis testing
 2. Two samples hypothesis testing
 
+Most importantly, this tutorial will be done in R.
+
 # T-Test
 
 T-Test is a hypothesis testing method that statisticians use when the standard deviation
@@ -37,13 +39,57 @@ $$
 where,
 1. $t$ is the t-statistics
 2. $\bar{X}$ is the sample mean
-3. $\mu$ is the hypothesized mean or the population mean
+3. $\mu$ is the hypothesized mean
 4. $s$ is the sample's standard error
 5. $n$ is the size of sample mean
 
-Let's try one sample T-Test,
+First, install the dataset with `install.packages(resampleData)` in your R console. 
+It will install all the data sets used in a book called [Mathematical Statistics with Resampling and R](https://sites.google.com/site/chiharahesterberg/home)
 
+We then prepare the data set, 
+```r:title=index.r
+library(resampleData) # load up Verizon dataset
+ilec <- as.data.frame(Verizon[Verizon$Group == "ILEC", ])
+```
 
+Let's get 25 random data points from ILEC population.
+```r:title=index.r
+set.seed(1998)
+random_sample <- sample(ilec$Time, 25, replace = TRUE)
+random_sample_sderr <- sd(random_sample) / sqrt(length(random_sample))
+t_statistics # 0.8896381
+```
+
+```r:title=index.r
+set.seed(1999)
+t_test <- function(population) {
+  sample <- sample(population, 25, replace = TRUE)
+  sample_sderr <- sd(sample) / sqrt(length(sample))
+  t_statistics <- (mean(sample) - mean(population)) / sample_sderr
+  return(t_statistics)
+}
+
+bootstrap_t_test <- replicate(5000, t_test(ilec$Time))
+
+plot(
+    lwd = 2, 
+    col = "blue",
+    density(bootstrap_t_test), 
+    main = "Distribution of T-statistics",
+    xlab = "T-statistics"
+)
+abline(v = quantile(bootstrap_t_test, probs = c(0.025, 0.975)), col = "red", lwd = 2)
+
+abline(v = sample_t_statistics, lwd = 2)
+
+legend(
+  -17,
+  0.34,
+  col = c("blue", "red", "black"),
+  lwd = c(2,2,2),
+  c("Distribution of T-statistics", "Cutoff points", "T-statistics")
+)
+```
 
 # Z-Test
 
@@ -57,7 +103,7 @@ $$
 Where, 
 1. $z$ is the z-statistics
 2. $\bar{X}$ is the sample mean 
-3. $\mu$ is the hypothesized mean or the population mean
+3. $\mu$ is the hypothesized mean
 4. $\sigma$ is the population standard deviation value
 5. $n$ is the size of sample mean
 
