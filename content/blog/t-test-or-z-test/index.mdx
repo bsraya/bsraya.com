@@ -1,0 +1,64 @@
+---
+title: T-Test or Z-Test?
+type: "blog"
+date: 2021-05-17
+published: true
+---
+
+There are many hypothesis testing methods exist in the realm of statistics. 
+However, each only suitable for certain conditions. 
+To make things simple, I am only going to discuss the difference between T-Test and Z-Test.
+
+Before we jump into the definitions of those two, we should know the definition of hypothesis testing. 
+Hypothesis testing is a way to verify our assumption on a population. 
+
+Let's say one day, we wanted to verify if the average waiting time in a certain bus stop is 5 minutes,
+and that's when a hypothesis testing is needed. 
+First, we define the null hypothesis and the alternative hypothesis. 
+In this case, the null hypothesis is <u>*the average waiting time is 5 minutes*</u>, 
+and the two sided alternative hypothesis is <u>*the average waiting time is not 5 minutes*</u>. 
+
+By default, we accept the null hypothesis. 
+After a hypothesis testing is done, and we have proven that the null hypothesis should be rejected, we then should accept the alternative hypothesis instead.
+
+Note that there are two ways of hypothesis testing: 
+1. One sample hypothesis testing
+2. Two samples hypothesis testing
+
+# T-Test
+
+T-Test is a hypothesis testing method that statisticians use when the standard deviation
+is unknown, and the number of data points is small $(n < 30)$.
+
+$$
+t = \frac{\bar{X} - \mu}{s/\sqrt{n}}
+$$
+
+where,
+1. $t$ is the t-statistics
+2. $\bar{X}$ is the sample mean
+3. $\mu$ is the hypothesized mean or the population mean
+4. $s$ is the sample's standard error
+5. $n$ is the size of sample mean
+
+Let's try one sample T-Test,
+
+
+
+# Z-Test
+
+Similar to T-test, however Z-Test is used when the standard deviation is known, 
+and the number of data points are big $(n \geq 30)$.
+
+$$
+z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}}
+$$
+
+Where, 
+1. $z$ is the z-statistics
+2. $\bar{X}$ is the sample mean 
+3. $\mu$ is the hypothesized mean or the population mean
+4. $\sigma$ is the population standard deviation value
+5. $n$ is the size of sample mean
+
+# Key points

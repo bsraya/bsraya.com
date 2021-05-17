@@ -41,6 +41,7 @@ body {
   --activeLink: #131313;
   --inactiveLink: #a6a6a6;
   --codeblockTitle: #e6d9bb;
+  --underlinedColor: #DC2626;
   --filter: opacity(1), contrast(1);
 
   margin: 0;
@@ -63,6 +64,7 @@ body.dark {
   --activeLink: white;
   --inactiveLink: #808080;
   --codeblockTitle: #fff1d0;
+  --underlinedColor: #F87171;
   --filter: opacity(0.8), contrast(1.2);
 }
 
@@ -93,6 +95,10 @@ main {
 }
 
 /* HTML Body */
+u {
+  color: var(--underlinedColor) !important;
+}
+
 a {
   text-decoration: underline;
   color: var(--linkColor);
