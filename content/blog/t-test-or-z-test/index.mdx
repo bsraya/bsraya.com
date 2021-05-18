@@ -59,6 +59,9 @@ library(resampledata) # load up Verizon dataset
 ilec <- as.data.frame(Verizon[Verizon$Group == "ILEC", ])
 ```
 
+In fact, ILEC's mean is `8.4`, and let's say we are skeptical whether if its true mean is really `8.4`.
+Then we should do one sample T-test to see that is the case.
+
 Let's get 25 random data points from ILEC population, and calculate its T-statistics.
 
 ```r:title=manual_t_test.r
