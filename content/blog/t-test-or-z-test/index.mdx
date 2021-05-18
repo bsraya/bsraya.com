@@ -60,9 +60,14 @@ ilec <- as.data.frame(Verizon[Verizon$Group == "ILEC", ])
 ```
 
 In fact, ILEC's mean is `8.4`, and let's say we are skeptical whether if its true mean is really `8.4`.
-Then we should do one sample T-test to see that is the case.
+Then we should do one sample T-test to see that is the case. 
 
-Let's get 25 random data points from ILEC population, and calculate its T-statistics.
+A few things to remember:
+1. We are sure if the true mean is indeed `8.4`
+2. The standard deviation is unknown
+3. We should keep the number of random sample below 30
+
+Take 25 random sample from ILEC population, and calculate its T-statistics.
 
 ```r:title=manual_t_test.r
 set.seed(1998)
