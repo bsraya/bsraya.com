@@ -52,7 +52,7 @@ function Post({ link, title, date }) {
         },
         link: {
             textDecoration: `none`, 
-            color: `inherit`
+            color: `var(--linkColor)`
         }
     }
     return (

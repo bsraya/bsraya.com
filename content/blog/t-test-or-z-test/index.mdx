@@ -15,8 +15,8 @@ Hypothesis testing is a way to verify our assumption on a population.
 Let's say we wanted to verify if the average waiting time in a certain bus stop is 5 minutes,
 and that's when a hypothesis testing is needed.
 First, we define the null hypothesis and the alternative hypothesis.
-In this case, the null hypothesis is <u>_the average waiting time is 5 minutes_</u>,
-and the two sided alternative hypothesis is <u>_the average waiting time is not 5 minutes_</u>.
+In this case, the null hypothesis is _the average waiting time is 5 minutes_,
+and the two sided alternative hypothesis is _the average waiting time is not 5 minutes_.
 
 By default, we accept the null hypothesis.
 After a hypothesis testing is done, and we have proven that the null hypothesis should be rejected, we then should accept the alternative hypothesis instead.
@@ -50,7 +50,7 @@ where,
 ## 1.1 One Sample T-Test
 
 Let's define the _null hypothesis_ and the _alternative hypothesis_.
-The _null hypothesis_ is <u>_ILEC's average service time is 8.4 seconds_</u>, and the _alternative hypothesis_ is <u>_ILEC's average service time is not 8.4 seconds_</u>.
+The _null hypothesis_ is _ILEC's average service time is 8.4 seconds_, and the _alternative hypothesis_ is _ILEC's average service time is not 8.4 seconds_.
 
 We then prepare the data set,
 
@@ -71,10 +71,10 @@ Take 25 random sample from ILEC population, and calculate its T-statistics.
 
 ```r:title=manual_t_test.r
 set.seed(1998)
-random_sample <- sample(ilec$Time, 25, replace = TRUE)
-random_sample_sderr <- sd(random_sample) / sqrt(length(random_sample))
-random_sample_t_statistics <- (mean(random_sample) - mean(ilec$Time)) / random_sample_sderr
-random_sample_t_statistics # 0.8896381
+sample <- sample(ilec$Time, 25, replace = TRUE)
+sample_sderr <- sd(random_sample) / sqrt(length(random_sample))
+sample_t_statistics <- (mean(random_sample) - mean(ilec$Time)) / sample_sderr
+sample_t_statistics # 0.8896381
 ```
 
 ```r:title=bootstrap_t_test.r
@@ -141,7 +141,7 @@ t.test(random_sample, mu = 8.4, alternative = "two.sided")
 ```
 
 It seems like the p-value of `0.3824913` acquired from manual T-test and the p-value of `0.4299` from `t.test()` don't differ that much.
-Thus, we can accept the null hypothesis and conclude that <u>_ILEC's average repair time is 8.4 seconds_</u>.
+Thus, we can accept the null hypothesis and conclude that _ILEC's average repair time is 8.4 seconds_.
 
 ## 1.2 Two Sample T-Test
 

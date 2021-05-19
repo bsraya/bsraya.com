@@ -25,7 +25,7 @@ function Menu({ links }) {
     }
 
     return (
-        <nav>
+        <nav style={{ display: `flex` }}>
             <ul style={styles.ul}>
                 {
                     links.map(
@@ -36,8 +36,8 @@ function Menu({ links }) {
                         )
                     )
                 }
-                <Toggler />
             </ul>
+            <Toggler />
         </nav>
     )
 }
@@ -50,13 +50,19 @@ function Button({ url, name }) {
             className="headerLink"
             getProps = {
                 ({ isCurrent, isPartiallyCurrent }) => ({
-                        style: {
-                            color:
-                                (
-                                    name === 'Home' ? isCurrent : isPartiallyCurrent
-                                )
-                                ? `var(--activeLink)` : `var(--inactiveLink)`,
-                        }
+                    // style: {
+                    //     color:
+                    //         (
+                    //             name === 'Home' ? isCurrent : isPartiallyCurrent
+                    //         )
+                    //         ? `var(--activeLink)` : `var(--inactiveLink)`,
+                    // }
+                    
+                    style: 
+                        (name === 'Home' ? isCurrent : isPartiallyCurrent)
+                        ?
+                        { textDecoration: `none` } :
+                        { textDecoration: `underline` }
                     }
                 )
             }
