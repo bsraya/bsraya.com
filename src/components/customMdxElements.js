@@ -1,6 +1,8 @@
 import React from "react"
 
 const CustomMdxElements = {
+  em: ({ children }) =>
+    <em style={{ color: `var(--important)` }}>{children}</em>,
   hr: () =>
     <hr style={{ borderTop: `2px solid #fff1d0` }} />,
   ol: ({children, props}) => 
