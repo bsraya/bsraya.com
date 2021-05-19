@@ -50,14 +50,6 @@ function Button({ url, name }) {
             className="headerLink"
             getProps = {
                 ({ isCurrent, isPartiallyCurrent }) => ({
-                    // style: {
-                    //     color:
-                    //         (
-                    //             name === 'Home' ? isCurrent : isPartiallyCurrent
-                    //         )
-                    //         ? `var(--activeLink)` : `var(--inactiveLink)`,
-                    // }
-                    
                     style: 
                         (name === 'Home' ? isCurrent : isPartiallyCurrent)
                         ?
