@@ -82,21 +82,21 @@ main {
 /* Menu links */
 .headerLink {
   text-decoration: none;
-  color: var(--linkColor);
+  color: var(--fontColor);
 }
 
 .headerLink:hover {
-  text-decoration: none !important;
+  text-decoration: underline !important;
 }
 
 /* HTML Body */
 a {
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--linkColor);
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 h1,

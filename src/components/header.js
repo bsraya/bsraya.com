@@ -53,8 +53,8 @@ function Button({ url, name }) {
                     style: 
                         (name === 'Home' ? isCurrent : isPartiallyCurrent)
                         ?
-                        { textDecoration: `none` } :
-                        { textDecoration: `underline` }
+                        { textDecoration: `underline` } :
+                        { textDecoration: `none` }
                     }
                 )
             }
