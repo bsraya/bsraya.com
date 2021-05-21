@@ -37,11 +37,11 @@ body {
   --fontColor: #000000;
   --headerColor: #000000;
   --linkColor: #0000bf;
-  --codeColor: #A80079;
+  --codeColor: #a80079;
   --activeLink: #000000;
   --inactiveLink: #999999;
   --codeblockTitle: #e6d9bb;
-  --important: #B40808;
+  --important: #b40808;
   --filter: opacity(1), contrast(1);
 
   margin: 0;
@@ -60,11 +60,11 @@ body.dark {
   --fontColor: #eee;
   --headerColor: white;
   --linkColor: #9999ff;
-  --codeColor: #FF7EDB;
+  --codeColor: #ff7edb;
   --activeLink: white;
   --inactiveLink: #808080;
   --codeblockTitle: #fff1d0;
-  --important: #F86868;
+  --important: #f86868;
   --filter: opacity(0.8), contrast(1.2);
 }
 
@@ -213,6 +213,10 @@ td {
 }
 
 @media (min-width: 1080px) {
+  .author {
+    font-size: 2.5rem;
+  }
+
   h1 {
     font-size: 2.2rem;
   }

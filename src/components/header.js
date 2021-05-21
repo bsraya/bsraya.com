@@ -11,26 +11,26 @@ export default function Header({menuLinks}) {
 }
 
 function Menu({ links }) {
-    const styles = {
-        ul: {
-            display: `flex`,
-            flex: `1`,
-            margin: `0`,
-            padding: `0`,
-        },
-        li: {
-            listStyleType: `none`,
-            margin: `0 10px 0 0`
-        }
-    }
-
     return (
         <nav style={{ display: `flex` }}>
-            <ul style={styles.ul}>
+            <ul
+                style={{
+                    display: `flex`,
+                    flex: `1`,
+                    margin: `0`,
+                    padding: `0`,
+                }}
+            >
                 {
                     links.map(
                         link => (
-                            <li key={link.name} style={styles.li}>
+                            <li
+                                style={{
+                                    listStyleType: `none`,
+                                    margin: `0 10px 0 0`
+                                }}
+                                key={link.name}
+                            >
                                 <Button url={link.link} name={link.name}/>
                             </li>
                         )

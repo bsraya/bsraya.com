@@ -14,30 +14,15 @@ export default function Footer() {
     }
     `)
 
-    const styles = {
-        footer: {
-            margin: `2em 0 0 0`,
-            padding: `0`,
-        },
-        container: {
-            margin: `2rem 0 0 0`,
-        },
-        small: {
-            margin: `0`,
-            fontSize: `1rem`,
-        }
-    }
-
     return (
-        <footer style={styles.footer} itemScope itemType="http://schema.org/Links">
+        <footer itemScope itemType="http://schema.org/Links">
             <Links
-                style={styles.container}
                 email={query.site.siteMetadata.email}
                 link={query.site.siteMetadata.resume}
             />
-            <small style={styles.small}>
-                © {new Date().getFullYear()} <span itemProp="author" itemType="http://schema.org/Author" name={query.site.siteMetadata.author}>{query.site.siteMetadata.author}.</span>
-            </small>
+            <p style={{ margin: `0` }}>
+                © {new Date().getFullYear()} <span itemProp="author" itemType="http://schema.org/Author" name={query.site.siteMetadata.author}>{query.site.siteMetadata.author}</span>
+            </p>
         </footer>
     )
 }

@@ -4,14 +4,14 @@ import { graphql } from "gatsby"
 import Seo from "../components/seo"
 
 export default function About({ data }) {
-  const author = data.site.siteMetadata.author
-  const link = data.site.siteMetadata.resume
-  const email = data.site.siteMetadata.email
-  
   return (
     <Layout>
       <Seo title="About" type="website" slug="/about/" />
-      <Content author={author} link={link} email={email} />
+      <Content
+        author={data.site.siteMetadata.author}
+        link={data.site.siteMetadata.resume}
+        email={data.site.siteMetadata.email}
+      />
     </Layout>
   )
 }

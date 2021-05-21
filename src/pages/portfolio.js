@@ -15,18 +15,16 @@ export default function Portfolio({data}) {
 
 function Posts({ metadata }) {
     const posts = metadata.allMdx.edges
-    const styles = {
-        ol: {
-            listStyle: `none`,
-            margin: `0`,
-            padding: `0`
-        },
-        li: {
-            marginBottom: `3em` 
-        }
-    }
     return (
-        <ol style={styles.ol} itemScope itemType="http://schema.org/Portfolios">
+        <ol
+            style={{
+                listStyle: `none`,
+                margin: `0`,
+                padding: `0`
+            }}
+            itemType="http://schema.org/Portfolios"
+            itemScope
+        >
             {
                 posts.map(
                     post => {
@@ -34,7 +32,7 @@ function Posts({ metadata }) {
                         const link = post.node.fields.slug
                         const date = post.node.frontmatter.date
                         return (
-                            <li key={link} style={styles.li}>
+                            <li key={link} style={{ marginBottom: `3em` }}>
                                 <Post link={link} title={title} date={date}/>
                             </li>
                         )
@@ -46,22 +44,16 @@ function Posts({ metadata }) {
 }
 
 function Post({ link, title, date }) {
-    const styles = {
-        title: {
-            margin: `0`
-        },
-        link: {
-            textDecoration: `none`, 
-            color: `var(--linkColor)`
-        }
-    }
     return (
         <>
-            <h1 style={styles.title}>
+            <h1 style={{ margin: `0` }}>
                 <Link 
                     to={link} 
                     itemProp="url" 
-                    style={styles.link}
+                    style={{
+                        textDecoration: `none`, 
+                        color: `var(--fontColor)`
+                    }}
                     onClick = { () => {
                             trackCustomEvent({
                                 category: title,
@@ -74,7 +66,7 @@ function Post({ link, title, date }) {
                     <span itemProp="headline">{title}</span>
                 </Link>
             </h1>
-            <small style={{ color: `#808080` }} itemProp="datePosted">{date}</small>
+            <small itemProp="datePosted">{date}</small>
         </>
     )
 }
