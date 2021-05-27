@@ -12,19 +12,28 @@ To make things simple, I am only going to discuss the difference between T-Test 
 Before we jump into the definitions of those two, we should know the definition of hypothesis testing.
 Hypothesis testing is a way to verify our assumption on a population.
 
-Let's say we wanted to verify if the average waiting time in a certain bus stop is 5 minutes,
-and that's when a hypothesis testing is needed.
-First, we define the null hypothesis and the alternative hypothesis.
-In this case, the null hypothesis is _the average waiting time is 5 minutes_,
-and the two sided alternative hypothesis is _the average waiting time is not 5 minutes_.
+Let's say a transportation company claimed that the average waiting time for someone to get on a bus is 1 minute.
+However, we are not sure that whether it's true as if it's too good to be true.
+As result, we want to see that if the average waiting time is 1 minute in reality.
+First, we have to define the null hypothesis and the alternative hypothesis.
+In this case, the null hypothesis is _the average waiting time is 1 minute_, and the two sided alternative hypothesis is _the average waiting time is not 1 minute_.
 
-By default, we accept the null hypothesis.
-After a hypothesis testing is done, and we have proven that the null hypothesis should be rejected, we then should accept the alternative hypothesis instead.
+There is still another problem, how do we know when to accept or reject the null hypothesis?
+We then need _alpha value_ denoted as $\alpha$. 
+_Alpha value_ is the acceptable amount of _type I error_, and it should be determined even before this experiment starts.
+The most common _alpha value_ is $0.05$.
 
-Note that there are two ways of hypothesis testing:
+Before we go deeper, we should know what _type I error_ and _type II error_ are.
+Type I error is when a true null hypothesis being rejected.
+While type II error is when a false null hypothesis being accepted.
 
-1. One sample hypothesis testing
-2. Two samples hypothesis testing
+From the T-statistics we calculate from a small random samples, we then verify if the T-statistics falls within the 95% Confidence Interval.
+We can also calculate P-value from T-statistics.
+If P-value is greater than the alpha value, we accept the null hypothesis and reject the alternative hypothesis. 
+If P-value is equal or less than the alpha value, we reject the null hypothesis and accept the alternative hypothesis instead.
+
+In the experiment shown in the example above, by default, we accept the null hypothesis.
+After a hypothesis testing is done, then we have to decide whether to accept or reject the null hypothesis.
 
 Most importantly, this tutorial will be done in R.
 Before reading further, please install the dataset with `install.packages(resampledata)` in your R console.
@@ -49,6 +58,10 @@ where,
 
 ## 1.1 One Sample T-Test
 
+In this example, we are going to do _two tailed_ one sample T-Test.
+
+If the T-statistics that we get from a small random sample falls in those two blue areas in the graph, meaning that
+
 Let's define the _null hypothesis_ and the _alternative hypothesis_.
 The _null hypothesis_ is _ILEC's average service time is 8.4 seconds_, and the _alternative hypothesis_ is _ILEC's average service time is not 8.4 seconds_.
 
@@ -57,17 +70,19 @@ We then prepare the data set,
 ```r:title=load_dataset.r
 library(resampledata) # load up Verizon dataset
 ilec <- as.data.frame(Verizon[Verizon$Group == "ILEC", ])
+mean(ilec$Time) # 8.4
 ```
 
-In fact, ILEC's mean is `8.4`, and let's say we are skeptical whether if its true mean is really `8.4`.
-Then we should do one sample T-test to see that is the case. 
+We have ILEC's average service time to be $8.4$ seconds, and let's say we are skeptical whether if its true mean is really $8.4$ seconds.
+Then we should do one sample T-test to see if that is the case. 
 
 A few things to remember:
-1. We are sure if the true mean is indeed `8.4`
+1. We are not sure if the true mean is indeed $8.4$
+2. The predefined alpha value is $0.05$
 2. The standard deviation is unknown
-3. We should keep the number of random sample below 30
+3. The number of random sample should be below 30
 
-Take 25 random sample from ILEC population, and calculate its T-statistics.
+Let's take 25 random samples from ILEC population, and calculate its T-statistics.
 
 ```r:title=manual_t_test.r
 set.seed(1998)
@@ -76,6 +91,8 @@ sample_sderr <- sd(random_sample) / sqrt(length(random_sample))
 sample_t_statistics <- (mean(random_sample) - mean(ilec$Time)) / sample_sderr
 sample_t_statistics # 0.8896381
 ```
+
+After acquiring the T-statistics manually, we want to bootstrap the T-statistics for 5000 times.
 
 ```r:title=bootstrap_t_test.r
 set.seed(1999)
@@ -89,11 +106,11 @@ t_test <- function(population) {
 bootstrap_t_test <- replicate(5000, t_test(ilec$Time))
 
 plot(
-    lwd = 2,
-    col = "blue",
-    density(bootstrap_t_test),
-    main = "Sampling Distribution of T-statistics",
-    xlab = "T-statistics"
+  lwd = 2,
+  col = "blue",
+  density(bootstrap_t_test),
+  main = "Sampling Distribution of T-statistics",
+  xlab = "T-statistics"
 )
 abline(v = quantile(bootstrap_t_test, probs = c(0.025, 0.975)), col = "red", lwd = 2)
 
@@ -110,10 +127,11 @@ legend(
 
 ![Sampling Distribution of T-statistics](./distribution-of-t-statistics.png)
 
-By looking at the graph above, we can see that for 95% percent of the time, the t-statistics of any random sample will fall in the area within the two red lines.
+The area between the red lines tell us that, "Any T-statistics value will fall within this area for 95% percent of the time."
+That is why this area is called 95% Confidence Interval.
 We can safely assume that the 25 random samples that we pick in `manual_t_test.r` represent the entire population and its T-statistics fall within the specified area.
 
-With `t_statistics` value in `manual_t_test.r`, then we can calculate the p-value.
+With `t_statistics` value in `manual_t_test.r`, then we can calculate the P-value.
 
 ```r:title=calculate_pvalue
 2 * pt(-abs(t_statistics), df = length(random_sample) - 1)
@@ -121,9 +139,12 @@ With `t_statistics` value in `manual_t_test.r`, then we can calculate the p-valu
 ```
 
 We then got the p-value of $0.3824913$.
-Since the p-value is greater than $\alpha = 0.05$, we can accept the null hypothesis and reject the alternative hypothesis.
+Since the p-value is way greater than $\alpha = 0.05$, we can accept the null hypothesis and reject the alternative hypothesis.
+I have mentioned that P-value is the probability of type I error.
+Since p-value of $0.3824913$ is way higher than $\alpha = 0.05$, we can say that the probability of rejecting a true null hypothesis is high.
+Since the percentage is high, we don't want to reject the null hypothesis.
 
-Some people call this kind of discovery is _statistically insignificant_, meaning the probability of having a certain result is relatively higher given the null hypothesis is true.
+Some people call this kind of discovery is _statistically insignificant_, meaning the probability of having a this kind result is relatively higher given the null hypothesis is true.
 
 We can verify our discovery with `t.test()` function.
 
@@ -140,8 +161,8 @@ t.test(random_sample, mu = 8.4, alternative = "two.sided")
 #   10.3428
 ```
 
-It seems like the p-value of `0.3824913` acquired from manual T-test and the p-value of `0.4299` from `t.test()` don't differ that much.
-Thus, we can accept the null hypothesis and conclude that _ILEC's average repair time is 8.4 seconds_.
+It seems like the p-value of `0.3824913` we calculated manually and the p-value of `0.3797` from `t.test()` function don't differ that much.
+Thus, we can accept the null hypothesis and conclude that _ILEC's average repair time is indeed 8.4 seconds_.
 
 ## 1.2 Two Sample T-Test
 
