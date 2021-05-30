@@ -8,7 +8,7 @@ function Toggler() {
     <>
       <ThemeToggler > 
         {({ theme, toggleTheme }) => (
-          <label style={{paddingTop: `10px`}} for='checkbox'>
+          <label for='checkbox'>
             <Toggle
               type="checkbox"
               onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}

@@ -8,17 +8,17 @@ export default function Home({ data }) {
     <Layout>
       <Seo title="Home" type="website" slug="/" />
       <article itemScope itemType="http://schema.org/Author" style={{ textAlign: `left` }}>
-        <p
+        <h1
           style={{
-            fontSize: `2.25rem`,
+            fontSize: `2rem`,
             fontWeight: `bold`,
           }}
           itemProp="author"
           name={data.site.siteMetadata.author}
         >
           {data.site.siteMetadata.author}
-        </p>
-        <p itemProp="description" style={{maxWidth: `75ch`}}>
+        </h1>
+        <p>
           I am an aspiring Machine Learning engineer, a Front-End developer, and a graduate student at National Tsing Hua University.
         </p>
       </article>

@@ -3,7 +3,7 @@ import "../styles/global.css"
 
 const typography = new Typography({
     baseFontSize: `20px`,
-    baseLineHeight: 2,
+    baseLineHeight: 1.5,
     headerFontFamily: [
         "Inconsolata",
         "sans-serif"
