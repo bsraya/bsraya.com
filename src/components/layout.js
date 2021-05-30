@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
   return (
     <main itemScope itemType="http://schema.org/Layout">
       <Header menuLinks={data.site.siteMetadata.menuLinks} />
-        <div style={{ marginTop: `2em`, marginBottom: `2em`}}>
+        <div style={{ marginTop: `2em` }}>
           {children}
         </div>
       <Footer />
