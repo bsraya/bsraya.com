@@ -17,7 +17,7 @@ function Menu({ links }) {
                 style={{
                     display: `flex`,
                     flex: `1`,
-                    margin: `0`,
+                    margin: `0 auto 0 0`,
                     padding: `0`,
                 }}
             >
@@ -27,7 +27,8 @@ function Menu({ links }) {
                             <li
                                 style={{
                                     listStyleType: `none`,
-                                    margin: `0 10px 0 0`
+                                    margin: `0 0.5rem 0 0`,
+                                    paddingTop: `5px`
                                 }}
                                 key={link.name}
                             >

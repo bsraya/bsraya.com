@@ -20,7 +20,7 @@ export default function Footer() {
                 email={query.site.siteMetadata.email}
                 link={query.site.siteMetadata.resume}
             />
-            <p style={{ margin: `0` }}>
+            <p style={{ margin: `0`, color: `gray` }}>
                 © {new Date().getFullYear()} <span itemProp="author" itemType="http://schema.org/Author" name={query.site.siteMetadata.author}>{query.site.siteMetadata.author}</span>
             </p>
         </footer>
@@ -55,14 +55,26 @@ function Links({email, link}) {
 
 function Link({ url, name }) {
     return (
-        <a
-            itemProp="url"
-            itemType="http://schema.org/Url"
-            href={url}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-        >
-            {name}
-        </a>
+        <>
+            <a
+                itemProp="url"
+                itemType="http://schema.org/Url"
+                href={url}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                className="footer-link"
+            >
+                {name}
+            </a>
+            <style jsx>{`
+                .footer-link {
+                    color: gray;
+                }
+                .footer-link:hover {
+                    text-decoration: none;
+                    color: var(--fontColor);
+                }
+            `}</style>
+        </>
     )
 }

@@ -12,31 +12,14 @@ export default function Home({ data }) {
           style={{
             fontSize: `2.25rem`,
             fontWeight: `bold`,
-            marginBottom: `2rem`,
-            color: `var(--headerColor)`
           }}
           itemProp="author"
           name={data.site.siteMetadata.author}
         >
           {data.site.siteMetadata.author}
         </p>
-        <p 
-          style={{
-            fontSize: `1rem`,
-            MarginBottom: `10px`
-          }}
-          itemProp="description"
-        >
-          An aspiring Machine Learning engineer
-        </p>
-        <p
-          style={{
-            fontSize: `1rem`,
-            MarginBottom: `10px`
-          }}
-          itemProp="description"
-        >
-          A Front-End developer 
+        <p itemProp="description" style={{maxWidth: `75ch`}}>
+          I am an aspiring Machine Learning engineer, a Front-End developer, and a graduate student at National Tsing Hua University.
         </p>
       </article>
     </Layout>
