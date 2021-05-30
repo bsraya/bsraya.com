@@ -19,21 +19,31 @@ export default function About({ data }) {
 function Content({ author, link, email }) {
   return (
     <article itemScope itemType="http://schema.org/About">
+      <h1>Who am I?</h1>
       <p>
-        Hi, I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>. I am a graduate student at <Link address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
-        I am currently working on a computer vision related project.
+        I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>, and I am a Computer Science student based in Hsinchu, Taiwan.
       </p>
       <p>
-        Feel free to send me an email anytime at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>
+        I got my Bachelor's degree in Computer Science at <ExternalLink address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
+        Now, I am pursuing my Master's degree in Computer Science at the same university.
       </p>
       <p>
-        My resume can be downloaded <Link address={link} title="here" /> as well.
+        So far, I have done a few Front-End side projects, including this website, and two Front-End internship programs during my undergraduate program.
+      </p>
+      <p>
+        For now, I am working on an anomaly detection technique using deep learning as my research topic and a distributed deep learning system in a heterogeneous GPU cluster.
+      </p>
+      <p>
+        For more informations, you can download my resume <ExternalLink address={link} title="here" />.
+      </p>
+      <p>
+        Feel free to contact me anytime at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>.
       </p>
     </article>
   )
 }
 
-function Link({ address, title}) {
+function ExternalLink({ address, title}) {
   return (
     <a
       itemProp="url"
@@ -42,7 +52,7 @@ function Link({ address, title}) {
       target="_blank"
       rel="nofollow noopener noreferrer"
     >
-    {title}
+      {title}
     </a>
   )
 }
