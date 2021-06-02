@@ -21,11 +21,7 @@ function Content({ author, link, email }) {
     <article itemScope itemType="http://schema.org/About">
       <h1>Who am I?</h1>
       <p>
-        I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>, and I am a Computer Science student based in Hsinchu, Taiwan.
-      </p>
-      <p>
-        I got my Bachelor's degree in Computer Science at <ExternalLink address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
-        Now, I am pursuing my Master's degree in Computer Science at the same university.
+        I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>, and I am a graduate Computer Science student at <ExternalLink address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
       </p>
       <p>
         So far, I have done a few Front-End side projects, including this website, and two Front-End internship programs during my undergraduate program.
