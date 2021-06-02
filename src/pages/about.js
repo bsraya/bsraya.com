@@ -24,9 +24,6 @@ function Content({ author, link, email }) {
         I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>, and I am a graduate Computer Science student at <ExternalLink address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
       </p>
       <p>
-        So far, I have done a few Front-End side projects, including this website, and two Front-End internship programs during my undergraduate program.
-      </p>
-      <p>
         For now, I am working on an anomaly detection technique using deep learning as my research topic and a distributed deep learning system in a heterogeneous GPU cluster.
       </p>
       <p>
