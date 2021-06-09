@@ -86,7 +86,7 @@ main {
 }
 
 .headerLink:hover {
-  text-decoration: underline !important;
+  color: var(--fontColor) !important;
 }
 
 /* HTML Body */
