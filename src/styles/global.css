@@ -1,14 +1,7 @@
 @font-face {
-  font-family: 'Inconsolata';
-  src: url('../fonts/Inconsolata.woff2') format('woff2'),
-    url('../fonts/Inconsolata.woff') format('woff');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Share';
-  src: url('../fonts/Share.woff2') format('woff2'),
-    url('../fonts/Share.woff') format('woff');
+  font-family: 'Arvo';
+  src: url('../fonts/arvo.woff2') format('woff2'),
+    url('../fonts/arvo.woff') format('woff');
   font-display: swap;
 }
 
@@ -48,7 +41,7 @@ body {
   height: 100%;
   background: var(--backgroundColor);
   color: var(--fontColor);
-  font-family: 'Inconsolata', sans-serif;
+  font-family: 'Arvo', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   filter: var(--filter);
@@ -109,6 +102,7 @@ h6 {
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
+  font-family: 'Arvo', sans-serif;
 }
 
 h1 {
