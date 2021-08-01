@@ -68,7 +68,7 @@ main {
   -webkit-box-pack: justify;
   justify-content: space-between;
   padding: 2rem 0 2rem 0;
-  max-width: 75ch;
+  max-width: 65ch;
   margin: auto;
 }
 
