@@ -146,7 +146,7 @@ module.exports = {
               titleFontSize: 105,
               fontColor: `#fff1d0`,
               background: require.resolve(`${__dirname}/content/assets/base.png`),
-              fontStlye: require.resolve(`${__dirname}/src/fonts/Inconsolata.woff2`),
+              fontStlye: require.resolve(`${__dirname}/src/fonts/arvo.woff2`),
             },
           },
           {
@@ -197,7 +197,7 @@ module.exports = {
               fontColor: `#fff1d0`,
               titleFontSize: 105,
               subtitleFontSize: 60,
-              fontStyle: require.resolve(`${__dirname}/src/fonts/Inconsolata.woff2`),
+              fontStyle: require.resolve(`${__dirname}/src/fonts/arvo.woff2`),
             },
           },
         ],
