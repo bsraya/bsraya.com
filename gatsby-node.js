@@ -63,12 +63,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // you'll call `createPage` for each result
   posts.forEach(post => {
+    var templatePath = (post.node.frontmatter.type == 'blog') ?
+      `${__dirname}/src/templates/blogpostTemplate.js` :
+      `${__dirname}/src/templates/portfolioTemplate.js`
+    
       createPage({
           // This is the slug you created before
           // (or `node.frontmatter.slug`)
           path: post.node.fields.slug,
           // This component will wrap our MDX content
-          component: path.resolve(`${__dirname}/src/templates/template.js`),
+
+          component: path.resolve(templatePath),
           // You can use the values in this context in
           // our page layout component
           context: {

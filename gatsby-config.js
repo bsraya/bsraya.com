@@ -86,7 +86,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`${__dirname}/src/templates/template.js`),
+          default: require.resolve(`${__dirname}/src/templates/blogpostTemplate.js`),
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`,
@@ -146,7 +146,7 @@ module.exports = {
               titleFontSize: 105,
               fontColor: `#fff1d0`,
               background: require.resolve(`${__dirname}/content/assets/base.png`),
-              fontStlye: require.resolve(`${__dirname}/src/fonts/arvo.woff2`),
+              fontStlye: require.resolve(`${__dirname}/src/fonts/share.woff2`),
             },
           },
           {

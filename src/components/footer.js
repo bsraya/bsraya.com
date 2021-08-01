@@ -62,16 +62,17 @@ function Link({ url, name }) {
                 href={url}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="footer-link"
+                className="footerLink"
             >
                 {name}
             </a>
             <style jsx>{`
-                .footer-link {
+                .footerLink {
                     color: gray;
-                }
-                .footer-link:hover {
                     text-decoration: none;
+                }
+                .footerLink:hover {
+                    text-decoration: underline;
                     color: var(--fontColor);
                 }
             `}</style>

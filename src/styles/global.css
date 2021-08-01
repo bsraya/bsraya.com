@@ -5,6 +5,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Share';
+  src: url('../fonts/share.woff2') format('woff2'),
+    url('../fonts/share.woff') format('woff');
+  font-display: swap;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -51,7 +58,7 @@ body {
 body.dark {
   --backgroundColor: #222;
   --fontColor: #eee;
-  --headerColor: white;
+  --headerColor: eee;
   --linkColor: #9999ff;
   --codeColor: #ff7edb;
   --activeLink: white;
@@ -84,12 +91,12 @@ main {
 
 /* HTML Body */
 a {
-  text-decoration: none;
+  text-decoration: underline;
   color: var(--linkColor);
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 h1,

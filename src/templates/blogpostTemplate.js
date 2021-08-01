@@ -1,7 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
-import CustomMdxElement from "../components/customMdxElements"
 import Seo from "../components/seo"
+import Layout from "../components/layout"
+import Donations from "../components/donations"
+import CustomMdxElement from "../components/customMdxElements"
+
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from '@mdx-js/react'
@@ -31,12 +33,13 @@ export default function Template({ data }) {
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </article>
+      <Donations />
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
-  query BlogPostQuery($slug: String) {
+  query BlogpostQuery($slug: String) {
     mdx(fields: {slug: {eq: $slug}}){
       body
       fields {
