@@ -1,6 +1,6 @@
 ---
 title: Fizz Buzz, Simple yet Misunderstood
-type: "blog"
+type: 'blog'
 date: 2021-02-10
 published: true
 ---
@@ -9,10 +9,12 @@ I am sure everyone has seen Fizz Buzz problem many times before, and thinks it i
 Well, I thought it was easy until I stumbled upon this [video](https://www.youtube.com/watch?v=QPZ0pIK_wsc).
 
 In Fizz Buzz, there are two conditions:
-* if a number is divisible by 3, `n % 3 == 0`, print `Fizz`
-* if a number is divisible by 5, `n % 5 == 0`, print `Buzz`
+
+- if a number is divisible by 3, print `Fizz`
+- if a number is divisible by 5, print `Buzz`
 
 Well, I know everyone would solve the problem like this
+
 ```python:title=fizzbuzz.py
 int limit = 11
 
@@ -26,28 +28,28 @@ for i in range(1, limit):
 ```
 
 What if you were asked to improve the code above on one of your interview processes?
-You would be like _"Is there any other way?"_
 
 The code above will be bloated if we keep adding more conditions. Namely,
 
-* if a number is divisible by 3, `n % 3 == 0`, print `Fizz`
-* if a number is divisible by 5, `n % 5 == 0`, print `Buzz`
-* if a number is divisible by 7, `n % 7 == 0`, print `Boom`
-* if a number is divisible by 9, `n % 9 == 0`, print `Ugh`
-* the list keeps going ...
+- if a number is divisible by 3, print `Fizz`
+- if a number is divisible by 5, print `Buzz`
+- if a number is divisible by 7, print `Boom`
+- if a number is divisible by 9, print `Ugh`
+- the list keeps going ...
 
 With `if else` paradigm, the solution is going to look like this
+
 ```python:title=ifelse-fizzbuzz.py
 limit = 11
 
 for i in range(1, limit):
   if i % 3 == 0:
     print("Fizz")
-  if i % 5 == 0:
+  elif i % 5 == 0:
     print("Buzz")
-  if i % 7 == 0:
+  elif i % 7 == 0:
     print("Boom")
-  if i % 9 == 0:
+  elif i % 9 == 0:
     print("Ugh")
   ... # many other conditions
   else:
@@ -56,8 +58,9 @@ for i in range(1, limit):
 
 That is a tedious work to do and the code becomes bloated.
 
-There is another way and we call it __a string concatenation__ technique we can use to tackle this problem.
+There is another way and we call it **a string concatenation** technique we can use to tackle this problem.
 The code looks less bloated, but still the code is hard-coded.
+
 ```python:title=string-concatenation-fizzbuzz.py
 limit = 11
 
@@ -65,14 +68,14 @@ for i in range(1, limit):
   string = ''
   if i % 3 == 0:
     string += 'Fizz'
-  if i % 5 == 0:
+  elif i % 5 == 0:
     string += 'Buzz'
-  if i % 7 == 0:
+  elif i % 7 == 0:
     string += 'Boom'
-  if i % 9 == 0:
+  elif i % 9 == 0:
     string += 'Ugh'
   ... # many other conditions
-  
+
   if(string == ''):
     print(i)
     continue
@@ -80,23 +83,24 @@ for i in range(1, limit):
   print(string)
 ```
 
-However, **there is a improvised version to solve this one** like the one below 
+However, **there is a improvised version to solve this one** like the one below
+
 ```python:title=fizzbuzz-v2.py
 words = [(3, "Fizz"), (5, "Buzz")]
 limit = 11
 
-for i in range(1, limit):  
+for i in range(1, limit):
   string = ""
 
   for word in words:
     if(i % word[0] == 0):
       string = string + word[1]
-  
+
   if(string == ""):
     print(i)
     continue
 
-  print(string)  
+  print(string)
 ```
 
 For the solution above, we just have to add the additional conditions in `words` without having to tinker with the for-loop.
@@ -106,18 +110,18 @@ words = [(3, "Fizz"), (5, "Buzz"), (7, "Boom"), (9, "ugh")]
 
 limit = 21
 
-for i in range(1, limit):  
+for i in range(1, limit):
   string = ""
 
   for word in words:
     if(i % word[0] == 0):
       string = string + word[1]
-  
+
   if(string == ""):
     print(i)
     continue
 
-  print(string)  
+  print(string)
 ```
 
 Clearly, `fizzbuzz-v3.py` is the most efficient solution so far by comparison.

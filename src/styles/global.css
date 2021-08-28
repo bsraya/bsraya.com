@@ -36,12 +36,11 @@ body {
   --backgroundColor: #ffffff;
   --fontColor: #000000;
   --headerColor: #000000;
-  --linkColor: #0000bf;
+  --important: #0000bf;
   --codeColor: #a80079;
   --activeLink: #000000;
   --inactiveLink: #999999;
   --codeblockTitle: #f7eacd;
-  --important: #b40808;
   --filter: opacity(1), contrast(1);
 
   margin: 0;
@@ -59,12 +58,11 @@ body.dark {
   --backgroundColor: #222;
   --fontColor: #eee;
   --headerColor: eee;
-  --linkColor: #9999ff;
+  --important: #9999ff;
   --codeColor: #ff7edb;
   --activeLink: white;
   --inactiveLink: #808080;
   --codeblockTitle: #fff1d0;
-  --important: #f86868;
   --filter: opacity(0.8), contrast(1.2);
 }
 
@@ -92,7 +90,7 @@ main {
 /* HTML Body */
 a {
   text-decoration: underline;
-  color: var(--linkColor);
+  color: var(--important);
 }
 
 a:hover {
