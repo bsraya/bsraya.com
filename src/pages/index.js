@@ -10,8 +10,8 @@ export default function Home({ data }) {
       <article itemScope itemType="http://schema.org/Author" style={{ textAlign: `left` }}>
         <h1
           style={{
-            fontSize: `2rem`,
             fontWeight: `bold`,
+            marginBottom: `0.5rem`
           }}
           itemProp="author"
           name={data.site.siteMetadata.author}
@@ -19,7 +19,7 @@ export default function Home({ data }) {
           {data.site.siteMetadata.author}
         </h1>
         <p>
-          I am an aspiring Machine Learning engineer, a Front-End developer, and a graduate student at National Tsing Hua University.
+          is an aspiring Machine Learning engineer and a graduate student at National Tsing Hua University.
         </p>
       </article>
     </Layout>

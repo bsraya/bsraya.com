@@ -16,30 +16,33 @@ export default function Portfolio({data}) {
 function Posts({ metadata }) {
     const posts = metadata.allMdx.edges
     return (
-        <ol
-            style={{
-                listStyle: `none`,
-                margin: `0`,
-                padding: `0`
-            }}
-            itemType="http://schema.org/Portfolios"
-            itemScope
-        >
-            {
-                posts.map(
-                    post => {
-                        const title = post.node.frontmatter.title || post.node.fields.slug
-                        const link = post.node.fields.slug
-                        const date = post.node.frontmatter.date
-                        return (
-                            <li key={link} style={{ marginBottom: `3em` }}>
-                                <Post link={link} title={title} date={date}/>
-                            </li>
-                        )
-                    }
-                )
-            }
-        </ol>
+        <div>
+            <h1 style={{fontWeight: `bold`, marginBottom: `2rem`}}>Portfolio</h1>
+            <ol
+                style={{
+                    listStyle: `none`,
+                    margin: `0`,
+                    padding: `0`
+                }}
+                itemType="http://schema.org/Portfolios"
+                itemScope
+            >
+                {
+                    posts.map(
+                        post => {
+                            const title = post.node.frontmatter.title || post.node.fields.slug
+                            const link = post.node.fields.slug
+                            const date = post.node.frontmatter.date
+                            return (
+                                <li key={link} style={{ marginBottom: `1em` }}>
+                                    <Post link={link} title={title} date={date}/>
+                                </li>
+                            )
+                        }
+                    )
+                }
+            </ol>
+        </div>
     )
 }
 
@@ -47,18 +50,15 @@ function Post({ link, title, date }) {
     return (
         <>
             <h1 style={{ margin: `0` }}>
-                <Link 
+                <Link
                     to={link} 
                     itemProp="url" 
-                    style={{
-                        textDecoration: `none`, 
-                        color: `var(--fontColor)`
-                    }}
+                    className="post"
                     onClick = { () => {
                             trackCustomEvent({
                                 category: title,
                                 action: "click",
-                                label: "View portfolio"
+                                label: "View a portfolio"
                             })
                         }
                     }    

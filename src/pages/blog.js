@@ -16,35 +16,38 @@ export default function Blog({data}) {
 function Posts({ metadata }) {
     const posts = metadata.allMdx.edges
     return (
-        <ol
-            style={{
-                listStyle: `none`,
-                margin: `0`,
-                padding: `0`
-            }}
-            itemType="http://schema.org/Blogs"
-            itemScope
-        >
-            {
-                posts.map(
-                    post => {
-                        const title = post.node.frontmatter.title || post.node.fields.slug
-                        const link = post.node.fields.slug
-                        const date = post.node.frontmatter.date
-                        return (
-                            <li
-                                style={{
-                                    marginBottom: `3em` 
-                                }}
-                                key={link}
-                            >
-                                <Post link={link} title={title} date={date} />
-                            </li>
-                        )
-                    }
-                )
-            }
-        </ol>
+        <div>
+            <h1 style={{fontWeight: `bold`, marginBottom: `2rem`}}>Posts</h1>
+            <ol
+                style={{
+                    listStyle: `none`,
+                    margin: `0`,
+                    padding: `0`
+                }}
+                itemType="http://schema.org/Blogs"
+                itemScope
+            >
+                {
+                    posts.map(
+                        post => {
+                            const title = post.node.frontmatter.title || post.node.fields.slug
+                            const link = post.node.fields.slug
+                            const date = post.node.frontmatter.date
+                            return (
+                                <li
+                                    style={{
+                                        marginBottom: `2em` 
+                                    }}
+                                    key={link}
+                                >
+                                    <Post link={link} title={title} date={date} />
+                                </li>
+                            )
+                        }
+                    )
+                }
+            </ol>
+        </div>
     )
 }
 
@@ -52,18 +55,15 @@ function Post({ link, title, date }) {
     return (
         <>
             <h1 style={{margin: `0`}}>
-                <Link 
+                <Link
                     to={link} 
-                    itemProp="url" 
-                    style={{
-                        textDecoration: `none`,
-                        color: `var(--fontColor)`
-                    }}
+                    itemProp="url"
+                    className="post"
                     onClick={() => {
                             trackCustomEvent({
                                 category: title,
                                 action: "click",
-                                label: "View blog"
+                                label: "View a blogpost"
                             })
                         }
                     } 

@@ -55,7 +55,7 @@ body {
 }
 
 body.dark {
-  --backgroundColor: #222;
+  --backgroundColor: #000000ff;
   --fontColor: #eee;
   --headerColor: eee;
   --important: #9999ff;
@@ -88,6 +88,16 @@ main {
 }
 
 /* HTML Body */
+.post {
+  text-decoration: none;
+  color: var(--fontColor);
+  font-style: italic;
+}
+
+.post:hover {
+  text-decoration: underline;
+}
+
 a {
   text-decoration: underline;
   color: var(--important);
@@ -103,6 +113,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-weight: normal;
   color: var(--headerColor);
   word-wrap: break-word;
   overflow-wrap: break-word;

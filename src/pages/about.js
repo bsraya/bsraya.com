@@ -19,9 +19,9 @@ export default function About({ data }) {
 function Content({ author, link, email }) {
   return (
     <article itemScope itemType="http://schema.org/About">
-      <h1>Who am I?</h1>
+      <h1 style={{fontWeight: `bold`}}>Who am I?</h1>
       <p>
-        I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>, and I am a graduate Computer Science student at <ExternalLink address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
+        I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>, a graduate Computer Science student at <ExternalLink address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
       </p>
       <p>
         For now, I am working on an anomaly detection technique using deep learning as my research topic and a distributed deep learning system in a heterogeneous GPU cluster.
