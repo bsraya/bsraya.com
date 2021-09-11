@@ -94,10 +94,6 @@ main {
   font-style: italic;
 }
 
-.post:hover {
-  text-decoration: underline;
-}
-
 a {
   text-decoration: underline;
   color: var(--important);
