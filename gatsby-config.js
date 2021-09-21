@@ -21,12 +21,12 @@ module.exports = {
         link: '/about',
       },
       {
-        name: 'Portfolio',
-        link: '/portfolio',
+        name: 'Resume',
+        link: '/resume',
       },
       {
-        name: 'Blog',
-        link: '/blog',
+        name: 'Portfolio',
+        link: '/portfolio',
       },
     ],
   },

@@ -2,10 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
-import ExternalLink from "../components/externallink"
 import Introduction from "../components/introduction"
-import Experience from "../components/experience"
-import Education from "../components/education"
 
 export default function About({ data }) {
   return (
@@ -24,19 +21,11 @@ function Content({ author, link, email }) {
   return (
     <>
       <Introduction author={author} link={link} email={email}/>
-      <Experience />
-      <Education />
-      <p>
-        My resume can also be downloaded <ExternalLink address={link} title="here" />.
-        Feel free to contact me anytime at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>.
-      </p>
     </>
   )
 }
 
-
-
-export const pageQuery = graphql`
+export const aboutPageQuery = graphql`
   query {
     site {
       siteMetadata{

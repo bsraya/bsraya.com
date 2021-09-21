@@ -34,7 +34,7 @@ export default function Experience() {
         <div className="position">
           <p className="title">Front-End Developer</p>
           <p className="location">Moldex3D Inc. (Hsinchu, Taiwan)</p>
-          <p className="date">Jul 2021 - Aug 2021</p>
+          <p className="date">Jul 2020 - Aug 2020</p>
           <ul>
             <li>Developed user interfaces in Angular</li>
             <li>Developed automatic testings on user interfaces with Cypress.js</li>
@@ -44,7 +44,7 @@ export default function Experience() {
         <div className="position">
           <p className="title">Front-End Developer</p>
           <p className="location">Vpon Big Data Company (Taipei, Taiwan)</p>
-          <p className="date">Jul 2021 - Aug 2021</p>
+          <p className="date">Jul 2018 - Aug 2018</p>
           <ul>
             <li>Developed user interfaces in React.js</li>
             <li>Developed a database searching algorithm using Roaring Bitmaps in Java</li>
