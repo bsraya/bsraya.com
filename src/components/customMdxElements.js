@@ -36,8 +36,9 @@ const CustomMdxElements = {
         whiteSpace: `nowrap`,
         fontFamily: `'Share', sans-serif`,
         color: `var(--codeColor)`,
-        borderRadius: `10px`,
         transition: `color 0.2s ease-out`,
+        backgroundColor: 'rgb(38,34,53)',
+        padding: '2px 10px'
       }}
     />,
   p: ({ children, props }) =>

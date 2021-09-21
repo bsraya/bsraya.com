@@ -16,8 +16,7 @@ export default function Portfolio({data}) {
 function Posts({ metadata }) {
     const posts = metadata.allMdx.edges
     return (
-        <div>
-            <h1 style={{fontWeight: `bold`, marginBottom: `2rem`}}>Portfolio</h1>
+        <>
             <ol
                 style={{
                     listStyle: `none`,
@@ -42,7 +41,7 @@ function Posts({ metadata }) {
                     )
                 }
             </ol>
-        </div>
+        </>
     )
 }
 

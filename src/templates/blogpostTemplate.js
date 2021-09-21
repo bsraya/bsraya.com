@@ -22,7 +22,7 @@ export default function Template({ data }) {
         itemType="http://schema.org/Post"
       >
         <div style={{ marginBottom: rhythm(1) }}>
-          <h1 style={{ margin: `0` }}>
+          <h1 style={{ margin: `0`, fontWeight: `bold`}}>
             {data.mdx.frontmatter.title}
           </h1>
           <small>

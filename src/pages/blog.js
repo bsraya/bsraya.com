@@ -16,8 +16,7 @@ export default function Blog({data}) {
 function Posts({ metadata }) {
     const posts = metadata.allMdx.edges
     return (
-        <div>
-            <h1 style={{fontWeight: `bold`, marginBottom: `2rem`}}>Posts</h1>
+        <>
             <ol
                 style={{
                     listStyle: `none`,
@@ -47,14 +46,14 @@ function Posts({ metadata }) {
                     )
                 }
             </ol>
-        </div>
+        </>
     )
 }
 
 function Post({ link, title, date }) {
     return (
         <>
-            <h1 style={{margin: `0`}}>
+            <h1 style={{ margin: `0` }}>
                 <Link
                     to={link} 
                     itemProp="url"
