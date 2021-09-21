@@ -27,7 +27,7 @@ function Content({ author, link, email }) {
       <Experience />
       <Education />
       <p>
-        For more informations, you can download my resume <ExternalLink address={link} title="here" />.
+        My resume can also be downloaded <ExternalLink address={link} title="here" />.
         Feel free to contact me anytime at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>.
       </p>
     </>
