@@ -8,20 +8,11 @@ export default function About({ data }) {
   return (
     <Layout>
       <Seo title="About" type="website" slug="/about/" />
-      <Content
+      <Introduction
         author={data.site.siteMetadata.author}
-        link={data.site.siteMetadata.resume}
         email={data.site.siteMetadata.email}
       />
     </Layout>
-  )
-}
-
-function Content({ author, link, email }) {
-  return (
-    <>
-      <Introduction author={author} link={link} email={email}/>
-    </>
   )
 }
 
@@ -31,7 +22,6 @@ export const aboutPageQuery = graphql`
       siteMetadata{
         author
         email
-        resume
       }
     }
   }

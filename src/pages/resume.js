@@ -25,7 +25,6 @@ export const resumePageQuery = graphql`
   query {
     site {
       siteMetadata{
-        author
         email
         resume
       }
