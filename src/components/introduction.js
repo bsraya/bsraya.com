@@ -11,16 +11,20 @@ export default function Introduction({ author, email }) {
       </p>
       <p>
         I am from Indonesia, and I spent most of my teenage period there.
-        After graduation, I decided to come to Taiwan even though not knowing how to speak a word in Chinese.
+        After high school graduation, I decided to come to Taiwan even though not knowing how to speak a word in Chinese.
         Eventually, I got to speak Chinese fluently and a bachelor's degree in Computer Science.
-        For now, I have been living in Taiwan for six years, and I am on my way to get my master's degree in Computer Science.
+        So far, I have been living in Taiwan for six years, and I am on my way to get my master's degree in Computer Science.
       </p>
       <p>
-        So far, I have done 3 internship programs, and most of them were in Taiwan.
+        So far, I have done 3 software engineering internship programs in Taiwan.
       </p>
       <h5>What do I do?</h5>
       <p>
-        asdasd
+        I have been doing Frontend Development since my third year in undergraduate, and ML/DL related projects in my fourth year. 
+        However, I wanted to expand my knowledge into Backend Developement when I started my Master's Degree because I wanted to know how data are made and passed from user interfaces then back to the database to be processed to improve user experience.
+      </p>
+      <p>
+        For now, I have been working mostly on a Backend system that controls how and when ML/DL models should be run for my thesis.
       </p>
       <h5>Why do I blog?</h5>
       <p>

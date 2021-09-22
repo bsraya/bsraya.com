@@ -11,8 +11,8 @@ export default function Resume({ data }) {
   return (
       <Layout>
           <Seo title="Resume" type="website" slug="/resume/" />
+          <Education />    
           <Experience />
-          <Education />
           <p>
             My resume can also be downloaded <ExternalLink address={data.site.siteMetadata.resume} title="here" />.
             Feel free to contact me anytime at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${data.site.siteMetadata.email}`}>{data.site.siteMetadata.email}</a>.
