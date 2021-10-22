@@ -1,7 +1,6 @@
 import React from "react"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
-import Donations from "../components/donations"
 import CustomMdxElement from "../components/customMdxElements"
 
 import { graphql } from "gatsby"
@@ -33,7 +32,6 @@ export default function Template({ data }) {
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </article>
-      <Donations />
     </Layout>
   )
 }
