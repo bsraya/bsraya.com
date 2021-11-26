@@ -20,8 +20,8 @@ export default function Template({ data }) {
         itemScope
         itemType="http://schema.org/Post"
       >
-        <div style={{ marginTop: rhythm(1.5), marginBottom: rhythm(1) }}>
-          <p style={{ textDecoration: `underline`, color: `var(--fontColor)` }}>
+        <div style={{ marginBottom: rhythm(1) }}>
+          <p style={{ textDecoration: `underline`, color: `var(--fontColor)`, marginBottom: rhythm(0.25)}}>
             {data.mdx.frontmatter.date}
           </p>
           <h1 style={{ margin: `0`, fontWeight: `bold` }}>

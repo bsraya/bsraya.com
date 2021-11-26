@@ -55,7 +55,7 @@ body {
 }
 
 body.dark {
-  --backgroundColor: #000000ff;
+  --backgroundColor: rgb(0, 0, 0, 0.9);
   --fontColor: #eee;
   --headerColor: eee;
   --important: #9999ff;

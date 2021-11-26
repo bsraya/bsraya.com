@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { rhythm } from "../utils/typography"
 
 export default function Blog({ data }) {
     return (
@@ -52,8 +53,9 @@ function Posts({ metadata }) {
 
 function Post({ link, title, date }) {
     return (
-        <>
-            <small itemProp="datePosted">{date}</small>
+        <div style={{marginBottom: rhythm(2)}}>
+            <hr style={{borderTop: `1px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
+            <p itemProp="datePosted" style={{ color: `gray`, marginBottom: rhythm(0.25)}}>{date}</p>
             <h1 style={{ margin: `0` }}>
                 <Link
                     to={link}
@@ -71,8 +73,7 @@ function Post({ link, title, date }) {
                     <span itemProp="headline">{title}</span>
                 </Link>
             </h1>
-            <hr />
-        </>
+        </div>
     )
 }
 
