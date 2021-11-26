@@ -1,13 +1,16 @@
 import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+
 import { Link, graphql } from "gatsby"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { rhythm } from "../utils/typography"
 
 export default function Portfolio({data}) {
     return (
         <Layout>
             <Seo title="Portfolio" type="website" slug="/portfolio/" />
+            <h5>Portfolios</h5>
             <Posts metadata={data} />
         </Layout>
     )
@@ -47,7 +50,9 @@ function Posts({ metadata }) {
 
 function Post({ link, title, date }) {
     return (
-        <>
+        <div>
+            <hr style={{borderTop: `1px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
+            <p itemProp="datePosted" style={{ color: `gray`, marginBottom: rhythm(0.25)}}>{date}</p>
             <h1 style={{ margin: `0` }}>
                 <Link
                     to={link} 
@@ -65,8 +70,7 @@ function Post({ link, title, date }) {
                     <span itemProp="headline">{title}</span>
                 </Link>
             </h1>
-            <small itemProp="datePosted">{date}</small>
-        </>
+        </div>
     )
 }
 

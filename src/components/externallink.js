@@ -8,6 +8,7 @@ export default function ExternalLink({ address, title }) {
       href={address}
       target="_blank"
       rel="nofollow noopener noreferrer"
+      className="external-link"
     >
       {title}
     </a>

@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+
 import { Link, graphql } from "gatsby"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 import { rhythm } from "../utils/typography"
@@ -9,6 +10,7 @@ export default function Blog({ data }) {
     return (
         <Layout>
             <Seo title="Blog" type="website" slug="/blog/" />
+            <h5>Blogposts</h5>
             <Posts metadata={data} />
         </Layout>
     )

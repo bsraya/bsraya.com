@@ -30,7 +30,7 @@ export default function Introduction({ author, email }) {
       </p>
       <h5>How to find me?</h5>
       <p>
-        You can email me at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>, or you can find me on Github at <ExternalLink address="https://github.com/nathansetyawan96" title="nathansetyawan96" />.
+        You can email me at <a className="external-link" itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>, or you can find me on Github at <ExternalLink address="https://github.com/nathansetyawan96" title="nathansetyawan96" />.
       </p>
     </article>
   )

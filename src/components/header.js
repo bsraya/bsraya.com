@@ -17,7 +17,8 @@ function Menu({ links }) {
                 style={{
                     display: `flex`,
                     flex: `1`,
-                    margin: `0`
+                    margin: `0`,
+                    listStyleType: `none`
                 }}
             >
                 {
@@ -25,7 +26,6 @@ function Menu({ links }) {
                         link => (
                             <li
                                 style={{
-                                    listStyleType: `none`,
                                     margin: `0 0.5rem 0 0`
                                 }}
                                 key={link.name}
@@ -51,9 +51,7 @@ function Button({ url, name }) {
                 ({ isCurrent, isPartiallyCurrent }) => ({
                     style: 
                         (name === 'Home' ? isCurrent : isPartiallyCurrent)
-                        ?
-                        { textDecoration: `underline` } :
-                        { textDecoration: `none`, color: `gray` }
+                        ? {} : { textDecoration: `none`, color: `gray` }
                     }
                 )
             }
