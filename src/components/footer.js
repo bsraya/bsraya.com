@@ -68,11 +68,26 @@ function Link({ url, name }) {
             </a>
             <style jsx>{`
                 .footerLink {
+                    position: relative;
                     color: gray;
                     text-decoration: none;
                 }
+                .footerLink::before {
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    background: var(--fontColor);
+                    transition: 0.4s transform ease-in-out;
+                    transform: scale3d(0, 1, 1);
+                    transform-origin: 0 50%;
+                }
+                .footerLink:hover::before {
+                    transform: scale3d(1, 1, 1);
+                }
                 .footerLink:hover {
-                    text-decoration: underline;
                     color: var(--fontColor);
                 }
             `}</style>
