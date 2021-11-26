@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'Arvo';
-  src: url('../fonts/arvo.woff2') format('woff2'),
-    url('../fonts/arvo.woff') format('woff');
+  font-family: 'Stratos';
+  src: url('../fonts/stratos.woff2') format('woff2'),
+    url('../fonts/stratos.woff') format('woff');
   font-display: swap;
 }
 
@@ -47,7 +47,7 @@ body {
   height: 100%;
   background: var(--backgroundColor);
   color: var(--fontColor);
-  font-family: 'Arvo', sans-serif;
+  font-family: 'Stratos', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   filter: var(--filter);
@@ -116,7 +116,7 @@ h6 {
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-family: 'Arvo', sans-serif;
+  font-family: 'Stratos', sans-serif;
 }
 
 h1 {

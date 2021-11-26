@@ -8,15 +8,7 @@ export default function Introduction({ author, email }) {
       <p>
         Hey, I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>!
         I am a graduate Computer Science student at <ExternalLink address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
-      </p>
-      <p>
-        I am from Indonesia, and I spent most of my teenage period there.
-        After high school graduation, I decided to come to Taiwan even though not knowing how to speak a word in Chinese.
-        Eventually, I got to speak Chinese fluently and a bachelor's degree in Computer Science.
         So far, I have been living in Taiwan for six years, and I am on my way to get my master's degree in Computer Science.
-      </p>
-      <p>
-        So far, I have done 3 software engineering internship programs in Taiwan.
       </p>
       <h5>What do I do?</h5>
       <p>

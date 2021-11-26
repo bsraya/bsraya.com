@@ -197,7 +197,7 @@ module.exports = {
               fontColor: `#fff1d0`,
               titleFontSize: 105,
               subtitleFontSize: 60,
-              fontStyle: require.resolve(`${__dirname}/src/fonts/arvo.woff2`),
+              fontStyle: require.resolve(`${__dirname}/src/fonts/stratos.woff2`),
             },
           },
         ],
