@@ -47,6 +47,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               title
               type
               date
+              description
               tags
             }
           }

@@ -36,6 +36,7 @@ function Posts({ metadata }) {
                             const link = post.node.fields.slug
                             const date = post.node.frontmatter.date
                             const tags = post.node.frontmatter.tags
+                            const description = post.node.frontmatter.description
                             return (
                                 <li
                                     style={{
@@ -44,6 +45,7 @@ function Posts({ metadata }) {
                                     key={link}
                                 >
                                     <Post link={link} title={title} date={date} />
+                                    <p style={{marginBottom: rhythm(3)}}>{description}</p>
                                     <ul className="tag-list">
                                         {
                                             tags.map(tag => <li className="tag">{tag}</li>)
@@ -61,8 +63,8 @@ function Posts({ metadata }) {
 
 function Post({ link, title, date }) {
     return (
-        <div style={{marginBottom: rhythm(1)}}>
-            <hr style={{borderTop: `1px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
+        <div style={{marginBottom: rhythm(0.5)}}>
+            <hr style={{borderTop: `2px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
             <p itemProp="datePosted" style={{ color: `gray`, marginBottom: rhythm(0.25)}}>{date}</p>
             <h1 style={{ margin: `0` }}>
                 <Link
@@ -100,6 +102,7 @@ export const blogpostQuery = graphql`
                     frontmatter {
                         title
                         date(formatString: "MMMM DD, YYYY")
+                        description
                         tags
                     }
                 }

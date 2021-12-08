@@ -51,7 +51,7 @@ function Posts({ metadata }) {
 function Post({ link, title, date }) {
     return (
         <div>
-            <hr style={{borderTop: `1px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
+            <hr style={{borderTop: `2px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
             <p itemProp="datePosted" style={{ color: `gray`, marginBottom: rhythm(0.25)}}>{date}</p>
             <h1 style={{ margin: `0` }}>
                 <Link
