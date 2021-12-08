@@ -1,8 +1,6 @@
 import React from "react"
 
 const CustomMdxElements = {
-  a: ({children, props}) => 
-    <a {...props} className="external-link">{children}</a>,
   em: ({ children }) =>
     <em style={{ color: `var(--important)` }}>{children}</em>,
   hr: () =>

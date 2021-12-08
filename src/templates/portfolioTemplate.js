@@ -46,6 +46,7 @@ export const pageQuery = graphql`
         type
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
     }
   }

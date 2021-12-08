@@ -24,9 +24,14 @@ export default function Template({ data }) {
           <p style={{ textDecoration: `underline`, color: `var(--fontColor)`, marginBottom: rhythm(0.25)}}>
             {data.mdx.frontmatter.date}
           </p>
-          <h1 style={{ margin: `0`, fontWeight: `bold` }}>
+          <h1 style={{ marginBottom: rhythm(1), fontWeight: `bold` }}>
             {data.mdx.frontmatter.title}
           </h1>
+          <ul className="tag-list">
+            {
+                data.mdx.frontmatter.tags.map(tag => <li className="tag">{tag}</li>)
+            }
+          </ul>
         </div>
         <MDXProvider components={CustomMdxElement}>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
@@ -47,6 +52,7 @@ export const pageQuery = graphql`
         type
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
     }
   }

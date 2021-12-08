@@ -76,6 +76,10 @@ main {
   margin: auto;
 }
 
+a {
+  color: var(--important);
+}
+
 /* HTML Body */
 .sectionTitle {
   margin-bottom: 0.25rem;
@@ -84,6 +88,20 @@ main {
 .post {
   text-decoration: none;
   color: var(--fontColor);
+}
+
+.tag-list {
+  display: flex;
+  margin: 0;
+  list-style-type: none;
+}
+
+.tag {
+  font-size: 0.75rem;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  border: 2px solid var(--fontColor);
+  padding: 0.4rem;
 }
 
 .external-link {

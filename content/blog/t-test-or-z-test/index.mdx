@@ -3,6 +3,7 @@ title: T-Test or Z-Test?
 type: 'blog'
 date: 2021-05-17
 published: true
+tags: ['Statistics']
 ---
 
 There are many hypothesis testing methods exist in the realm of Statistics.
@@ -21,7 +22,7 @@ First, we have to define the null hypothesis and the alternative hypothesis.
 In this case, the null hypothesis is _the average waiting time is 1 minute_, and the two sided alternative hypothesis is _the average waiting time is not 1 minute_.
 
 There is still another problem, how do we know when to accept or reject the null hypothesis?
-We then need _alpha value_ denoted as $\alpha$. 
+We then need _alpha value_ denoted as $\alpha$.
 _Alpha value_ is the acceptable amount of _type I error_, and it should be determined even before this experiment starts.
 The most common _alpha value_ is $0.05$.
 
@@ -31,7 +32,7 @@ While type II error is when a false null hypothesis being accepted.
 
 From the T-statistics we calculate from a small random samples, we then verify if the T-statistics falls within the 95% Confidence Interval.
 We can also calculate P-value from T-statistics.
-If P-value is greater than the alpha value, we accept the null hypothesis and reject the alternative hypothesis. 
+If P-value is greater than the alpha value, we accept the null hypothesis and reject the alternative hypothesis.
 If P-value is equal or less than the alpha value, we reject the null hypothesis and accept the alternative hypothesis instead.
 
 In the experiment shown in the example above, by default, we accept the null hypothesis.
@@ -62,8 +63,8 @@ where,
 4. $s$ is the sample's standard error
 5. $n$ is the size of sample mean
 
-
 First we define the _null hypothesis_,the _alternative hypothesis_, and the alpha value.
+
 1. Null hypothesis is _"ILEC's average service time is 8.4 seconds"_
 2. Alternative hypothesis is _"ILEC's average service time is not 8.4 seconds"_
 3. Alpha value $\alpha = 0.05$
@@ -77,13 +78,14 @@ mean(ilec$Time) # 8.4
 ```
 
 We have ILEC's average service time to be $8.4$ seconds, and let's say we are skeptical whether if its true mean is really $8.4$ seconds.
-Then we should do one sample T-test to see if that is the case. 
+Then we should do one sample T-test to see if that is the case.
 
 A few things to remember:
+
 1. We are not sure if the true mean is indeed $8.4$
 2. The predefined alpha value is $0.05$
-2. The standard deviation is unknown
-3. The number of random sample should be below 30, or 25 to be specific
+3. The standard deviation is unknown
+4. The number of random sample should be below 30, or 25 to be specific
 
 Let's take 25 random samples from ILEC population, and calculate its T-statistics.
 
@@ -143,10 +145,10 @@ With `one_sample_tstats` value in `one_sample_ttest.r`, then we can calculate th
 ```
 
 We then got the p-value of $0.3824913$.
-Since the p-value is way greater than $\alpha = 0.05$, 
+Since the p-value is way greater than $\alpha = 0.05$,
 we can accept the null hypothesis and reject the alternative hypothesis.
 I have mentioned that P-value is the probability of type I error.
-Since p-value of $0.3824913$ is way higher than $\alpha = 0.05$, 
+Since p-value of $0.3824913$ is way higher than $\alpha = 0.05$,
 we can say that the probability of rejecting a true null hypothesis is high.
 Since the percentage is high, we don't want to reject the null hypothesis.
 
@@ -175,6 +177,7 @@ Thus, we can accept the null hypothesis and conclude that _ILEC's average repair
 Let's say Verizon claimed that ILEC and CLEC's average repair time are the same, we then have to do two samples T-test since this test will involve two kind of different samples.
 
 First we define the _null hypothesis_, the _alternative hypothesis_, and the alpha value.
+
 1. Null hypothesis: _"ILEC and CLEC average repair time are the same"_
 2. Alternative hypothesis: _"ILEC and CLEC average repair time are the same"_
 3. Alpha value $\alpha = 0.05$
@@ -185,6 +188,7 @@ sd(clec$Time) # 19.50358
 ```
 
 A few things to remember:
+
 1. We are not sure if the true mean of ILEC and CLEC are the same
 2. ILEC and CLEC's standard deviation values are different
 3. The number of random sample for each group should be below 30, or 25 to be specific
@@ -198,7 +202,8 @@ $$
   t = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
 $$
 
-where, 
+where,
+
 1. $\bar{x}_n$ is the mean of the n-th group
 2. $s_n^2$ is the standard deviation of the n-th group
 3. $n_n$ is the number of data points of the n-th group
@@ -231,11 +236,11 @@ two_sample_ttest <- function(population1, population2) {
   sample1 <- sample(population1, n_length, replace = TRUE)
   mean1 <- mean(sample1)
   sd1 <- sd(sample1)
-  
+
   sample2 <- sample(population2, n_length, replace = TRUE)
   mean2 <- mean(sample2)
   sd2 <- sd(sample2)
-  
+
   mean_diff <- mean1 - mean2
   sderr <- sqrt((sd1^2 / n_length) + (sd2^2 / n_length))
   t_stats <- mean_difference / sderr
@@ -273,9 +278,9 @@ We have to set `mu = 0` since we want to verify if the two groups have the same 
 
 ```r:title=one_liner_two_sample_ttest.r
 t.test(
-  ilec_sample, 
-  clec_sample, 
-  alternative = "two.sided", 
+  ilec_sample,
+  clec_sample,
+  alternative = "two.sided",
   conf = 0.95
 )
 # 	Welch Two Sample t-test
@@ -285,8 +290,8 @@ t.test(
 # 95 percent confidence interval:
 #    -14.101864   3.640264
 # sample estimates:
-# mean of x mean of y 
-#    6.5176   11.7484 
+# mean of x mean of y
+#    6.5176   11.7484
 ```
 
 It seems like the t-statistics and p-value that we manually calculated don't differ that much from the t-statistics and p-value from `t.test()` function.
@@ -320,7 +325,8 @@ $$
   t = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
 $$
 
-where, 
+where,
+
 1. $\bar{x}_n$ is the mean of the n-th group
 2. $s_n^2$ is the standard deviation of the n-th group
 3. $n_n$ is the number of data points of the n-th group
@@ -338,9 +344,10 @@ Since we have familiarize ourselves with T-test, I am going to leave this part f
 7. There are two ways of doing T-test and Z-test: one-sample and two-sample testings
 
 # Reference
-* [Hypothesis Testing](https://www.statisticshowto.com/probability-and-statistics/hypothesis-testing/)
-* [Type I Error and Type II Error](https://en.wikipedia.org/wiki/Type_I_and_type_II_errors)
-* [One Sample T-Test](https://www.jmp.com/en_us/statistics-knowledge-portal/t-test/one-sample-t-test.html)
-* [Two Sample T-Test](https://www.jmp.com/en_us/statistics-knowledge-portal/t-test/two-sample-t-test.html)
-* [Unpaired Two Sample T-Test](https://www.statsdirect.co.uk/help/parametric_methods/utt.htm)
-* [T-Value Interpretations and Considerations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5059270/)
+
+- [Hypothesis Testing](https://www.statisticshowto.com/probability-and-statistics/hypothesis-testing/)
+- [Type I Error and Type II Error](https://en.wikipedia.org/wiki/Type_I_and_type_II_errors)
+- [One Sample T-Test](https://www.jmp.com/en_us/statistics-knowledge-portal/t-test/one-sample-t-test.html)
+- [Two Sample T-Test](https://www.jmp.com/en_us/statistics-knowledge-portal/t-test/two-sample-t-test.html)
+- [Unpaired Two Sample T-Test](https://www.statsdirect.co.uk/help/parametric_methods/utt.htm)
+- [T-Value Interpretations and Considerations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5059270/)
