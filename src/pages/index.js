@@ -9,7 +9,7 @@ import { rhythm } from "../utils/typography"
 export default function Blog({ data }) {
     return (
         <Layout>
-            <Seo title="Blog" type="website" slug="/blog/" />
+            <Seo title="Home" type="website" slug="/" />
             <h5>Blogposts</h5>
             <Posts metadata={data} />
         </Layout>
@@ -38,12 +38,7 @@ function Posts({ metadata }) {
                             const tags = post.node.frontmatter.tags
                             const description = post.node.frontmatter.description
                             return (
-                                <li
-                                    style={{
-                                        marginBottom: `4rem`
-                                    }}
-                                    key={link}
-                                >
+                                <li key={link} style={{marginBottom: `4rem`}}>
                                     <Post link={link} title={title} date={date} />
                                     <p style={{marginBottom: rhythm(3)}}>{description}</p>
                                     <ul className="tag-list">

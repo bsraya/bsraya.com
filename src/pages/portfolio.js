@@ -35,9 +35,17 @@ function Posts({ metadata }) {
                             const title = post.node.frontmatter.title || post.node.fields.slug
                             const link = post.node.fields.slug
                             const date = post.node.frontmatter.date
+                            const tags = post.node.frontmatter.tags
+                            const description = post.node.frontmatter.description
                             return (
-                                <li key={link} style={{ marginBottom: `1em` }}>
-                                    <Post link={link} title={title} date={date}/>
+                                <li key={link} style={{ marginBottom: `4rem` }}>
+                                    <Post link={link} title={title} date={date} />
+                                    <p style={{marginBottom: rhythm(3)}}>{description}</p>
+                                    <ul className="tag-list">
+                                        {
+                                            tags.map(tag => <li className="tag">{tag}</li>)
+                                        }
+                                    </ul>
                                 </li>
                             )
                         }
@@ -50,7 +58,7 @@ function Posts({ metadata }) {
 
 function Post({ link, title, date }) {
     return (
-        <div>
+        <div style={{marginBottom: rhythm(0.5)}}>
             <hr style={{borderTop: `2px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
             <p itemProp="datePosted" style={{ color: `gray`, marginBottom: rhythm(0.25)}}>{date}</p>
             <h1 style={{ margin: `0` }}>
@@ -89,6 +97,8 @@ export const portfolioQuery = graphql`
                     frontmatter {
                         title
                         date(formatString: "MMMM DD, YYYY")
+                        description
+                        tags
                     }
                 }
             }

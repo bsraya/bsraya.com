@@ -16,10 +16,7 @@ export default function Template({ data }) {
         slug={data.mdx.fields.slug}
         type={data.mdx.frontmatter.type}
       />
-      <article
-        itemScope
-        itemType="http://schema.org/Post"
-      >
+      <article itemScope itemType="http://schema.org/Post">
         <div style={{ marginBottom: rhythm(1) }}>
           <p style={{ textDecoration: `underline`, color: `var(--fontColor)`, marginBottom: rhythm(0.25)}}>
             {data.mdx.frontmatter.date}

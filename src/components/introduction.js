@@ -13,7 +13,7 @@ export default function Introduction({ author, email }) {
       <h5>What do I do?</h5>
       <p>
         I have been doing Frontend Development since my third year in undergraduate, and ML/DL related projects in my fourth year. 
-        However, I wanted to expand my knowledge into Backend Developement when I started my Master's Degree because I wanted to know how data are made and passed from user interfaces then back to the database to be processed to improve user experience.
+        However, I expanded my skills into Backend Developement in the early of my Master's Degree because I wanted to know how data are handled from user interfaces then back to the database to be processed to improve user experience.
       </p>
       <p>
         For now, I have been working mostly on a Backend system that controls how and when ML/DL models should be run for my thesis.
