@@ -15,70 +15,72 @@ In this post, we are going to create three versions on Gradient Descent implemen
 
 There are several equations that we need to familiar with before working on these implementations.
 
-1. Mean Squared Error, or MSE, which is the cost function we are going to minimize.
+Let $y$ be the actual target, or label, and $\hat{y}$ be the prediction target.
 
-   $$
-      \text{MSE} = \frac{1}{N} \sum_{i=1}^N (\text{predicted}_i - \text{actual}_i)^2
-   $$
+First, it's Mean Squared Error, or MSE, which is the cost function we are going to minimize.
 
-   From the MSE equation, we have a cost function that we should minimize
+$$
+    \text{MSE} = \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
+$$
 
-   $$
-    J(\Theta_0, \Theta_1) = \frac{1}{2N} \sum_{i=1}^N (\text{predicted}_i - \text{actual}_i)^2
-   $$
+From the MSE equation, we then have a cost function for Gradient Descent which means how far, or the error, the prediction from the regression line.
+We should minimize the cost function denoted as $J(\Theta_0, \Theta_1)$ where it is equivalent to
 
-2. The regression line equation which goes like
+$$
+    \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
+$$
 
-   $$
-       y = a_0 + a_1 \times x_1
-   $$
+Second, it's regression line equation, and it goes like
 
-   where $a_0$ is the intercept and $a_1$ is the first coefficient. Most people know this equation as
+$$
+    y = a_0 + a_1 \times x_1
+$$
 
-   $$
-       y = mx + b
-   $$
+where $a_0$ is the intercept and $a_1$ is the first coefficient. Most people know this equation as
 
-   where $m$ is first coefficient and $b$ is the intercept. In plain English, the equation looks like
+$$
+    y = mx + b
+$$
 
-   $$
-       \text{predicted} = \text{intercept} + \text{1st coefficient} \times \text{1st feature}
-   $$
+where $y$ is the prediction, $m$ is the first coefficient and $b$ is the intercept.
+If we plot the equation above, it's going to look like the figure below.
 
-   If we plot the equation above, it's going to look like the figure below.
+![Linear Regression Line](./lr.png)
 
-   ![Linear Regression Line](./lr.png)
+Last, the equation for updating the weight.
 
-3. The equation for updating the weight is
+$$
+\Theta_{i+1} = \Theta_i - \alpha \times \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
+$$
 
-   $$
-    \Theta_{i+1} = \Theta_i - \alpha \times \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
-   $$
+where
 
-   where
+1. $\Theta_{i+1}$ is the updated weight
+2. $\Theta_{i}$ is the current weight
+3. $\alpha$ is the learning rate
+4. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
 
-   1. $\Theta_{i+1}$ is the updated weight
-   2. $\Theta_{i}$ is the current weight
-   3. $\alpha$ is the learning rate
-   4. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
+Let's simplify the partial derivation in the equation above
 
-   Let's simplify the partial derivation in the equation above
+$$
+    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
+$$
 
-   $$
-    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) = \frac{\partial}{\partial \Theta_i} \frac{1}{2N} \sum_{i=1}^N (\text{predicted}_i - \text{actual}_i)^2
-   $$
+$$
+    \frac{\partial}{\partial \Theta_i} \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
+$$
 
-   Solving the partial derivation above, we then have
+Solving the partial derivation above, we then have
 
-   $$
-    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) = \frac{1}{N} (\text{predicted}_i - \text{actual}_i) \times x_i
-   $$
+$$
+    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) = \frac{1}{N} (\hat{y}_i - y_i) \times x_i
+$$
 
-   Plugging the result back to the original function, we have
+Plugging the result back to the original function, we have
 
-   $$
-    \Theta_{i+1} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\text{predicted}_i - \text{actual}_i) \times x_i
-   $$
+$$
+\Theta_{i+1} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \times x_i
+$$
 
 After getting ourselves familiar with these 3 things, let's delve right into the implementations.
 Before we start with the implemetations, we should first import the dataset from `sklearn`.
