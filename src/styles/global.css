@@ -182,7 +182,7 @@ span.katex-display {
 }
 
 .grvsc-source {
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.5;
   padding: 0 !important;
   font-family: 'Share', sans-serif;
@@ -221,12 +221,6 @@ td {
   font-size: 1rem;
   padding: 0.5rem !important;
   border: 2px solid var(--fontColor);
-}
-
-.gatsby-resp-image-figure {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {

@@ -107,8 +107,6 @@ for i in target:
     species_names.append('virginica')
 ```
 
-# 1. Gradient Descent
-
 First, let's fit our dataset to `LinearRegression()` model that we imported from `sklearn.linear_model`.
 
 ```python:title=visualize-scikit-lr-results
@@ -126,6 +124,21 @@ plt.plot(
 Once we have done fitting, or training, we then visualize the result.
 
 ![The iris dataset regression line with Scikit](./scikit-lr.png)
+
+Let's see the intercept and the coefficient that `LinearRegression()` produced from our dataset.
+We are also want to see how much the MSE is, so let's print that as well.
+
+```python:title=intercept-coefficient-and-MSE
+print(reg.intercept_, reg.coefficient_)
+# [-3.200215] [[0.75291757]]
+
+lr_predictions = reg.predict(sepal_length.reshape(-1,1))
+lr_mse = mean_squared_error(lr_predictions, petal_width)
+print(f"Linear Regression's MSE is {lr_mse}")
+# Linear Regression's MSE is 0.19101500769427357
+```
+
+# 1. Gradient Descent
 
 # 2. Mini-Batch Gradient Descent
 
