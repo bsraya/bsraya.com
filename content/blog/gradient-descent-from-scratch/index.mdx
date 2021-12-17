@@ -50,15 +50,14 @@ If we plot the equation above, it's going to look like the figure below.
 Last, the equation for updating the weight.
 
 $$
-\Theta_{i+1} = \Theta_i - \alpha \times \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
+\Theta_{i} = \Theta_i - \alpha \times \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
 $$
 
 where
 
-1. $\Theta_{i+1}$ is the updated weight
-2. $\Theta_{i}$ is the current weight
-3. $\alpha$ is the learning rate
-4. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
+1. $\Theta_{i}$ is the weight
+2. $\alpha$ is the learning rate
+3. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
 
 Let's simplify the partial derivation in the equation above
 
@@ -79,7 +78,7 @@ $$
 Plugging the result back to the original function, we have
 
 $$
-\Theta_{i+1} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \times x_i
+\Theta_{i} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \times x_i
 $$
 
 After getting ourselves familiar with these 3 things, let's delve right into the implementations.
