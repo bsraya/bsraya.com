@@ -259,6 +259,36 @@ Combining everything, here is how the regression line changes over time.
 
 ![Regression line changes over time](./overall.png)
 
+Here is the piece of code to produce the graph above
+
+```python:title=10000-regression-lines
+plt.figure(figsize=(10,5))
+
+sns.scatterplot(
+    x = sepal_length,
+    y = petal_width,
+    hue = species_names
+)
+
+for i in range(0, 9999):
+    plt.plot(
+        sepal_length,
+        gd_loss['intercept'].loc[i] + gd_loss['coefficient'].loc[i] * sepal_length,
+        color = '#ffd5ab',
+        linestyle = '-',
+        lw = 1,
+        alpha = 0.01
+    )
+
+plt.plot(
+    sepal_length,
+    gd_loss['intercept'].loc[9999] + gd_loss['coefficient'].loc[9999] * sepal_length,
+    color = '#f28c28',
+    lw = 3,
+    linestyle = '-'
+)
+```
+
 # 2. Mini-Batch Gradient Descent
 
 # 3. Stochastic Gradient Descent
