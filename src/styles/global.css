@@ -161,12 +161,9 @@ figcaption::before {
   content: 'figure: ';
 }
 
-.inlineMath {
-  font-size: 1rem;
-}
-
+.inlineMath,
 .katex-html {
-  font-size: 1rem;
+  font-size: 1.21rem;
 }
 
 span.katex-display {
