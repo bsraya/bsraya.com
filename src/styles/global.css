@@ -165,6 +165,15 @@ figcaption::before {
   font-size: 1rem;
 }
 
+span.katex-display {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.gatsby-resp-image-image {
+  margin: 2rem 0 2rem 0;
+}
+
 /* Markdown code */
 .grvsc-container {
   padding: 1rem;
