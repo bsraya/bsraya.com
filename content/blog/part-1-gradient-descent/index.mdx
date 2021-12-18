@@ -142,6 +142,9 @@ print(f"Linear Regression's MSE is {lr_mse}")
 Before we start working on Gradient Descent, we need the following three functions.
 
 ```python:title=helper-functions
+def predict(intercept, coefficient, dataset):
+    return np.array([intercept + coefficient * x for x in dataset])
+
 def sum_err_graph(algorithm, df, iterations):
     plt.figure(figsize=(6,5))
     plt.plot(np.arange(0, iterations), df['sum_error'][:iterations], color = 'r')
@@ -200,7 +203,7 @@ def gd(x, y, epochs, df, alpha = 0.01):
     intercept, coefficient = 0.0, 0.0
     for epoch in range(epochs):
         sum_error = 0.0
-        predictions = predict_list(intercept, coefficient, x)
+        predictions = predict(intercept, coefficient, x)
         b0_error = (1/length) * np.sum(predictions - y)
         b1_error = (1/length) * np.sum((predictions - y) * x)
         intercept = intercept - alpha * b0_error
