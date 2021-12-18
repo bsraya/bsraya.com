@@ -1,17 +1,18 @@
 ---
-title: Gradient Descent from Scratch
-type: 'portfolio'
+title: 'Part 1: Gradient Descent'
+type: 'blog'
 date: 2021-12-16
 published: true
 description: 'Gradient Descent implementations with Linear Regression'
-tags: ['Optimization', 'Python']
+tags: ['Machine Learning', 'Optimization', 'Python']
 ---
 
-In this post, we are going to create three versions on Gradient Descent implementation, such as:
+import { Link } from 'gatsby';
 
-1. Gradient Descent
-2. Mini-Batch Gradient Descent
-3. Stochastic Gradient Descent
+This is part 1 of the series on Gradient Descent.
+
+- <Link to="/blog/part-2-batch-gradient-descent">Part 2: Batch Gradient Descent</Link>
+- <Link to="/blog/part-3-stochastic-gradient-descent">Part 3: Stochastic Gradient Descent</Link>
 
 There are several equations that we need to familiar with before working on these implementations.
 
@@ -259,40 +260,6 @@ Combining everything, here is how the regression line changes over time.
 
 ![Regression line changes over time](./overall.png)
 
-Here is the piece of code to produce the graph above
-
-```python:title=10000-regression-lines
-plt.figure(figsize=(10,5))
-
-sns.scatterplot(
-    x = sepal_length,
-    y = petal_width,
-    hue = species_names
-)
-
-for i in range(0, 9999):
-    plt.plot(
-        sepal_length,
-        gd_loss['intercept'].loc[i] + gd_loss['coefficient'].loc[i] * sepal_length,
-        color = '#ffd5ab',
-        linestyle = '-',
-        lw = 1,
-        alpha = 0.01
-    )
-
-plt.plot(
-    sepal_length,
-    gd_loss['intercept'].loc[9999] + gd_loss['coefficient'].loc[9999] * sepal_length,
-    color = '#f28c28',
-    lw = 3,
-    linestyle = '-'
-)
-```
-
 Let's animate the movement of the regression lines.
 
-![Regression line animation](./animation.gif)
-
-# 2. Mini-Batch Gradient Descent
-
-# 3. Stochastic Gradient Descent
+![Regression line animation](./gd.gif)
