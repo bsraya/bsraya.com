@@ -1,0 +1,50 @@
+.posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post {
+  margin-bottom: 4rem;
+}
+
+.description {
+  margin-bottom: 3rem;
+}
+
+.taglist {
+  display: flex;
+  margin: 0;
+  list-style-type: none;
+}
+
+.tag {
+  font-size: 0.75rem;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  border: 2px solid var(--fontColor);
+  padding: 0.4rem;
+}
+
+.postblock {
+  margin-bottom: 0.5rem;
+}
+
+.posthr {
+  border-top: 2px solid var(--fontColor);
+  margin-bottom: 0.5rem;
+}
+
+.postdate {
+  color: gray;
+  margin-bottom: 0.25rem;
+}
+
+.posttitle {
+  margin: 0;
+}
+
+.postlink {
+  text-decoration: none;
+  color: var(--fontColor);
+}

@@ -66,8 +66,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // you'll call `createPage` for each result
   posts.forEach(post => {
     var templatePath = (post.node.frontmatter.type == 'blog') ?
-      `${__dirname}/src/templates/blogpostTemplate.js` :
-      `${__dirname}/src/templates/portfolioTemplate.js`
+      `${__dirname}/src/templates/blogpost.js` :
+      `${__dirname}/src/templates/portfolio.js`
     
       createPage({
           // This is the slug you created before

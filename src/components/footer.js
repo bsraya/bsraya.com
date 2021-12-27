@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import  * as styles from './footer.module.css'
 
 export default function Footer() {
     const query = useStaticQuery(graphql`
@@ -20,7 +21,7 @@ export default function Footer() {
                 email={query.site.siteMetadata.email}
                 link={query.site.siteMetadata.resume}
             />
-            <p style={{ margin: `0`, color: `gray` }}>
+            <p className={styles.copyright}>
                 © {new Date().getFullYear()} <span itemProp="author" itemType="http://schema.org/Author" name={query.site.siteMetadata.author}>{query.site.siteMetadata.author}</span>
             </p>
         </footer>
@@ -62,35 +63,10 @@ function Link({ url, name }) {
                 href={url}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="footerLink"
+                className={styles.footerlink}
             >
                 {name}
             </a>
-            <style jsx>{`
-                .footerLink {
-                    position: relative;
-                    color: gray;
-                    text-decoration: none;
-                }
-                .footerLink::before {
-                    content: '';
-                    width: 100%;
-                    height: 2px;
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    background: var(--fontColor);
-                    transition: 0.4s transform ease-in-out;
-                    transform: scale3d(0, 1, 1);
-                    transform-origin: 0 50%;
-                }
-                .footerLink:hover::before {
-                    transform: scale3d(1, 1, 1);
-                }
-                .footerLink:hover {
-                    color: var(--fontColor);
-                }
-            `}</style>
         </>
     )
 }

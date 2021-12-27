@@ -25,9 +25,6 @@ const Layout = ({ children }) => {
         <div style={{ margin: `2rem 0 0 0` }}>
           {children}
       </div>
-      {/* <div style={{ background: `yellow`, position: `fixed`, bottom: 50, right: 50 }}>
-        <span style={{ color: `white` }}>hey</span>
-      </div> */}
       <Footer />
     </main>
   )

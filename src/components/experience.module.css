@@ -1,0 +1,23 @@
+.block {
+  margin-bottom: 3rem;
+}
+
+.title,
+.location,
+.date {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.location {
+  color: grey;
+}
+
+.date {
+  font-style: italic;
+}

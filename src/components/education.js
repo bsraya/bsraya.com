@@ -1,35 +1,32 @@
 import React from 'react'
 import Line from './line'
+import Experience from './experience'
 
 export default function Education() {
   return (
     <>
-      <h1 className="sectionTitle">Education</h1>
+      <h1 style={{marginBottom: `0.25rem`}}>Education</h1>
       <Line />
-      <div className="program">
-        <p className="title">M. Sc. in Computer Science</p>
-        <p className="location">National Tsing Hua University (Hsinchu, Taiwan)</p>
-        <p className="date">Feb 2021 - Present</p>
-        <ul>
-          <li>Being a teaching assistant in the <i>Introduction to C Programming</i> 2021 class at NTHU EECS Department</li>
-          <li>Currently working on Distributed Deep Learning System that capable of assessing how much computing resource that a ML/DL model need and assigned the model to multiple GPUs to be run in parallel</li>
-        </ul>
-      </div>
-      <div className="program">
-        <p className="title">B. Sc. in Computer Science</p>
-        <p className="location">National Tsing Hua University (Hsinchu, Taiwan)</p>
-        <p className="date">Sep 2015 - Jan 2021</p>
-        <ul>
-          <li>Experimented on Ultralight Weight Virtual Machine that boots up in 5 seconds and successfully made a prototype of it</li>
-          <li>Won 3rd place in Taiwan Civil Internet of Things Competition in 2017</li>
-          <li>Was a teaching assistant in the Introduction to C Programming 2020 class at NTHU EECS Department</li>
-        </ul>
-      </div>
-      <style jsx>{`
-        .program {
-          margin-bottom: 3rem;
-        }`
-      }</style>
+      <Experience
+        title="M. Sc. in Computer Science"
+        location="National Tsing Hua University (Hsinchu, Taiwan)"
+        date="Feb 2021 - Present"
+        descriptions={[
+          "Being a TA in the Introduction to C and C++ 2021 class at NTHU EECS Department",
+          "Currently working on Distributed Deep Learning System that capable of assessing how much computing resource that a ML/DL model need and assigned the model to multiple GPUs to be run in parallel"
+        ]}
+      />
+
+      <Experience
+        title="B. Sc. in Computer Science"
+        location="National Tsing Hua University (Hsinchu, Taiwan)"
+        date="Sep 2015 - Jan 2021"
+        descriptions={[
+          "Experimented on Ultralight Weight Virtual Machine that boots up in 5 seconds and successfully made a prototype of it",
+          "Won 3rd place in Taiwan Civil Internet of Things Competition in 2017",
+          "Was a TA in the Introduction to C and C++ 2020 class at NTHU EECS Department"
+        ]}
+      />
     </>
   )
 }

@@ -1,10 +1,9 @@
 import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-
+import * as styles from './post.module.css'
 import { Link, graphql } from "gatsby"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
-import { rhythm } from "../utils/typography"
 
 export default function Portfolio({data}) {
     return (
@@ -21,11 +20,7 @@ function Posts({ metadata }) {
     return (
         <>
             <ol
-                style={{
-                    listStyle: `none`,
-                    margin: `0`,
-                    padding: `0`
-                }}
+                className={styles.posts}
                 itemType="http://schema.org/Portfolios"
                 itemScope
             >
@@ -38,12 +33,12 @@ function Posts({ metadata }) {
                             const tags = post.node.frontmatter.tags
                             const description = post.node.frontmatter.description
                             return (
-                                <li key={link} style={{ marginBottom: `4rem` }}>
+                                <li key={link} className={styles.post}>
                                     <Post link={link} title={title} date={date} />
-                                    <p style={{marginBottom: rhythm(3)}}>{description}</p>
-                                    <ul className="tag-list">
+                                    <p className={styles.description}>{description}</p>
+                                    <ul className={styles.taglist}>
                                         {
-                                            tags.map(tag => <li className="tag">{tag}</li>)
+                                            tags.map(tag => <li className={styles.tag}>{tag}</li>)
                                         }
                                     </ul>
                                 </li>
@@ -58,14 +53,14 @@ function Posts({ metadata }) {
 
 function Post({ link, title, date }) {
     return (
-        <div style={{marginBottom: rhythm(0.5)}}>
-            <hr style={{borderTop: `2px solid var(--fontColor)`, marginBottom: rhythm(0.5)}}/>
-            <p itemProp="datePosted" style={{ color: `gray`, marginBottom: rhythm(0.25)}}>{date}</p>
-            <h1 style={{ margin: `0` }}>
+        <div className={styles.postblock}>
+            <hr className={styles.posthr} />
+            <p itemProp="datePosted" className={styles.postdate}>{date}</p>
+            <h1 className={styles.posttitle}>
                 <Link
                     to={link} 
                     itemProp="url" 
-                    className="post"
+                    className={styles.postlink}
                     onClick = { () => {
                             trackCustomEvent({
                                 category: title,

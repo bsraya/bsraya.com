@@ -1,0 +1,53 @@
+.em {
+  color: var(--important);
+}
+
+.hr {
+  border-top: 2px solid var(--fontColor);
+}
+
+.ol {
+  margin-left: 2rem;
+}
+
+.ul {
+  margin-left: 2.25rem;
+}
+
+.li {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.headers {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--headerColor) !important;
+}
+
+.container {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.table {
+  margin: auto;
+}
+
+.p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.code {
+  font-size: 1rem;
+  white-space: nowrap;
+  font-family: 'Share';
+  color: var(--codeColor);
+  transition: color 0.2s ease-out;
+  background-color: rgb(38, 34, 53);
+  padding: 2px 10px;
+}

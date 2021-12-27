@@ -81,38 +81,6 @@ a {
 }
 
 /* HTML Body */
-.sectionTitle {
-  margin-bottom: 0.25rem;
-}
-
-.post {
-  text-decoration: none;
-  color: var(--fontColor);
-}
-
-.tag-list {
-  display: flex;
-  margin: 0;
-  list-style-type: none;
-}
-
-.tag {
-  font-size: 0.75rem;
-  margin-right: 1rem;
-  margin-bottom: 0;
-  border: 2px solid var(--fontColor);
-  padding: 0.4rem;
-}
-
-.external-link {
-  text-decoration: underline;
-  color: var(--important);
-}
-
-.external-link:hover {
-  text-decoration: none;
-}
-
 h1,
 h2,
 h3,
@@ -198,12 +166,6 @@ span.katex-display {
 }
 
 /* Markdown elements */
-.md-headers {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: var(--headerColor) !important;
-}
-
 blockquote {
   background: inherit;
   border-left: 0.5rem solid #696969;

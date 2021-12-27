@@ -86,7 +86,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`${__dirname}/src/templates/blogpostTemplate.js`),
+          default: require.resolve(`${__dirname}/src/templates/blogpost.js`),
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`,
