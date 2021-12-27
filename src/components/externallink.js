@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Link({ address, title }) {
+export default function ExternalLink({ address, text }) {
   return (
     <a
       itemProp="url"
@@ -9,7 +9,7 @@ export default function Link({ address, title }) {
       target="_blank"
       rel="nofollow noopener noreferrer"
     >
-      {title}
+      {text}
     </a>
   )
 }

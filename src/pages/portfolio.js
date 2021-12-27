@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import * as styles from './post.module.css'
+import * as styles from './posts.module.css'
 import { Link, graphql } from "gatsby"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 

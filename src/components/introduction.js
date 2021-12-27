@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from './link'
+import ExternalLink from './externallink'
 
 export default function Introduction({ author, email }) {
   return (
@@ -7,7 +7,7 @@ export default function Introduction({ author, email }) {
       <h1>About Me</h1>
       <p>
         Hey, I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>!
-        I am a graduate Computer Science student at <Link address="https://www.nthu.edu.tw" title="National Tsing Hua University" /> in Hsinchu, Taiwan.
+        I am a graduate Computer Science student at <ExternalLink address="https://www.nthu.edu.tw" text="National Tsing Hua University" /> in Hsinchu, Taiwan.
         So far, I have been living in Taiwan for six years, and I am on my way to get my master's degree in Computer Science.
       </p>
       <h5>What do I do?</h5>
@@ -30,7 +30,7 @@ export default function Introduction({ author, email }) {
       </p>
       <h5>How to find me?</h5>
       <p>
-        You can email me at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>, or you can find me on Github at <Link address="https://github.com/nathansetyawan96" title="nathansetyawan96" />.
+        You can email me at <a itemProp="authorEmail" itemType="http://schema.org/AuthorEmail" href={`mailto:${email}`}>{email}</a>, or you can find me on Github at <ExternalLink address="https://github.com/nathansetyawan96" text="nathansetyawan96" />.
       </p>
     </article>
   )
