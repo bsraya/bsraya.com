@@ -5,7 +5,7 @@
 .date {
   text-decoration: underline;
   color: var(--fontColor);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .title {
@@ -15,7 +15,7 @@
 
 .taglist {
   display: flex;
-  margin: 0;
+  margin: 0 0 1rem 0;
   list-style-type: none;
 }
 

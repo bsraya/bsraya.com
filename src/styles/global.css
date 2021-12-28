@@ -40,7 +40,6 @@ body {
   --codeColor: #ff7edb;
   --activeLink: #000000;
   --inactiveLink: #999999;
-  --codeblockTitle: #f7eacd;
   --filter: opacity(1), contrast(1);
 
   margin: 0;
@@ -61,7 +60,6 @@ body.dark {
   --important: #9999ff;
   --activeLink: white;
   --inactiveLink: #808080;
-  --codeblockTitle: #fff1d0;
   --filter: opacity(0.8), contrast(1.2);
 }
 
@@ -157,7 +155,7 @@ span.katex-display {
 }
 
 .gatsby-code-title {
-  background: var(--codeblockTitle);
+  background: #f7eacd;
   color: #121212;
   padding: 0.75rem 1rem 0.75rem 1rem;
   font-size: 0.85rem;
