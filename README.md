@@ -8,7 +8,7 @@ Hey, I am Bijon Setyawan Raya. This website works as my resume and my blogging s
 
 ![Dark Mode](./content/portfolio/my-personal-website/dark-mode.png)
 
-This website is mostly made with Gatsby.js. If you want to use this website as a template for your personal website, simply run
+This website is made with Gatsby.js. If you want to use this website as a template for your personal website, simply run
 
 ```bash
 git clone https://github.com/nathansetyawan96/bsraya.com
