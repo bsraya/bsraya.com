@@ -48,8 +48,8 @@ module.exports = {
         name: `Bijon Setyawan Raya`,
         short_name: `Bijon S. R.`,
         start_url: `/`,
-        background_color: `rgba(0,0,0,0.9)`,
-        theme_color: `rgba(0,0,0,0.9)`,
+        background_color: `#101010`,
+        theme_color: `#101010`,
         display: `standalone`,
         legacy: true,
         icon: `${__dirname}/static/favicons/icon.png`
