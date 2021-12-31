@@ -1,10 +1,10 @@
-# Bijon Setyawan Raya's Personal Website
+# Personal Website
 
 ![Light Mode](./content/portfolio/my-personal-website/light-mode.png)
 
 Hey, I am Bijon Setyawan Raya. This website works as my resume and my blogging site. I mostly blog about ML and DL related topics. 
 
-[click here](https://bsraya.com/) to see my personal website.
+[Click here](https://bsraya.com/) to see my personal website.
 
 ![Dark Mode](./content/portfolio/my-personal-website/dark-mode.png)
 
