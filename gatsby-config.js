@@ -53,6 +53,7 @@ module.exports = {
         display: `standalone`,
         legacy: true,
         icon: `${__dirname}/static/favicons/icon.png`,
+        theme_color_in_head: false, 
       },
     },
     'gatsby-plugin-offline',
