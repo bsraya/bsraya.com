@@ -124,13 +124,13 @@ figcaption {
   text-align: center;
 }
 
-figcaption::before {
-  content: 'figure: ';
-}
-
 .inlineMath,
 .katex-html {
   font-size: 1.21rem;
+}
+
+.katex-html {
+  margin-bottom: 1rem;
 }
 
 span.katex-display {
@@ -138,14 +138,16 @@ span.katex-display {
   margin-bottom: 0.75rem;
 }
 
-.gatsby-resp-image-image {
-  margin: 2rem 0 2rem 0;
+.gatsby-resp-image-figure {
+  margin: 0 0 1rem 0;
 }
 
 /* Markdown code */
 .grvsc-container {
   padding: 1rem;
-  border-radius: 0 0 0.5rem 0.5rem !important;
+  border-radius: 0 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.38);
+  background: #353535 !important;
 }
 
 .grvsc-source {
@@ -156,12 +158,15 @@ span.katex-display {
 }
 
 .gatsby-code-title {
-  background: #f7eacd;
-  color: #121212;
+  width: 30%;
+  background: #353535;
+  color: #fff;
   padding: 0.75rem 1rem 0.75rem 1rem;
   font-size: 0.85rem;
-  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: bold;
+  border-radius: 0;
   font-family: 'Share', sans-serif;
+  box-shadow: 4px 0 10px -3px #010101;
 }
 
 /* Markdown elements */

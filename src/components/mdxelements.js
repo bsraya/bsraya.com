@@ -14,6 +14,7 @@ const MdxElements = {
   h4: ({ children, props }) => <h4 {...props} className={styles.headers}>{children}</h4>,
   h5: ({ children, props }) => <h5 {...props} className={styles.headers}>{children}</h5>,
   h6: ({ children, props }) => <h6 {...props} className={styles.headers}>{children}</h6>,
+  strong: ({ children, props }) => <string {...props} className={styles.strong}>{children}</string>,
   inlineCode: ({ children, props }) => <code {...props} className={styles.code}>{children}</code>,
   table: ({ children, props }) =>
     <div className={styles.container}>

@@ -6,12 +6,10 @@
   border-top: 2px solid var(--fontColor);
 }
 
+.ul,
 .ol {
-  margin-left: 2rem;
-}
-
-.ul {
-  margin-left: 2.25rem;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .li {
@@ -36,7 +34,8 @@
 
 .p {
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -48,6 +47,11 @@
   font-family: 'Share', sans-serif;
   color: var(--codeColor);
   transition: color 0.2s ease-out;
-  background-color: rgb(38, 34, 53);
   padding: 2px 10px;
+  background: #303030;
+}
+
+.strong {
+  color: orange;
+  font-weight: bold;
 }

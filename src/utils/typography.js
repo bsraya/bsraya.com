@@ -2,8 +2,8 @@ import Typography from "typography"
 import "../styles/global.css"
 
 const typography = new Typography({
-    baseFontSize: `18px`,
-    baseLineHeight: 1.5
+    baseFontSize: `20px`,
+    baseLineHeight: 2
 })
 
 // Hot reload typography in development.
