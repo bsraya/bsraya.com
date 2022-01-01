@@ -129,13 +129,9 @@ figcaption {
   font-size: 1.21rem;
 }
 
-.katex-html {
-  margin-bottom: 1rem;
-}
-
 span.katex-display {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
+  margib-top: 0;
+  margin-bottom: 1rem;
 }
 
 .gatsby-resp-image-figure {
