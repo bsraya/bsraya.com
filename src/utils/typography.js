@@ -2,7 +2,7 @@ import Typography from "typography"
 import "../styles/global.css"
 
 const typography = new Typography({
-    baseFontSize: `18px`,
+    baseFontSize: `20px`,
     baseLineHeight: 1.5
 })
 
