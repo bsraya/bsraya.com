@@ -16,7 +16,7 @@
 .headerlink {
   position: relative;
   text-decoration: none;
-  color: var(--fontColor);
+  color: var(--font-color);
 }
 
 .headerlink::before {
@@ -26,7 +26,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background: var(--fontColor);
+  background: var(--font-color);
   transition: 0.4s transform ease-in-out;
   transform: scale3d(0, 1, 1);
   transform-origin: 0 50%;
@@ -37,5 +37,5 @@
 }
 
 .headerlink:hover {
-  color: var(--fontColor) !important;
+  color: var(--font-color) !important;
 }

@@ -22,7 +22,7 @@
   font-size: 0.75rem;
   margin-right: 1rem;
   margin-bottom: 0;
-  border: 2px solid var(--fontColor);
+  border: 2px solid var(--font-color);
   padding: 0.4rem;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .posthr {
-  border-top: 2px solid var(--fontColor);
+  border-top: 2px solid var(--font-color);
   margin-bottom: 0.5rem;
 }
 
@@ -46,5 +46,5 @@
 
 .postlink {
   text-decoration: none;
-  color: var(--fontColor);
+  color: var(--font-color);
 }
