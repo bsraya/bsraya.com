@@ -87,7 +87,7 @@ After getting ourselves familiar with these 3 things, let's delve right into the
 Before we start with the implemetations, we should first import the dataset from `sklearn`.
 In this project, we will be working with the iris dataset.
 
-```python:title=main.py
+```python {numberLines}
 from sklearn import datasets
 
 iris = datasets.load_iris()
@@ -108,16 +108,26 @@ for i in target:
     species_names.append('virginica')
 ```
 
-First, let's fit our dataset to `LinearRegression()` model that we imported from `sklearn.linear_model`.
+First, let's fit our dataset to `py:LinearRegression()` model that we imported from `py:sklearn.linear_model`.
 
-```python:title=main.py
-reg = LinearRegression().fit(X = sepal_length.reshape(-1,1), y = petal_width.reshape(-1,1))
+```python {numberLines}
+linreg = LinearRegression()
 
-sns.scatterplot(x = sepal_length, y = petal_width, hue = species_names)
+linreg.fit(
+    X = sepal_length.reshape(-1,1), 
+    y = petal_width.reshape(-1,1)
+)
+
+sns.scatterplot(
+    x = sepal_length, 
+    y = petal_width, 
+    hue = species_names
+)
 
 plt.plot(
     sepal_length,
-    reg.intercept_[0] + reg.coef_[0][0] * features[:, 0],
+    linreg.intercept_[0] + 
+    linreg.coef_[0][0] * features[:, 0],
     color='red'
 )
 ```
@@ -129,13 +139,13 @@ Once we have done fitting, or training, we then visualize the result.
 Let's see the intercept and the coefficient that `LinearRegression()` produced from our dataset.
 We are also want to see how much the MSE is, so let's print that as well.
 
-```python:title=main.py
-print(reg.intercept_, reg.coefficient_)
+```python {numberLines}
+print(linreg.intercept_, linreg.coefficient_)
 # [-3.200215] [[0.75291757]]
 
-lr_predictions = reg.predict(sepal_length.reshape(-1,1))
-lr_mse = mean_squared_error(lr_predictions, petal_width)
-print(f"Linear Regression's MSE is {lr_mse}")
+linreg_predictions = linreg.predict(sepal_length.reshape(-1,1))
+linreg_mse = mean_squared_error(linreg_predictions, petal_width)
+print(f"Linear Regression's MSE is {linreg_mse}")
 # Linear Regression's MSE is 0.19101500769427357
 ```
 
@@ -162,7 +172,7 @@ $$
 
 Converting those two equations above to python code, we then have
 
-```python
+```python {7-10, numberLines}
 def gd(x, y, epochs, df, alpha = 0.01):
     length = len(x)
     intercept, coefficient = 0.0, 0.0
@@ -180,7 +190,7 @@ def gd(x, y, epochs, df, alpha = 0.01):
 
 Then we create a dataframe to store the result and run the `gd()` function for over 10000 times.
 
-```python
+```python {numberLines}
 gd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
 gd_loss = gd(sepal_length, petal_width, epochs = 10000, df = gd_loss)
 ```
@@ -189,7 +199,7 @@ Let's see how the regression lines tend to look like at the 1000th, the 5000th, 
 
 # 1000 Iterations
 
-```python
+```python {numberLines}
 epoch = 1000
 calculate_mse(
     'GD',

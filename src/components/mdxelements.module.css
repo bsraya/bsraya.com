@@ -41,16 +41,6 @@
   hyphens: auto;
 }
 
-.code {
-  font-size: 1rem;
-  white-space: nowrap;
-  font-family: 'Share', sans-serif;
-  color: var(--codeColor);
-  transition: color 0.2s ease-out;
-  padding: 2px 10px;
-  background: #303030;
-}
-
 .strong {
   color: orange;
   font-weight: bold;

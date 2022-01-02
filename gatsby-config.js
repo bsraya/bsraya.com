@@ -155,9 +155,12 @@ module.exports = {
               theme: {
                 default: `Synthwave '84`,
               },
+              inlineCode: {
+                marker: ':',
+              },
               extensions: [`synthwave-vscode`],
             },
-          },
+          }
         ],
         remarkPlugins: [
           require('remark-html-katex')
