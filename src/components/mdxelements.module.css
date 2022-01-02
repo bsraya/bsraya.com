@@ -42,6 +42,6 @@
 }
 
 .strong {
-  color: orange;
+  color: var(--bold);
   font-weight: bold;
 }

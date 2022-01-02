@@ -42,8 +42,9 @@ postgresql --version # postgres (PostgreSQL) 13.4
 sqlite3 --version # 3.32.3 ...
 ```
 
-If you have `sqlite3` installed, just skip the second and the third steps since it doesn't need any servers and data in a table can be saved into `.db` file.
-Once we have `postgresql` installed, let's ramp up the `postgresql` server and access it via a user called `postgres`. Simply run,
+If you have sqlite3 installed, just skip the second and the third steps since it doesn't need any servers and data in a table can be saved into `bash:.db` file.
+Once we have postgresql installed, let's ramp up the postgresql server and access it via a user called `bash:postgres`. 
+Simply run,
 
 ```bash:title=Terminal
 brew services start postgresql
@@ -52,7 +53,7 @@ psql postgres
 
 ![Start Up PostgreSQL Server](./ramp-up-server.png)
 
-If you arent's sure that the `postgresql` server has not been ramped up, simply run
+If you arent's sure that the postgresql server has not been ramped up, simply run
 
 ```bash:title=Terminal
 brew services
@@ -62,7 +63,7 @@ brew services
 
 # 2. Create & Delete Users
 
-Once the server is up, run `psql postgres` and it will redirect us to the postgresql interactive shell
+Once the server is up, run `bash:psql postgres` and it will redirect us to the postgresql interactive shell
 Let's create a new superuser that allows us to create any databases on the server.
 
 ```sql:title=plsq-shell
@@ -72,28 +73,24 @@ ALTER ROLE a_user WITH CREATEDB;
 
 ![Create A User in PostgreSQL](./create-user.png)
 
-`LOGIN` should be specified. Otherwise, the server will reject the logging in request.
-Then run `\du` in the shell to see if `a_user` has been successfully created.
+`sql:LOGIN` should be specified. Otherwise, the server will reject the logging in request.
+Then run `sql:\du` in the shell to see if `sql:a_user` has been successfully created.
 
 Assigning a privilege to a user is also important.
-In this case, we want `a_user` to be able to create a database.
-Thus we're adding a new privilege to it with `ALTER ROLE a_user WITH CREATEDB;`.
+In this case, we want `sql:a_user` to be able to create a database.
+Thus we're adding a new privilege to it with `sql:ALTER ROLE a_user WITH CREATEDB;`.
 
 ![Show Users in PostgreSQL](./check-user.png)
 
-If you accidentally create a user you don't indent to, simply run
-
-```sql:title=plsq-shell
-DROP ROLE {username};
-```
+If you accidentally create a user you don't indent to, simply run `sql:DROP ROLE {username};` in the PostgreSQL interactive shell.
 
 # 3. Running AN SQL Script
 
 Below is a script that allows us to create IMDB film database automatically.
 The script can be downloaded <a itemProp="url" itemType="http://schema.org/Url" href="https://drive.google.com/file/d/1wKMPcbj9jr3twYBUNwtz1xxayWkAaUwu/view?usp=sharing" target="\_blank" rel="nofollow noopener noreferrer">here</a>.
-After running this script, we will expect 4 tables which are `films`, `people`, `reviews`, and `roles`.
+After running this script, we will expect 4 tables which are `sql:films`, `sql:people`, `sql:reviews`, and `sql:roles`.
 
-```sql:title=script.sql
+```sql:title=script.sql {numberLines}
 --
 -- PostgreSQL database dump
 --
@@ -118,19 +115,19 @@ To run the script, simply run
 psql a_user -h localhost -d film_db -f films.sql
 ```
 
-If you aren't sure what `-h`, `-d`, and `-f` mean, you can simply run `psql --help`.
+If you aren't sure what `bash:-h`, `bash:d`, and `bash:-f` mean, you can simply run `bash:psql --help`.
 
-The command above, with the `a_user` user account, execute and store the tables described in the script into a database called `film_db`.
+The command above, with the `sql:a_user` user account, execute and store the tables described in the script into a database called `sql:film_db`.
 
-After running the script, go back to the PostgreSQL interactive shell and access the film database using `a_user`.
+After running the script, go back to the PostgreSQL interactive shell and access the film database using `sql:a_user`.
 
 ```bash:title=Terminal
 psql a_user -d film_db
 ```
 
-To verify if the tables were created successfully, simply run `\dt` in the shell then you'll see the following result.
+To verify if the tables were created successfully, simply run `sql:\dt` in the shell then you'll see the following result.
 
-```sql:title=PostgreSQL Interactive Shell
+```sql {numberLines}
             List of relations
  Schema |  Name   | Type  |     Owner
 --------+---------+-------+---------------
@@ -138,14 +135,14 @@ To verify if the tables were created successfully, simply run `\dt` in the shell
  public | people  | table | a_user
  public | reviews | table | a_user
  public | roles   | table | a_user
-(4 rows)
+ (4 rows)
 ```
 
 # 4. Accessing A Database With Python
 
-Since we have PostgreSQL installed and a database in the server, we need to install `psycopg2` by running `pip install --user psycopg2`.
+Since we have PostgreSQL installed and a database in the server, we need to install `bash:psycopg2` by running `bash:pip install --user psycopg2`.
 
-```python:title=database.py
+```python:title=database.py {numberLines}
 import psycopg2
 
 connection = psycopg2.connect(
@@ -158,7 +155,7 @@ cursor = connection.cursor()
 
 Once we have a connection to the server, we want to see what tables are available in the `film_db` database.
 
-```python:title=database.py
+```python:title=database.py {numberLines}
 cursor.execute("""
   SELECT table_name FROM information_schema.tables
   WHERE table_schema = 'public'
@@ -170,16 +167,16 @@ for table in cursor.fetchall():
     tables.append(table[0])
 ```
 
-To show every row and every column of the data in `film` table, simply run
+To show every row and every column of the data in `sql:film` table, simply run
 
-```python:title=database.py
+```python:title=database.py {numberLines}
 cursor.execute("SELECT * FROM films;")
 print(cursor.fetchall())
 ```
 
 Say that we want to convert all the tables in the database into CSV files, add the following block of code to do so in the python script.
 
-```python:title=database.py
+```python:title=database.py {numberLines}
 for table in tables:
     sql = f"COPY (SELECT * FROM {table}) TO STDOUT WITH CSV HEADER DELIMITER ','"
     with open(f"./{table}.csv", "w") as file:
@@ -189,14 +186,14 @@ for table in tables:
 Now we have 4 different CSV files.
 Here is the downside of CSV files: when the number of data in the CSV file increases, the computing resource to read the file also increases.
 There are some work around to avoid resource overconsumption by storing the data into Pickle files.
-However, storing millions of data in `.db` file can be another work around as well.
+However, storing millions of data in `bash:.db` file can be another work around as well.
 
 # 5. Converting CSV files into SQLite DB files
 
 With SQLite3, we don't need to create any users since it doesn't need any server to run at all.
-Since we have all the CSV files that we need, we have to feed the data into `.db` files.
+Since we have all the CSV files that we need, we have to feed the data into `bash:.db` files.
 
-```python:title=convert-csv-to-sqlitedb.py
+```python:title=sqlite.py
 import sqlite3
 import pandas as pd
 tables = ["films", "people", "review", "roles"]
@@ -207,15 +204,15 @@ for table in tables:
     dataframe.to_sql(table, connection, if_exists='append', index = True)
 ```
 
-Then we can see that four new `.db` files have been created. To make sure that these `.db` files are legit, simply run
+Then we can see that four new `bash:.db` files have been created. To make sure that these `bash:.db` files are legit, simply run
 
-```python:title=test-if-db-files-are-legit.py
+```python:title=sqlite.py {numberLines}
 connection = sqlite3.connect('films.db')
 cursor = connection.cursor()
 cursor.execute("SELECT * FROM films;")
 print(cursor.fetchall())
 ```
 
-Do the same with the other db files. You just simply need to change `films` into another table's name.
+Do the same with the other db files. You just simply need to change `sql:films` into another table's name.
 
 That's it. We just learned 7 things that I mentioned in the beginning of the post. Hope you enjoy it.

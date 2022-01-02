@@ -18,25 +18,26 @@ This is part 1 of the series on Gradient Descent.
     Part 3: Stochastic Gradient Descent
   </Link>
 
-There are several equations that we need to familiar with before working on these implementations, namely: **Mean Squared Error**, **the regression line equation**, and **the weight update equation**.
+There are several equations that we need to familiar with before working on these implementations, 
+namely: **Mean Squared Error**, **the regression line equation**, and **the parameter update equation**.
 
-First, it's Mean Squared Error, or MSE, which is the cost function we are going to minimize. 
+First, it's **Mean Squared Error** (MSE) which is the cost function we are going to minimize. 
 Let $y$ be the actual label, and $\hat{y}$ be the prediction label. 
-Then,
 
 $$
     \text{MSE} = \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
 $$
 
-From the MSE equation, we then have a cost function for Gradient Descent which means how far, or the error, the predictions from the regression line.
-The further the data are from the regression line, the larger the cost function value.
-We should minimize the cost function denoted as $J(\Theta_0, \Theta_1)$ where it is equivalent to
+The equation above is the cost function for Gradient Descent that we want to minimize.
+The equation means the sum of the distances of the predictions from the regression line.
+The distances are the errors. The further the data are from the regression line, the larger the cost function value, and vice versa.
+The cost function is denoted as $J(\Theta_0, \Theta_1)$ where
 
 $$
     \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
 $$
 
-Second, it's regression line equation, and it goes like
+Second, it's **regression line equation**, and it goes like
 
 $$
     y = a_0 + a_1 \cdot x_1
@@ -53,7 +54,7 @@ If we plot the equation above, it's going to look like the figure below.
 
 ![Linear Regression Line](./lr.png)
 
-Last, the equation for updating the weight.
+Last, **the parameter update equation**. In this example, the intercept and the first coefficient are the parameters that we want to update over time.
 
 $$
 \Theta_{i} = \Theta_i - \alpha \cdot \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
@@ -83,14 +84,12 @@ $$
 \Theta_{i} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \cdot x_i
 $$
 
-After getting ourselves familiar with these 3 things, let's delve right into the implementations.
-Before we start with the implemetations, we should first import the dataset from `sklearn`.
-In this project, we will be working with the iris dataset.
+Before we start with the implemetations, we should first import the iris dataset from `sklearn`.
 
 ```python {numberLines}
-from sklearn import datasets
+from sklearn.datasets import load_iris
 
-iris = datasets.load_iris()
+iris = load_iris()
 features = iris.data
 target = iris.target
 
