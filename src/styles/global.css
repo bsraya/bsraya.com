@@ -142,10 +142,6 @@ span.katex-display {
 }
 
 /* Markdown code */
-.grvsc-line-number {
-  color: white !important;
-}
-
 code.grvsc-code {
   font-size: 1rem;
   width: 100%;
