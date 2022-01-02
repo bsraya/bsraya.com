@@ -107,7 +107,7 @@ for i in target:
     species_names.append('virginica')
 ```
 
-First, let's fit our dataset to `py:LinearRegression()` model that we imported from `py:sklearn.linear_model`.
+First, let's fit our dataset to `python:LinearRegression()` model that we imported from `python:sklearn.linear_model`.
 
 ```python {numberLines}
 linreg = LinearRegression()
@@ -131,11 +131,7 @@ plt.plot(
 )
 ```
 
-Once we have done fitting, or training, we then visualize the result.
-
-![The iris dataset regression line with Scikit](./scikit-lr.png)
-
-Let's see the intercept and the coefficient that `LinearRegression()` produced from our dataset.
+Let's see the intercept and the coefficient that `python:LinearRegression()` produced from our dataset.
 We are also want to see how much the MSE is, so let's print that as well.
 
 ```python {numberLines}
@@ -147,6 +143,16 @@ linreg_mse = mean_squared_error(linreg_predictions, petal_width)
 print(f"Linear Regression's MSE is {linreg_mse}")
 # Linear Regression's MSE is 0.19101500769427357
 ```
+
+From the result we got from `python:sklearn`, the best regression line is
+
+$$
+    y = -3.200215 + 0.75291757 \cdot x
+$$
+
+where most data points are located near it.
+
+![The iris dataset regression line with Scikit](./scikit-lr.png)
 
 # Gradient Descent
 
@@ -187,7 +193,7 @@ def gd(x, y, epochs, df, alpha = 0.01):
     return df
 ```
 
-Then we create a dataframe to store the result and run the `gd()` function for over 10000 times.
+Then we create a dataframe to store the result and run the `python:gd()` function for over 10000 times.
 
 ```python {numberLines}
 gd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
@@ -213,7 +219,7 @@ sum_err_graph('GD', gd_loss, epoch)
 
 ![Cost function values over 1000 iterations](./cost-1000.png)
 
-With over 1000 iterations, the MSE value is `0.3309592484431454`
+With over 1000 iterations, the MSE value is $0.3309592484431454$.
 
 # 5000 Iterations
 
