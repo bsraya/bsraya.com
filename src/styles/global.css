@@ -175,9 +175,9 @@ div.gatsby-code-title {
   background: #353535;
   color: #fff;
   padding: 0.5rem 1rem 0.5rem 1rem;
-  font: bold 1rem 'Share', sans-serif !important;
+  font: bold 0.85rem 'Share', sans-serif !important;
   margin-top: 1rem;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 span.grvsc-line-number {
