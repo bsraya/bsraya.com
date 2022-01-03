@@ -160,9 +160,9 @@ $$
     \Theta_{i} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \cdot x_i
 $$
 
-The equation above is the heart of entire algorithm.
-Let's denote the intercept $b_0$ and the first coefficient be $b_1$.
-Since we have two weights that we have to update over time, we have to change $\Theta_i$ to the variables we intend to use.
+The equation above is what helps us to minimize the intercept and the first coefficient.
+Let's denote the intercept $b_0$ and the first coefficient $b_1$.
+Since we have two weights that we have to update over time, let's change $\Theta_i$ to the variables we intend to use.
 In this case, they are $b_0$ and $b_1$.
 
 $$
