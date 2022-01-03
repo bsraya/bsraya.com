@@ -1,25 +1,23 @@
-import React from 'react'
+import React from "react"
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
-import Toggle from 'react-toggle'
 import "react-toggle/style.css"
 
-function Toggler() {
-  return (
-    <>
-      <ThemeToggler > 
-        {({ theme, toggleTheme }) => (
-          <label for='checkbox'>
-            <Toggle
-              type="checkbox"
-              onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
-              checked={theme === 'dark'}
-            />{' '}
-            <div className="slider round"></div> 
-          </label>
-        )}
-      </ThemeToggler>
-    </>
-  )
-}
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAdjust } from '@fortawesome/free-solid-svg-icons'
 
-export default Toggler
+export default function Toggler() {
+    return (
+        <ThemeToggler>
+            {({ theme, toggleTheme }) => (
+                <div>
+                    <FontAwesomeIcon
+                        icon={faAdjust}
+                        onClick={() =>
+                          theme === "dark" ? toggleTheme("light") : toggleTheme("dark")
+                        }
+                    />
+                </div>
+            )}
+        </ThemeToggler>
+    )
+}

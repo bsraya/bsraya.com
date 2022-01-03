@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
     <Layout itemScope itemType="http://schema.org/NotFound">
       <Seo title="404: Not Found" type="website" slug="/404/" />

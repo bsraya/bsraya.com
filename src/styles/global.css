@@ -47,9 +47,8 @@ body {
   color: var(--font-color);
   font-family: 'Stratos', sans-serif;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   filter: var(--filter);
-  /* transition: background 0.5s ease-in-out; */
+  transition: background 0.5s ease-in-out;
 }
 
 body.dark {
