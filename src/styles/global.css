@@ -81,7 +81,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* HTML Body */
+/* Headers */
 h1,
 h2,
 h3,
@@ -120,6 +120,11 @@ h6 {
   font-size: 1.35rem;
 }
 
+/* images */
+.gatsby-resp-image-figure {
+  margin: 0 0 1rem 0;
+}
+
 figcaption {
   font-size: 0.75rem;
   font-style: italic;
@@ -127,6 +132,7 @@ figcaption {
   color: #999999;
 }
 
+/* LaTex components */
 .inlineMath,
 .katex-html {
   font-size: 1.21rem;
@@ -137,16 +143,16 @@ span.katex-display {
   margin-bottom: 1rem;
 }
 
-.gatsby-resp-image-figure {
-  margin: 0 0 1rem 0;
-}
-
 /* Markdown code */
 code.grvsc-code {
   font-size: 0.85rem;
+}
+
+span.grvsc-source {
   width: 100%;
 }
 
+code.monokai,
 code.synthwave-84 {
   font-size: 1rem;
   white-space: nowrap;
@@ -154,22 +160,23 @@ code.synthwave-84 {
   color: var(--codeColor);
   transition: color 0.2s ease-out;
   padding: 3px 0.5rem;
-  background: #303030;
+  background: #303030 !important;
 }
 
 pre.grvsc-container {
+  width: auto;
   border-radius: 0 !important;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background: #353535 !important;
 }
 
 div.gatsby-code-title {
-  width: max-content;
+  width: fit-content;
   background: #353535;
   color: #fff;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   font: bold 1rem 'Share', sans-serif;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 5px;
 }
 

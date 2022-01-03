@@ -153,10 +153,19 @@ module.exports = {
             resolve: `gatsby-remark-vscode`,
             options: {
               theme: {
-                default: `Synthwave '84`,
+                default: `Monokai`,
+                parentSelector: {
+                  'body.dark': `Synthwave '84`
+                }
               },
               inlineCode: {
                 marker: ':',
+                theme: {
+                  default: `Monokai`,
+                  parentSelector: {
+                    'body.dark': `Synthwave '84`
+                  }
+                },
               },
               extensions: [`synthwave-vscode`],
             },

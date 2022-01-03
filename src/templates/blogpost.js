@@ -26,7 +26,7 @@ export default function blogpostTemplate({ data }) {
           </h1>
           <ul className={styles.taglist}>
             {
-                data.mdx.frontmatter.tags.map(tag => <li className={styles.tag}>{tag}</li>)
+              data.mdx.frontmatter.tags.map(tag => <li key={tag} className={styles.tag}>{tag}</li>)
             }
           </ul>
         </div>
