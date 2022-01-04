@@ -11,7 +11,6 @@ export default function Blog({ data }) {
             <Seo title="Home" type="website" slug="/" />
             <h5>Blogposts</h5>
             <Posts metadata={data} />
-            <div className={styles.sweep}>Hey</div>
         </Layout>
     )
 }
