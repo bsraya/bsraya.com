@@ -90,7 +90,7 @@ Below is a script that allows us to create IMDB film database automatically.
 The script can be downloaded <a itemProp="url" itemType="http://schema.org/Url" href="https://drive.google.com/file/d/1wKMPcbj9jr3twYBUNwtz1xxayWkAaUwu/view?usp=sharing" target="\_blank" rel="nofollow noopener noreferrer">here</a>.
 After running this script, we will expect 4 tables which are `sql:films`, `sql:people`, `sql:reviews`, and `sql:roles`.
 
-```sql:title=script.sql {numberLines}
+```sql:title=script.sql
 --
 -- PostgreSQL database dump
 --
@@ -127,7 +127,7 @@ psql a_user -d film_db
 
 To verify if the tables were created successfully, simply run `sql:\dt` in the shell then you'll see the following result.
 
-```sql {numberLines}
+```sql
             List of relations
  Schema |  Name   | Type  |     Owner
 --------+---------+-------+---------------
@@ -142,7 +142,7 @@ To verify if the tables were created successfully, simply run `sql:\dt` in the s
 
 Since we have PostgreSQL installed and a database in the server, we need to install `bash:psycopg2` by running `bash:pip install --user psycopg2`.
 
-```python:title=database.py {numberLines}
+```python:title=database.py
 import psycopg2
 
 connection = psycopg2.connect(
@@ -155,7 +155,7 @@ cursor = connection.cursor()
 
 Once we have a connection to the server, we want to see what tables are available in the `film_db` database.
 
-```python:title=database.py {numberLines}
+```python:title=database.py
 cursor.execute("""
   SELECT table_name FROM information_schema.tables
   WHERE table_schema = 'public'
@@ -169,14 +169,14 @@ for table in cursor.fetchall():
 
 To show every row and every column of the data in `sql:film` table, simply run
 
-```python:title=database.py {numberLines}
+```python:title=database.py
 cursor.execute("SELECT * FROM films;")
 print(cursor.fetchall())
 ```
 
 Say that we want to convert all the tables in the database into CSV files, add the following block of code to do so in the python script.
 
-```python:title=database.py {numberLines}
+```python:title=database.py
 for table in tables:
     sql = f"COPY (SELECT * FROM {table}) TO STDOUT WITH CSV HEADER DELIMITER ','"
     with open(f"./{table}.csv", "w") as file:
@@ -206,7 +206,7 @@ for table in tables:
 
 Then we can see that four new `bash:.db` files have been created. To make sure that these `bash:.db` files are legit, simply run
 
-```python:title=sqlite.py {numberLines}
+```python:title=sqlite.py
 connection = sqlite3.connect('films.db')
 cursor = connection.cursor()
 cursor.execute("SELECT * FROM films;")
