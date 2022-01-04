@@ -86,7 +86,7 @@ $$
 
 Before we start with the implemetations, we should first import the iris dataset from `sklearn`.
 
-```python {numberLines}
+```python
 from sklearn.datasets import load_iris
 
 iris = load_iris()
@@ -109,7 +109,7 @@ for i in target:
 
 First, let's fit our dataset to `python:LinearRegression()` model that we imported from `python:sklearn.linear_model`.
 
-```python {numberLines}
+```python
 linreg = LinearRegression()
 
 linreg.fit(
@@ -134,7 +134,7 @@ plt.plot(
 Let's see the intercept and the coefficient that `python:LinearRegression()` produced from our dataset.
 We are also want to see how much the MSE is, so let's print that as well.
 
-```python {numberLines}
+```python
 print(linreg.intercept_, linreg.coefficient_)
 # [-3.200215] [[0.75291757]]
 
@@ -177,7 +177,7 @@ $$
 
 Converting those two equations above to python code, we then have
 
-```python {7-10, numberLines}
+```python {7-10}
 def gd(x, y, epochs, df, alpha = 0.01):
     length = len(x)
     intercept, coefficient = 0.0, 0.0
@@ -195,7 +195,7 @@ def gd(x, y, epochs, df, alpha = 0.01):
 
 Then we create a dataframe to store the result and run the `python:gd()` function for over 10000 times.
 
-```python {numberLines}
+```python
 gd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
 gd_loss = gd(sepal_length, petal_width, epochs = 10000, df = gd_loss)
 ```
@@ -204,7 +204,7 @@ Let's see how the regression lines tend to look like at the 1000th, the 5000th, 
 
 # 1000 Iterations
 
-```python {numberLines}
+```python
 epoch = 1000
 calculate_mse(
     'GD',
