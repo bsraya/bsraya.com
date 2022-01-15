@@ -154,6 +154,11 @@ where most data points are located near it.
 
 ![The iris dataset regression line with Scikit](./scikit-lr.png)
 
+Since most data points are near the regression line, the MSE tends to be low which is $0.19101500769427357$. 
+So if most data points are far from the regression line, the MSE tends to be high.
+
+We're going to use that MSE, and compare it to our own MSE from the Gradient Descent algorithm.
+
 # Gradient Descent
 
 $$
@@ -193,49 +198,20 @@ def gd(x, y, epochs, df, alpha = 0.01):
     return df
 ```
 
-Then we create a dataframe to store the result and run the `python:gd()` function for over 10000 times.
+Then we create a dataframe to store the result and run the `python:gd()` function for over 10,000 times.
 
 ```python
 gd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
 gd_loss = gd(sepal_length, petal_width, epochs = 10000, df = gd_loss)
 ```
 
-Let's see how the regression lines tend to look like at the 1000th, the 5000th, and the 1000th iterations.
+Below is the figure of the regression lines tend to look like at the 1,000th, the 5,000th, and the 10,000th iterations.
 
-# 1000 Iterations
+![Regression lines at n-th iteration](./iterations.png)
 
-```python
-epoch = 1000
-calculate_mse(
-    'GD',
-    gd_loss['intercept'].loc[epoch-1],
-    gd_loss['coefficient'].loc[epoch-1]
-)
-scatter_plot_with_regression_line(gd_loss['intercept'].loc[epoch-1], gd_loss['coefficient'].loc[epoch-1])
-sum_err_graph('GD', gd_loss, epoch)
-```
+So let's see the MSE values at the 1000th, the 5000th, and the 1000th iterations.
 
-![Regression line with 1000 of GD](./scatter-1000.png)
-
-![Cost function values over 1000 iterations](./cost-1000.png)
-
-With over 1000 iterations, the MSE value is $0.3309592484431454$.
-
-# 5000 Iterations
-
-![Regression line with 1000 of GD](./scatter-5000.png)
-
-![Cost function values over 1000 iterations](./cost-5000.png)
-
-The MSE value is `0.2215636705284282`.
-
-# 10000 Iterations
-
-![Regression line with 1000 of GD](./scatter-10000.png)
-
-![Cost function values over 1000 iterations](./cost-10000.png)
-
-The MSE value is `0.19557315833450503`.
+![MSE value at n-th iteration](./cost-function.png)
 
 After 10000 iterations, our GD's MSE, `0.19557315833450503`, is quite close to Scikit-Learn's Linear Regression's MSE which is `0.19101500769427357`.
 
@@ -247,4 +223,4 @@ Let's animate the movement of the regression lines.
 
 ![Regression line animation](./gd.gif)
 
-For more details, [click here](https://www.kaggle.com/bijonsetyawan/part-1-gradient-descent) to check the notebook on Kaggle.
+I am not including most of the codes in this blog post. So if you want to know how those graphs were generated, [click here](https://www.kaggle.com/bijonsetyawan/part-1-gradient-descent) to check the Python notebook on Kaggle.

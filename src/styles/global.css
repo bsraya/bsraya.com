@@ -146,6 +146,7 @@ span.katex-display {
 /* Markdown code */
 code.grvsc-code {
   font-size: 0.85rem;
+  width: 100%;
 }
 
 span.grvsc-source {
