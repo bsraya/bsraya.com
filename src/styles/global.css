@@ -81,6 +81,10 @@ a:hover {
   text-decoration: none;
 }
 
+img {
+  margin-bottom: 1rem;
+}
+
 /* Headers */
 h1,
 h2,

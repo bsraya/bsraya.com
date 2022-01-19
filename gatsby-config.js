@@ -64,7 +64,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-images`,
+    `gatsby-remark-gifs`,
     `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-remark-images`,
@@ -89,6 +89,7 @@ module.exports = {
           default: require.resolve(`${__dirname}/src/templates/blogpost.js`),
         },
         gatsbyRemarkPlugins: [
+          `gatsby-remark-gifs`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-copy-linked-files`,
