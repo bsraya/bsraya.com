@@ -13,7 +13,7 @@ export default function Toggler() {
                     <FontAwesomeIcon
                         icon={faAdjust}
                         onClick={() =>
-                          theme === "dark" ? toggleTheme("light") : toggleTheme("dark")
+                            theme === "dark" ? toggleTheme("light") : toggleTheme("dark")
                         }
                     />
                 </div>
