@@ -39,7 +39,6 @@ body {
   --header-color: #000000;
   --important-color: #0000bf;
   --bold-color: #ff9800;
-  --filter: opacity(1) contrast(1);
 
   margin: 0;
   height: 100%;
@@ -47,18 +46,17 @@ body {
   color: var(--font-color);
   font-family: 'Stratos', sans-serif;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  filter: opacity(1) contrast(1);
   transition: background 0.5s ease-in-out;
 }
 
 body.dark {
-  -webkit-font-smoothing: antialiased;
-
   --background-color: #101010;
   --font-color: #eee;
   --header-color: eee;
   --important-color: #9999ff;
   --bold-color: #ffc166;
-  --filter: opacity(0.8) contrast(1.2);
 }
 
 main {
