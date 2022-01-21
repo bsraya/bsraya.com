@@ -47,7 +47,6 @@ body {
   color: var(--font-color);
   font-family: 'Stratos', sans-serif;
   text-rendering: optimizeLegibility;
-  filter: var(--filter);
   transition: background 0.5s ease-in-out;
 }
 
@@ -83,6 +82,7 @@ a:hover {
 
 img {
   margin-bottom: 1rem;
+  filter: var(--filter);
 }
 
 /* Headers */
@@ -219,7 +219,7 @@ td {
   }
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 768px) {
   .author {
     font-size: 2.5rem;
   }

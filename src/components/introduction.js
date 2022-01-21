@@ -1,10 +1,12 @@
 import React from 'react'
 import ExternalLink from './externallink'
+import Me from '../assets/me.jpg'
 
 export default function Introduction({ author, email }) {
   return (
     <article itemScope itemType="http://schema.org/About" >
       <h1>About Me</h1>
+      <img src={Me} alt="bijon's avatar" itemProp="image" />
       <p>
         Hey, I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>!
         I am a graduate Computer Science student at <ExternalLink address="https://www.nthu.edu.tw" text="National Tsing Hua University" /> in Hsinchu, Taiwan.
