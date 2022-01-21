@@ -26,7 +26,7 @@ export default function portfolioTemplate({ data }) {
           </h1>
           <ul className={styles.taglist}>
             {
-                data.mdx.frontmatter.tags.map(tag => <li>{tag}</li>)
+                data.mdx.frontmatter.tags.map(tag => <li className={styles.tag}>{tag}</li>)
             }
           </ul>
         </div>
