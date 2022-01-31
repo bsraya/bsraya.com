@@ -38,7 +38,7 @@ body {
   --font-color: #000000;
   --header-color: #000000;
   --important-color: #0000bf;
-  --bold-color: #ff9800;
+  --bold-color: #ff4040;
   --filter: opacity(1) contrast(1);
 
   margin: 0;
@@ -57,7 +57,7 @@ body.dark {
   --font-color: #eee;
   --header-color: eee;
   --important-color: #9999ff;
-  --bold-color: #ffc166;
+  --bold-color: #ff6666;
   --filter: opacity(0.8) contrast(1.2);
 }
 
