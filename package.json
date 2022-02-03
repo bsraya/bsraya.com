@@ -50,6 +50,7 @@
     "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^3.3.0",
     "katex": "^0.10.2",
+    "postcss": "^8.4.6",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -57,9 +58,9 @@
     "react-toggle": "^4.1.2",
     "react-typography": "^0.16.19",
     "remark-html-katex": "^3.0.0",
-    "styled-components": "^5.3.0",
+    "styled-components": "^5.3.3",
     "synthwave-vscode": "github:robb0wen/synthwave-vscode",
-    "typography": "^0.16.19"
+    "typography": "^0.16.21"
   },
   "devDependencies": {
     "prettier": "^2.2.1"
