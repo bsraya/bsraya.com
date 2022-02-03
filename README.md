@@ -76,5 +76,5 @@ npm run dev
     Solution:
 
     * Remove `package-lock.json`
-    * `npm install --save @mdx-js/mdx@1.6.22 @mdx-js/react@1.6.22 --legacy-peer-deps`
     * Remove `./.cache`, `./public`, and `./node_modules`
+    * `npm install --save @mdx-js/mdx@1.6.22 @mdx-js/react@1.6.22 --legacy-peer-deps`
