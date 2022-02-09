@@ -154,7 +154,7 @@ type Job struct {
 I have two arrays to store jobs. `scheduledJobs` is where we store the jobs that we intend to do,
 and `rejectedJobs` is a list of jobs that we have to sacrifice.
 
-```go{4-8, numberLines}
+```go {4-8, numberLines}
 func main() {
   var master JobMaster
   jobs := [][]int{
@@ -227,4 +227,7 @@ func (self *JobMaster) AssignJobs() []Job {
 ```
 
 After assigning the jobs, we will have a list of scheduled jobs and rejected jobs. 
-Before we append the rejected jobs to the scheduled jobs, we have to sort them in order to make sure that the jobs are in the correct order shown in line 18 in the driver function.
+Before we append the rejected jobs to the scheduled jobs, we have to sort them in 
+order to make sure that the jobs are in the correct order shown in line 18 in the main function.
+
+For more details of the code, [click here](https://github.com/nathansetyawan96/scheduling-algorithms) to this project repository on Github.
