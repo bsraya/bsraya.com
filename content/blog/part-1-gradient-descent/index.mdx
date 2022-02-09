@@ -18,11 +18,11 @@ This is part 1 of the series on Gradient Descent.
     Part 3: Stochastic Gradient Descent
   </Link>
 
-There are several equations that we need to familiar with before working on these implementations, 
+There are several equations that we need to familiar with before working on these implementations,
 namely: **Mean Squared Error**, **the regression line equation**, and **the parameter update equation**.
 
-First, it's **Mean Squared Error** (MSE) which is the cost function we are going to minimize. 
-Let $y$ be the actual label, and $\hat{y}$ be the prediction label. 
+First, it's **Mean Squared Error** (MSE) which is the cost function we are going to minimize.
+Let $y$ be the actual label, and $\hat{y}$ be the prediction label.
 
 $$
     \text{MSE} = \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
@@ -113,19 +113,19 @@ First, let's fit our dataset to `python:LinearRegression()` model that we import
 linreg = LinearRegression()
 
 linreg.fit(
-    X = sepal_length.reshape(-1,1), 
+    X = sepal_length.reshape(-1,1),
     y = petal_width.reshape(-1,1)
 )
 
 sns.scatterplot(
-    x = sepal_length, 
-    y = petal_width, 
+    x = sepal_length,
+    y = petal_width,
     hue = species_names
 )
 
 plt.plot(
     sepal_length,
-    linreg.intercept_[0] + 
+    linreg.intercept_[0] +
     linreg.coef_[0][0] * features[:, 0],
     color='red'
 )
@@ -154,7 +154,7 @@ where most data points are located near it.
 
 ![The iris dataset regression line with Scikit](./scikit-lr.png)
 
-Since most data points are near the regression line, the MSE tends to be low which is $0.19101500769427357$. 
+Since most data points are near the regression line, the MSE tends to be low which is $0.19101500769427357$.
 So if most data points are far from the regression line, the MSE tends to be high.
 
 We're going to use that MSE, and compare it to our own MSE from the Gradient Descent algorithm.
