@@ -4,8 +4,8 @@ import * as styles from './mdxelements.module.css'
 const MdxElements = {
   hr: () => <hr className={styles.hr} />, 
   li: (props) => <li {...props} className={styles.li} />,
-  em: ({ children }) => <em className={styles.em}>{children}</em>,
-  p: ({ children, props }) => <p {...props}className={styles.p}>{children}</p>,
+  link: ({ children, props }) => <a {...props} className={styles.a}>{children}</a>,
+  p: ({ children, props }) => <p {...props} className={styles.p}>{children}</p>,
   ol: ({ children, props }) => <ol {...props} className={styles.ol}>{children}</ol>,
   ul: ({ children, props }) => <ul {...props} className={styles.ul}>{children}</ul>,
   h1: ({ children, props }) => <h1 {...props} className={styles.headers}>{children}</h1>,
@@ -20,7 +20,7 @@ const MdxElements = {
       <table {...props} className={styles.table}>
         {children}
       </table>
-    </div>
+    </div>,
 }
 
 export default MdxElements

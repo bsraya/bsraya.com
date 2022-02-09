@@ -38,7 +38,7 @@ function Posts({ metadata }) {
                                     <p className={styles.description}>{description}</p>
                                     <ul className={styles.taglist}>
                                         {
-                                            tags.map(tag => <li key={styles.tag} className={styles.tag}>{tag}</li>)
+                                            tags.map(tag => <li key={tag} className={styles.tag}>{tag}</li>)
                                         }
                                     </ul>
                                 </li>

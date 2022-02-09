@@ -90,6 +90,7 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-gifs`,
+          `gatsby-remark-grid-tables`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-copy-linked-files`,

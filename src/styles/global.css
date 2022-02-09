@@ -27,20 +27,20 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
   height: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  border-radius: 0;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #808080;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 html {
@@ -92,6 +92,11 @@ main {
   margin: auto;
 }
 
+img {
+  margin-bottom: 1rem;
+  filter: var(--filter);
+}
+
 a {
   color: var(--important-color);
   text-decoration: none;
@@ -99,11 +104,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-img {
-  margin-bottom: 1rem;
-  filter: var(--filter);
 }
 
 /* Headers */
@@ -168,6 +168,7 @@ code.synthwave-84 {
 
 pre.grvsc-container {
   width: auto;
+  overflow-x: auto;
   border-radius: 0 !important;
   margin-bottom: 1rem;
   background: #353535 !important;
@@ -204,12 +205,14 @@ th,
 td {
   padding: 0.5rem !important;
   border: 2px solid var(--font-color);
+  width: auto;
 }
 
 @media (max-width: 768px) {
   main {
     padding: 0.5rem;
   }
+
   td,
   th,
   body,
@@ -217,11 +220,12 @@ td {
   code.grvsc-code {
     font-size: 0.8rem !important;
   }
+
   .inlineMath,
   .katex-html {
     font-size: 0.9rem;
   }
-  table,
+
   div.math {
     overflow-x: auto;
   }

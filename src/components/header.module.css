@@ -15,7 +15,7 @@
 
 .headerlink {
   position: relative;
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--font-color);
   font-family: var(--menu-font) !important;
 }
