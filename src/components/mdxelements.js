@@ -4,7 +4,6 @@ import * as styles from './mdxelements.module.css'
 const MdxElements = {
   hr: () => <hr className={styles.hr} />, 
   li: (props) => <li {...props} className={styles.li} />,
-  link: ({ children, props }) => <a {...props} className={styles.a}>{children}</a>,
   p: ({ children, props }) => <p {...props} className={styles.p}>{children}</p>,
   ol: ({ children, props }) => <ol {...props} className={styles.ol}>{children}</ol>,
   ul: ({ children, props }) => <ul {...props} className={styles.ul}>{children}</ul>,
