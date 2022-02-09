@@ -52,14 +52,14 @@ Let $d_j$ be the due date of job $j$, $p_j$ be the processing time of job $j$, a
 
 Let's say there are several jobs with due dates and their processing times.
 
-|                       |   1   |   2   |   3   |   4   |   5   |
+| Job                   |   1   |   2   |   3   |   4   |   5   |
 | :-------------------- | :---: | :---: | :---: | :---: | :---: |
 | Due Date $d_j$        |   6   |   7   |   8   |   9   |  11   |
 | Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   |
 
 Let's add the completion time needed if we plan to do all the jobs.
 
-|                       |   1   |   2   |   3   |   4   |   5   |
+| Job                   |   1   |   2   |   3   |   4   |   5   |
 | :-------------------- | :---: | :---: | :---: | :---: | :---: |
 | Due Date $d_j$        |   6   |   7   |   8   |   9   |  11   |
 | Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   |
@@ -73,7 +73,7 @@ tasks that require less processing time. Thus, we can maximize the number of job
 
 Solving the probem above with **Moore-Hodgson**, we then have the following table.
 
-|                       |   1   |   2   |   3   |   4   |   5   |               |
+| Job                   |   1   |   2   |   3   |   4   |   5   |               |
 | :-------------------: | :---: | :---: | :---: | :---: | :---: | :-----------: |
 | Due Date $d_j$        |   6   |   7   |   8   |   9   |  11   |               |
 | Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   | Rejected Jobs |
@@ -90,14 +90,14 @@ Let's try another example with more jobs.
 
 ## Problem 2
 
-|                       |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
+| Job                   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
 | :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
 | Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
 
 Adding the completion time, we have the following output.
 
-|                       |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
+| Job                   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
 | :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
 | Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
@@ -110,7 +110,7 @@ Imagine telling your boss that kind of news.
 Let's see how many jobs we can optimize the numbers of jobs that we can deliver on time.
 Solving the probem above with **Moore-Hodgson**, we then have the following table.
 
-|                       |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |               |
+| Job                   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |               |
 | :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :-----------: |
 | Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |               |
 | Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   | Rejected Jobs |
