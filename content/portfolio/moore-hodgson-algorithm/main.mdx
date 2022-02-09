@@ -21,13 +21,34 @@ and pill up the work near the due dates.
 
 I realized the algorithm was not complicated, and I gave it a try to implement it in **golang**.
 
-Before we get started, you should know that this implementation is based on
+You should know that this implementation is based on
 [one of the slides](https://www.win.tue.nl/~wscor/OW/2P450/MooreHodgson.pdf) provided
-in a class called [Sequencing and Scheduling](https://www.win.tue.nl/~wscor/OW/2P450/) from [TU Eindhoven](https://www.tue.nl/en/).
+in a class called [Sequencing and Scheduling](https://www.win.tue.nl/~wscor/OW/2P450/)
+at [TU Eindhoven](https://www.tue.nl/en/).
 
-> lorem ipsum
+Before we get into the coding part, let's see how this algorithm works.
+
+# Algorithm
+
+Let $d_j$ be the due date of job $j$, $p_j$ be the processing time of job $j$, and $C_j$ be the completion time needed to finish the jobs.
+
+1. Sort the jobs by due date in increasing order.
+2. Let **scheduled job** set and the **rejected job** set be empty.
+3. Let the completion time to be $C_j = 0$.
+4. For $j = 1, \ldots, n$ do
+   - Add $j_j$ to the **scheduled job** set.
+   - If $C_j + p_j \leq d_j$,
+     - Add $j_j$ to the **scheduled job** set.
+     - $C_j$ = $C_j + p_j$.
+   - If $C_j + p_j > d_j$,
+     - Find a job with the largest processing time in the **scheduled job** set, and let it be $d_k$.
+     - Remove the job from the **scheduled job** set, and move it to the **rejected job** set.
+     - $C_j$ = $C_j + p_j - d_k$.
+5. Add the jobs in the **rejected job** set to the **scheduled job** set in order of due date.
 
 # Worked Examples
+
+## Problem 1
 
 Let's say there are several jobs with due dates and their processing times.
 
@@ -36,33 +57,81 @@ Let's say there are several jobs with due dates and their processing times.
 | Due Date        |   6   |   7   |   8   |   9   |  11   |
 | Processing Time |   4   |   3   |   2   |   5   |   6   |
 
-We know that we are not going to be able to finish all the jobs on time.
-The question is, **are we going to implement $j_1$ all the way to $j_5$, or do we sacrifice some jobs?**
+Let's add the completion time needed if we plan to do all the jobs.
 
-Say that it's impossible to finish them all, we are going to find the best combination so that we can get
-the most number of jobs done and that's when **Moore-Hodgson** comes into play.
+|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ |
+| :-------------- | :---: | :---: | :---: | :---: | :---: |
+| Due Date        |   6   |   7   |   8   |   9   |  11   |
+| Processing Time |   4   |   3   |   2   |   5   |   6   |
+| Completion Time |   4   |   7   |   9   |  14   |  20   |
 
-# Algorithms
+If we try to go through each job, it takes 20 days finish all tasks.
+Meaning that we can only deliver 2 jobs on time, and 3 jobs late.
 
-Let $d_j$ be the due date of job $j$, $p_j$ be the processing time of job $j$, and $\lambda$ be the sum of days needed to finish the jobs.
+With **Moore-Hodgson**, we can skip over the tasks that require more processing time and include
+tasks that require less processing time. Thus, we can maximize the number of jobs that we can deliver.
 
-1. Sort the jobs by due date in increasing order.
-2. Let **scheduled job** set and the **rejected job** set be empty.
-3. Let the total processing time to be $\lambda = 0$.
-4. For $j = 1, \ldots, n$ do
-   - Add $j_j$ to the **scheduled job** set.
-   - If $\lambda + p_j \leq d_j$,
-     - Add $j_j$ to the **scheduled job** set.
-     - $\lambda$ = $\lambda + p_j$.
-   - If $\lambda + p_j > d_j$,
-     - Find a job with the largest processing time in the **scheduled job** set, and let it be $d_k$.
-     - Remove the job from the **scheduled job** set, and move it to the **rejected job** set.
-     - $\lambda$ = $\lambda + p_j - d_k$.
-5. Add the jobs in **the rejected job** set to the **scheduled job** set in order of due date.
+Solving the probem above with **Moore-Hodgson**, we then have the following table.
+
+|                       | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ |       -       |
+| :-------------------: | :---: | :---: | :---: | :---: | :---: | :-----------: |
+|    Due Date $d_j$     |   6   |   7   |   8   |   9   |  11   |       -       |
+| Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   | Rejected Jobs |
+| Completion Time $C_j$ |   4   |   -   |   -   |   -   |   -   |       -       |
+|                       |   4   |   7   |   -   |   -   |   -   |       -       |
+|                       |   4   |   7   |   9   |   -   |   -   |       -       |
+|                       |   4   |   7   |  \*   |   -   |   -   |     $j_3$     |
+|                       |   4   |   7   |  \*   |  12   |   -   |     $j_3$     |
+|                       |   4   |   7   |  \*   |  \*   |   -   | $j_3$ & $j_4$ |
+|                       |   4   |   7   |  \*   |  \*   |  13   | $j_3$ & $j_4$ |
+|                       |   4   |   7   |  \*   |  \*   |  \*   | $j_3$ & $j_4$ |
+
+Let's try another example with more jobs.
+
+## Problem 2
+
+|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ |
+| :-------------: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|    Due Date     |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
+| Processing Time |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
+
+Adding the completion time, we have the following output.
+
+|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ |
+| :-------------: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|    Due Date     |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
+| Processing Time |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
+| Completion Time |   4   |   5   |  11   |  14   |  20   |  28   |  35   |  45   |
+
+It takes 45 days in order to complete all jobs.
+Meaning that, we can only deliver 2 jobs, and 6 jobs late.
+Imagine telling your boss that kind of news.
+
+Let's see how many jobs we can optimize the numbers of jobs that we can deliver on time.
+Solving the probem above with **Moore-Hodgson**, we then have the following table.
+
+|                       | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ | -             |
+| :-------------------: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | ------------- |
+|    Due Date $d_j$     |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   | -             |
+| Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   | Rejected Jobs |
+| Completion Time $C_j$ |   4   |   -   |   -   |   -   |   -   |   -   |   -   |   -   | -             |
+|                       |   4   |   5   |   -   |   -   |   -   |   -   |   -   |   -   | -             |
+|                       |   4   |   5   |  11   |   -   |   -   |   -   |   -   |   -   | -             |
+|                       |   4   |   5   |  \*   |   -   |   -   |   -   |   -   |   -   | $j_3$         |
+|                       |   4   |   5   |  \*   |   8   |   -   |   -   |   -   |   -   | $j_3$         |
+|                       |   4   |   5   |  \*   |   8   |   -   |   -   |   -   |   -   | $j_3$         |
+|                       |   4   |   5   |  \*   |   8   |  14   |   -   |   -   |   -   | $j_3$         |
+|                       |   4   |   5   |  \*   |   8   |  14   |  22   |   -   |   -   | $j_3$         |
+|                       |   4   |   5   |  \*   |   8   |  14   |  22   |  29   |   -   | $j_3$         |
+|                       |   4   |   5   |  \*   |   8   |  14   |  \*   |  29   |   -   | $j_3$ & $j_6$ |
+|                       |   4   |   5   |  \*   |   8   |  14   |  \*   |  29   |  31   | $j_3$ & $j_6$ |
+
+Hence with the help of the algorithm, we can have 6 jobs delivered on time and 2 jobs late.
+It doesn't sound bad at all.
 
 # Coding
 
-In this project, I will use **golang** to implement the algorithm.
+In this project, We will implement this algorithm in **golang**.
 
 First, we need a job master to deal with all the jobs that we have.
 
@@ -101,21 +170,18 @@ func main() {
         master.AddJob(job[0], job[1])
     }
 
-    master.MoveDuplicates()
     master.AssignJobs()
 
     scheduledJobs := master.scheduledJobs
-    remainingJobs := master.remainingJobs
-    result := make([]Job, len(scheduledJobs)+len(remainingJobs))
+    sort.Sort(Jobs(master.remainingJobs))
 
-    copy(result, scheduledJobs)
+    endResult := append(scheduledJobs, master.remainingJobs...)
 
-    for _, job := range remainingJobs {
-        result = append(result, job)
-    }
-
-    fmt.Println(scheduledJobs)
-    fmt.Println(remainingJobs)
-    fmt.Println(result)
+	fmt.Println("Scheduled jobs are", master.scheduledJobs)
+	fmt.Println("Remaining jobs are", master.remainingJobs)
+	fmt.Println("All the scheduled jobs are", endResult)
 }
 ```
+
+As soon as a job is seen by the job master, a unique ID is assigned to it.
+This process is done in line 11-13.
