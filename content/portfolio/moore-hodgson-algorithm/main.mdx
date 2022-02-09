@@ -39,7 +39,7 @@ Let $d_j$ be the due date of job $j$, $p_j$ be the processing time of job $j$, a
    - Add $j_j$ to the **scheduled job** set.
    - If $C_j + p_j \leq d_j$,
      - $C_j$ = $C_j + p_j$.
-   - If $C_j + p_j > d_j$,
+   - Else
      - Find a job with the largest processing time in the **scheduled job** set, and let it be $d_k$.
      - Remove the job from the **scheduled job** set, and move it to the **rejected job** set.
      - $C_j$ = $C_j + p_j - d_k$.
@@ -132,15 +132,15 @@ It doesn't sound bad at all.
 
 # Coding
 
-In this project, We will implement this algorithm in **golang**.
+In this project, we will implement this algorithm in **golang**.
 
-First, we need a job master to deal with all the jobs that we have.
+First, we need a job master to orchestrate all the jobs it's seen.
 
 ```go
 type JobMaster struct {
 	initialJobs   []Job
 	scheduledJobs []Job
-	remainingJobs []Job
+	rejectedJobs []Job
 	lastJobID     int
 }
 
@@ -151,38 +151,77 @@ type Job struct {
 }
 ```
 
-The job master's responsibility is to keep track of all jobs and to provide each job with a unique ID as soon as it's added in the list.
-
 I have two arrays to store jobs. `scheduledJobs` is where we store the jobs that we intend to do,
-and `remainingJobs` is a list of jobs that we have to sacrifice.
+and `rejectedJobs` is a list of jobs that we have to sacrifice.
 
-```go{11-13}
+```go{4-8, numberLines}
 func main() {
-    var master JobMaster
-    jobs := [][]int{
-        {6, 4},
-        {7, 3},
-        {8, 2},
-        {9, 5},
-        {11, 6},
-    }
+  var master JobMaster
+  jobs := [][]int{
+      {6, 4},
+      {7, 3},
+      {8, 2},
+      {9, 5},
+      {11, 6},
+  }
 
-    for _, job := range jobs {
-        master.AddJob(job[0], job[1])
-    }
+  for _, job := range jobs {
+      master.AddJob(job[0], job[1])
+  }
 
-    master.AssignJobs()
+  master.AssignJobs()
 
-    scheduledJobs := master.scheduledJobs
-    sort.Sort(Jobs(master.remainingJobs))
+  scheduledJobs := master.scheduledJobs
+  sort.Sort(Jobs(master.rejectedJobs))
 
-    endResult := append(scheduledJobs, master.remainingJobs...)
+  endResult := append(scheduledJobs, master.rejectedJobs...)
 
-	fmt.Println("Scheduled jobs are", master.scheduledJobs)
-	fmt.Println("Remaining jobs are", master.remainingJobs)
-	fmt.Println("All the scheduled jobs are", endResult)
+  fmt.Println("Scheduled jobs are", master.scheduledJobs)
+  fmt.Println("Remaining jobs are", master.rejectedJobs)
+  fmt.Println("All the scheduled jobs are", endResult)
 }
 ```
 
-As soon as a job is seen by the job master, a unique ID is assigned to it.
-This process is done in line 11-13.
+From line 4 to 8, it is a list of jobs that we intend to optimize. The first column indicates the due date, and while the second is the processing time.
+
+Once a job is added, the job master will immediately assign the job with a unique ID in order to avoid duplicate jobs.
+
+After all jobs are added, the list of jobs will be passed to a function called `AssignJobs()` which returns a list of scheduled jobs.
+This function is the implementation of **Moore-Hodgson** algorithm.
+
+```go
+func (self *JobMaster) AssignJobs() []Job {
+  // Sort jobs in increasing manner of due date
+  sortedJobs := self.initialJobs
+  sort.Sort(Jobs(sortedJobs))
+
+  var totalCompletionTime int = 0
+
+  // Iterate over jobs and append a job accordingly
+  for _, job := range sortedJobs {
+    self.scheduledJobs = append(self.scheduledJobs, job)
+    if totalCompletionTime+job.processingTime <= job.dueDate {
+      totalCompletionTime += job.processingTime
+    } else {
+      var threshold = math.MinInt
+      var deleteIndex int
+      for index, job := range self.scheduledJobs {
+        if job.processingTime > threshold {
+          deleteIndex = index
+        }
+      }
+
+      // remove the job with the largest 
+      // processing time from schedulerJobs
+      // and move it to remainingJobs
+      for _, job := range self.scheduledJobs {
+        if job.id == deleteIndex+1 { // +1 because the job id starts from 1
+          self.remainingJobs = append(self.remainingJobs, job)
+          self.scheduledJobs = append(self.scheduledJobs[:deleteIndex], self.scheduledJobs[deleteIndex+1:]...)
+        }
+      }
+    }
+  }
+  return self.scheduledJobs
+}
+```
