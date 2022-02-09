@@ -52,18 +52,18 @@ Let $d_j$ be the due date of job $j$, $p_j$ be the processing time of job $j$, a
 
 Let's say there are several jobs with due dates and their processing times.
 
-|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ |
-| :-------------- | :---: | :---: | :---: | :---: | :---: |
-| Due Date        |   6   |   7   |   8   |   9   |  11   |
-| Processing Time |   4   |   3   |   2   |   5   |   6   |
+|                       |   1   |   2   |   3   |   4   |   5   |
+| :-------------------- | :---: | :---: | :---: | :---: | :---: |
+| Due Date $d_j$        |   6   |   7   |   8   |   9   |  11   |
+| Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   |
 
 Let's add the completion time needed if we plan to do all the jobs.
 
-|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ |
-| :-------------- | :---: | :---: | :---: | :---: | :---: |
-| Due Date        |   6   |   7   |   8   |   9   |  11   |
-| Processing Time |   4   |   3   |   2   |   5   |   6   |
-| Completion Time |   4   |   7   |   9   |  14   |  20   |
+|                       |   1   |   2   |   3   |   4   |   5   |
+| :-------------------- | :---: | :---: | :---: | :---: | :---: |
+| Due Date $d_j$        |   6   |   7   |   8   |   9   |  11   |
+| Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   |
+| Completion Time $C_j$ |   4   |   7   |   9   |  14   |  20   |
 
 If we try to go through each job, it takes 20 days finish all tasks.
 Meaning that we can only deliver 2 jobs on time, and 3 jobs late.
@@ -73,9 +73,9 @@ tasks that require less processing time. Thus, we can maximize the number of job
 
 Solving the probem above with **Moore-Hodgson**, we then have the following table.
 
-|                       | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ |               |
+|                       |   1   |   2   |   3   |   4   |   5   |               |
 | :-------------------: | :---: | :---: | :---: | :---: | :---: | :-----------: |
-|    Due Date $d_j$     |   6   |   7   |   8   |   9   |  11   |               |
+| Due Date $d_j$        |   6   |   7   |   8   |   9   |  11   |               |
 | Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   | Rejected Jobs |
 | Completion Time $C_j$ |   4   |   -   |   -   |   -   |   -   |       -       |
 |                       |   4   |   7   |   -   |   -   |   -   |       -       |
@@ -90,18 +90,18 @@ Let's try another example with more jobs.
 
 ## Problem 2
 
-|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ |
-| :-------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Due Date        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
-| Processing Time |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
+|                       |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
+| :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
+| Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
 
 Adding the completion time, we have the following output.
 
-|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ |
-| :-------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Due Date        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
-| Processing Time |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
-| Completion Time |   4   |   5   |  11   |  14   |  20   |  28   |  35   |  45   |
+|                       |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
+| :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
+| Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
+| Completion Time $C_j$ |   4   |   5   |  11   |  14   |  20   |  28   |  35   |  45   |
 
 It takes 45 days in order to complete all jobs.
 Meaning that, we can only deliver 2 jobs, and 6 jobs late.
@@ -110,7 +110,7 @@ Imagine telling your boss that kind of news.
 Let's see how many jobs we can optimize the numbers of jobs that we can deliver on time.
 Solving the probem above with **Moore-Hodgson**, we then have the following table.
 
-|                       | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ |               |
+|                       |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |               |
 | :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :-----------: |
 | Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |               |
 | Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   | Rejected Jobs |
