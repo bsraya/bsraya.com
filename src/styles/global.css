@@ -1,14 +1,28 @@
 @font-face {
-  font-family: 'Stratos';
-  src: url('../fonts/stratos.woff2') format('woff2'),
-    url('../fonts/stratos.woff') format('woff');
+  font-family: 'Stratos Light';
+  src: url('../fonts/Stratos-Light.woff2') format('woff2'),
+    url('../fonts/Stratos-Light.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Stratos Regular';
+  src: url('../fonts/Stratos-Regular.woff2') format('woff2'),
+    url('../fonts/Stratos-Regular.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Share';
-  src: url('../fonts/share.woff2') format('woff2'),
-    url('../fonts/share.woff') format('woff');
+  src: url('../fonts/Share-Regular.woff2') format('woff2'),
+    url('../fonts/Share-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blimone';
+  src: url('../fonts/Blimone-Medium.woff2') format('woff2'),
+    url('../fonts/Blimone-Medium.woff') format('woff');
   font-display: swap;
 }
 
@@ -40,12 +54,18 @@ body {
   --important-color: #0000bf;
   --bold-color: #ff4040;
   --filter: opacity(1) contrast(1);
+  --main-font: 'Stratos Light', -apple-system, BlinkMacSystem, 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
+  --menu-font: 'Stratos Regular', -apple-system, BlinkMacSystem,
+    'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --header-font: 'Blimone', -apple-system, BlinkMacSystem, 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
 
   margin: 0;
   height: 100%;
   background: var(--background-color);
   color: var(--font-color);
-  font-family: 'Stratos', sans-serif;
+  font-family: var(--main-font);
   text-rendering: optimizeLegibility;
   filter: var(--filter);
   -webkit-font-smoothing: antialiased;
@@ -74,10 +94,11 @@ main {
 
 a {
   color: var(--important-color);
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 img {
@@ -92,36 +113,13 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--header-font) !important;
   font-weight: bold;
   color: var(--header-color);
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
   font-family: 'Stratos', sans-serif;
-}
-
-h1 {
-  font-size: 1.85rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-}
-
-h3 {
-  font-size: 1.65rem;
-}
-
-h4 {
-  font-size: 1.55rem;
-}
-
-h5 {
-  font-size: 1.45rem;
-}
-
-h6 {
-  font-size: 1.35rem;
 }
 
 /* images */
@@ -212,39 +210,10 @@ td {
 @media (max-width: 768px) {
   main {
     padding: 0.5rem;
+    font-size: 0.8rem !important;
   }
   table,
   div.math {
     overflow-x: auto;
-  }
-}
-
-@media (min-width: 768px) {
-  .author {
-    font-size: 2.5rem;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  h2 {
-    font-size: 2.1rem;
-  }
-
-  h3 {
-    font-size: 2rem;
-  }
-
-  h4 {
-    font-size: 1.9rem;
-  }
-
-  h5 {
-    font-size: 1.8rem;
-  }
-
-  h6 {
-    font-size: 1.7rem;
   }
 }

@@ -7,62 +7,62 @@ description: 'An attempt to minimize the number of late jobs in a single machine
 tags: ['Golang', 'Scheduling']
 ---
 
-I am currently working on a project that schedules deep learning models into multiple GPUs,
-and I have to read a lot of scheduling related materials.
-
-One time I found a book called __Handbook of Scheduling: Algorithms, Models, and Performance Analysis__, 
+I found this algorithm on a book called **Handbook of Scheduling: Algorithms, Models, and Performance Analysis**,
 written by James H. Anderson and Joseph Y-T. Leung, which was originally published in 2004.
 
-In the book, I found several algorithms that are suitable for my experiment such as __Kuhn-Munkres__ 
-and __Branch-and-Bound__ algorithms.
+In the book, I found several algorithms that are suitable for my experiment such as **Kuhn-Munkres**
+and **Branch-and-Bound** algorithms.
 
-While reading, I stumbled upon an algorithm called __Moore-Hodgson__ which helps us minimize the number 
-of late jobs given we have too many things to do. 
+While reading, I stumbled upon an algorithm called **Moore-Hodgson** which helps us minimize the number
+of late jobs given we have too many things to do.
 
 That algorithm reminds me of my experience in the undergraduate program where most students procrastinate
-and pill up the work near the due dates. 
+and pill up the work near the due dates.
 
-I realized the algorithm was not complicated, and I gave it a try to implement it in __golang__. 
+I realized the algorithm was not complicated, and I gave it a try to implement it in **golang**.
 
-Before we get started, you should know that this implementation is based on 
-[one of the slides](https://www.win.tue.nl/~wscor/OW/2P450/MooreHodgson.pdf) provided 
+Before we get started, you should know that this implementation is based on
+[one of the slides](https://www.win.tue.nl/~wscor/OW/2P450/MooreHodgson.pdf) provided
 in a class called [Sequencing and Scheduling](https://www.win.tue.nl/~wscor/OW/2P450/) from [TU Eindhoven](https://www.tue.nl/en/).
 
-# Problem Statement
+> lorem ipsum
+
+# Worked Examples
 
 Let's say there are several jobs with due dates and their processing times.
 
-|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | 
-|:----------------|:-----:|:-----:|:-----:|:-----:|:-----:|
+|                 | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ |
+| :-------------- | :---: | :---: | :---: | :---: | :---: |
 | Due Date        |   6   |   7   |   8   |   9   |  11   |
 | Processing Time |   4   |   3   |   2   |   5   |   6   |
 
-We know that we are not going to be able to finish all the jobs on time. 
-The question is, __are we going to implement $j_1$ all the way to $j_5$, or do we sacrifice some jobs?__
+We know that we are not going to be able to finish all the jobs on time.
+The question is, **are we going to implement $j_1$ all the way to $j_5$, or do we sacrifice some jobs?**
 
 Say that it's impossible to finish them all, we are going to find the best combination so that we can get
-the most number of jobs done and that's when __Moore-Hodgson__ comes into play.
+the most number of jobs done and that's when **Moore-Hodgson** comes into play.
 
 # Algorithms
 
 Let $d_j$ be the due date of job $j$, $p_j$ be the processing time of job $j$, and $\lambda$ be the sum of days needed to finish the jobs.
 
 1. Sort the jobs by due date in increasing order.
-2. Let a set  __scheduled job__ be empty and $\lambda$ be 0.
-3. For $j = 1, \ldots, n$ do
-    * If $\lambda + p_j \leq d_j$,
-        * Add $j_j$ to the __scheduled job__ set.
-        * $\lambda$ = $\lambda + p_j$.
-    * If $\lambda + p_j > d_j$,
-        * Add $j_j$ to the __scheduled job__ set.
-        * Find a job with the largest processing time in the __scheduled job__ set.
-        * Remove it from the __scheduled job__ set.
-        * $\lambda$ = $\lambda + p_j - d_j$.
-4. Add the unscheduled jobs to the __scheduled job__ set in order of due date.
+2. Let **scheduled job** set and the **rejected job** set be empty.
+3. Let the total processing time to be $\lambda = 0$.
+4. For $j = 1, \ldots, n$ do
+   - Add $j_j$ to the **scheduled job** set.
+   - If $\lambda + p_j \leq d_j$,
+     - Add $j_j$ to the **scheduled job** set.
+     - $\lambda$ = $\lambda + p_j$.
+   - If $\lambda + p_j > d_j$,
+     - Find a job with the largest processing time in the **scheduled job** set, and let it be $d_k$.
+     - Remove the job from the **scheduled job** set, and move it to the **rejected job** set.
+     - $\lambda$ = $\lambda + p_j - d_k$.
+5. Add the jobs in **the rejected job** set to the **scheduled job** set in order of due date.
 
-# Coding 
+# Coding
 
-In this project, I will use __golang__ to implement the algorithm.
+In this project, I will use **golang** to implement the algorithm.
 
 First, we need a job master to deal with all the jobs that we have.
 
@@ -83,7 +83,7 @@ type Job struct {
 
 The job master's responsibility is to keep track of all jobs and to provide each job with a unique ID as soon as it's added in the list.
 
-I have two arrays to store jobs. `scheduledJobs` is where we store the jobs that we intend to do, 
+I have two arrays to store jobs. `scheduledJobs` is where we store the jobs that we intend to do,
 and `remainingJobs` is a list of jobs that we have to sacrifice.
 
 ```go{11-13}
@@ -109,7 +109,7 @@ func main() {
     result := make([]Job, len(scheduledJobs)+len(remainingJobs))
 
     copy(result, scheduledJobs)
-    
+
     for _, job := range remainingJobs {
         result = append(result, job)
     }

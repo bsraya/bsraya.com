@@ -9,7 +9,7 @@ export default function Portfolio({data}) {
     return (
         <Layout>
             <Seo title="Portfolio" type="website" slug="/portfolio/" />
-            <h5>Portfolios</h5>
+            <h2>Portfolios</h2>
             <Posts metadata={data} />
         </Layout>
     )

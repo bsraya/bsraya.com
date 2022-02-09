@@ -30,6 +30,9 @@ module.exports = {
       },
     ],
   },
+  flags: {
+    FAST_DEV: true,
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -147,7 +150,7 @@ module.exports = {
               titleFontSize: 105,
               fontColor: `#fff1d0`,
               background: require.resolve(`${__dirname}/content/assets/base.png`),
-              fontStlye: require.resolve(`${__dirname}/src/fonts/share.woff2`),
+              fontStlye: require.resolve(`${__dirname}/src/fonts/Share-Regular.woff2`),
             },
           },
           {
@@ -210,7 +213,7 @@ module.exports = {
               fontColor: `#fff1d0`,
               titleFontSize: 105,
               subtitleFontSize: 60,
-              fontStyle: require.resolve(`${__dirname}/src/fonts/stratos.woff2`),
+              fontStyle: require.resolve(`${__dirname}/src/fonts/Stratos-Light.woff2`),
             },
           },
         ],

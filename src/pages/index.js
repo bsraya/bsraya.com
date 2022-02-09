@@ -9,7 +9,7 @@ export default function Blog({ data }) {
     return (
         <Layout>
             <Seo title="Home" type="website" slug="/" />
-            <h5>Blogposts</h5>
+            <h2>Blogposts</h2>
             <Posts metadata={data} />
         </Layout>
     )
