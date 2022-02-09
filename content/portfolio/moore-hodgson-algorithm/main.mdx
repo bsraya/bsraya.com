@@ -38,7 +38,6 @@ Let $d_j$ be the due date of job $j$, $p_j$ be the processing time of job $j$, a
 4. For $j = 1, \ldots, n$ do
    - Add $j_j$ to the **scheduled job** set.
    - If $C_j + p_j \leq d_j$,
-     - Add $j_j$ to the **scheduled job** set.
      - $C_j$ = $C_j + p_j$.
    - If $C_j + p_j > d_j$,
      - Find a job with the largest processing time in the **scheduled job** set, and let it be $d_k$.
@@ -65,7 +64,9 @@ Let's add the completion time needed if we plan to do all the jobs.
 | Processing Time $p_j$ |   4   |   3   |   2   |   5   |   6   |
 | Completion Time $C_j$ |   4   |   7   |   9   |  14   |  20   |
 
-If we try to go through each job, it takes 20 days finish all tasks.
+From the table, we can see that the completion time needed to finish job 1 and job 2 is $4+3=7$.
+
+Hence the total completion time for those 5 jobs requires 20 days.
 Meaning that we can only deliver 2 jobs on time, and 3 jobs late.
 
 With **Moore-Hodgson**, we can skip over the tasks that require more processing time and include
@@ -90,14 +91,14 @@ Let's try another example with more jobs.
 
 ## Problem 2
 
-| Job                   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
+|                       | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ | 
 | :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
 | Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
 
 Adding the completion time, we have the following output.
 
-| Job                   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
+|                       | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ | 
 | :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |
 | Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   |
@@ -110,7 +111,7 @@ Imagine telling your boss that kind of news.
 Let's see how many jobs we can optimize the numbers of jobs that we can deliver on time.
 Solving the probem above with **Moore-Hodgson**, we then have the following table.
 
-| Job                   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |               |
+|                       | $j_1$ | $j_2$ | $j_3$ | $j_4$ | $j_5$ | $j_6$ | $j_7$ | $j_8$ |               |
 | :-------------------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :-----------: |
 | Due Date $d_j$        |   6   |   8   |   9   |  11   |  20   |  25   |  28   |  35   |               |
 | Processing Time $p_j$ |   4   |   1   |   6   |   3   |   6   |   8   |   7   |  10   | Rejected Jobs |
