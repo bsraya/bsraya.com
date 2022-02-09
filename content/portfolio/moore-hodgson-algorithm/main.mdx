@@ -187,7 +187,7 @@ From line 4 to 8, it is a list of jobs that we intend to optimize. The first col
 Once a job is added, the job master will immediately assign the job with a unique ID in order to avoid duplicate jobs.
 
 After all jobs are added, the list of jobs will be passed to a function called `AssignJobs()` which returns a list of scheduled jobs.
-This function is the implementation of **Moore-Hodgson** algorithm.
+This following function is the implementation of **Moore-Hodgson** algorithm.
 
 ```go
 func (self *JobMaster) AssignJobs() []Job {
@@ -216,7 +216,7 @@ func (self *JobMaster) AssignJobs() []Job {
       // and move it to remainingJobs
       for _, job := range self.scheduledJobs {
         if job.id == deleteIndex+1 { // +1 because the job id starts from 1
-          self.remainingJobs = append(self.remainingJobs, job)
+          self.rejectedJobs = append(self.remainingJobs, job)
           self.scheduledJobs = append(self.scheduledJobs[:deleteIndex], self.scheduledJobs[deleteIndex+1:]...)
         }
       }
@@ -225,3 +225,6 @@ func (self *JobMaster) AssignJobs() []Job {
   return self.scheduledJobs
 }
 ```
+
+After assigning the jobs, we will have a list of scheduled jobs and rejected jobs. 
+Before we append the rejected jobs to the scheduled jobs, we have to sort them in order to make sure that the jobs are in the correct order shown in line 18 in the driver function.
