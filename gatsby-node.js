@@ -84,3 +84,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
   })
 }
+
+exports.onCreateWebpackConfig = ({ actions }) => { 
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        fs: false
+      }
+    }
+  })
+}
