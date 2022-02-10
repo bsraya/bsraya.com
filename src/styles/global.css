@@ -217,9 +217,8 @@ td {
   td,
   th,
   body,
-  code,
-  code.grvsc-code {
-    font-size: 0.8rem !important;
+  code {
+    font-size: 0.7rem !important;
   }
 
   .inlineMath,
