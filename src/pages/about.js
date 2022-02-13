@@ -7,7 +7,7 @@ import Introduction from "../components/introduction"
 export default function About({ data }) {
   return (
     <Layout>
-      <Seo title="About" type="website" slug="/about/" />
+      <Seo title="About" type="about" slug="/about/" />
       <Introduction
         author={data.site.siteMetadata.author}
         email={data.site.siteMetadata.email}

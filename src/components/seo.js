@@ -24,9 +24,10 @@ function SEO({ meta, title, description, slug, lang, type }) {
             query = {query}
             render = {data => {
                 const { siteMetadata } = data.site;
-                const metaDescription = description || siteMetadata.description;
+                const metaDescription = description ? description : siteMetadata.description
                 const defaultTitle = data.site.siteMetadata?.title;
                 const keywords = siteMetadata.keywords;
+
                 return(
                     <Helmet
                         htmlAttributes = {{lang, }}
@@ -119,6 +120,7 @@ SEO.defaultProps = {
     meta: [],
     title: '',
     slug: '',
+    description: ``,
 };
 
 SEO.propTypes = {

@@ -15,6 +15,7 @@ export default function portfolioTemplate({ data }) {
         title={data.mdx.frontmatter.title}
         slug={data.mdx.fields.slug}
         type={data.mdx.frontmatter.type}
+        description={data.mdx.frontmatter.description}
       />
       <article itemScope itemType="http://schema.org/Post">
         <div className={styles.container}>
@@ -48,8 +49,9 @@ export const pageQuery = graphql`
       frontmatter {
         type
         title
-        date(formatString: "MMMM DD, YYYY")
         tags
+        description
+        date(formatString: "MMMM DD, YYYY")
       }
     }
   }
