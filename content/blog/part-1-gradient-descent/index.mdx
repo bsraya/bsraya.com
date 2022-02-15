@@ -199,18 +199,18 @@ $$
 Since the $2$ is removed, 
 
 $$
-    \begin{align}
+    \begin{aligned}
         \frac{\partial}{\partial \Theta_0} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
         \frac{\partial}{\partial \Theta_1} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
-    \end{align}
+    \end{aligned}
 $$
 
 Pluggin each of the equation above into the update rule with respect to those coefficients, we get
 $$
-    \begin{align}
+    \begin{aligned}
         \Theta_{0} = \Theta_0 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
         \Theta_{1} = \Theta_1 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
-    \end{align}
+    \end{aligned}
 $$
 
 The two equations above will help us to approximate the minimum value of the cost function by updating $\Theta_{0}$ and $\Theta_{1}$ over time.
@@ -284,7 +284,7 @@ $$
     y = -3.200215 + 0.75291757 \cdot x
 $$
 
-where most data points are located near it.
+which most data points are located near it.
 
 ![The iris dataset regression line with Scikit](./scikit-lr.png)
 
