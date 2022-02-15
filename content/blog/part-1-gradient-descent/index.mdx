@@ -18,6 +18,69 @@ This is part 1 of the series on Gradient Descent.
     Part 3: Stochastic Gradient Descent
   </Link>
 
+# Introduction
+
+First of all, let's get a bit familiar with the concept of a gradient line.
+
+I am sure most of you reading this post right now are familiar with the following graph,
+and we have been using it in high school or college to find the distance between two points in 2D coordinates.
+
+![Linear Regression Line](./lr.png)
+
+Looking at this graph, especially the equation, left us wondering and ask "when is the time to apply this equation in real life problems?"
+
+Let's say that we have an `iris` dataset from `sklearn`. Plotting it will give us the following visualization.
+
+![Iris Dataset Scatter Plot](./iris_scatter.png)
+
+Clearly, we can see that there are two features involved in the classification: `sepal_length` and `petal_width`.
+
+From these two features, you want to see their correlations whether they are correlated or inversely correlated.
+
+`sepal_length` and `petal_width` are said to be correlated when `sepal_length` increases, the `petal_length` increases.
+Conversely, `sepal_length` and `petal_width` are said to be inversely correlated when `sepal_length` increases, the `petal_width` decreases.
+
+![Positively Correlated Regression Line](./positively-correlated.png)
+
+![Inversely Correlated Regression Line](./inversely-correlated.png)
+
+With the regression line, it can help us to predict a $y$ value given a $x$ value.
+However, most predictions made by the regression line is not always accurate like in the graph below.
+
+![Most data points are far from the regression line](./far.png)
+
+With the green line, which is our regression line, when we have $x = 0$ then $y = -3$. 
+In reality, when $x = 0$, $y$ should be $0.5$. 
+Meaning that our regression line is very bad at prediction.
+
+We can also use Mean Squared Error (MSE) to measure the quality of our regression line.
+Mean Squared Error is the sum of the squared difference from the regression line to the actual value.
+
+$$
+    \text{MSE} = \sum_{i=1}^N (\hat{y}_i - y_i)^2
+$$
+
+The larger the MSE, the worse the regression line. In this example, we will have a large MSE since most data points are far from the regression line.
+
+Let's see another example where the data points are close to the regression line.
+
+![Most data points are close from the regression line](./close.png)
+
+In this example, we can see that our regression line can predict the value of $y$ accurately at two $x$ values, namely at $0$ and $1.5$.
+Clearly, the MSE of our regression line is very small compared to the previous one.
+
+The question is, how can we find the best regression line? We know that the equation for the regression line is $y = b + mx$ or can be written as $y = b_0 + b_1 \times x$. 
+
+One way, we can find the $b_0$ and $b-1$ values manually by mere guessing.
+However, it is going to take a significant amount of time.
+
+Another way is that we can use Calculus to help us to find the best values for $b_0$ and $b_1$ by updating those two values after each iteration.
+
+# Mathematics of Gradient Descent
+
+Remember that we want to have a regression line that is located as closer to most data points as possible. 
+Meaning that we want to minimize the MSE value.
+
 There are several equations that we need to familiar with before working on these implementations,
 namely: **Mean Squared Error**, **the regression line equation**, and **the parameter update equation**.
 
@@ -28,9 +91,11 @@ $$
     \text{MSE} = \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
 $$
 
-The equation above is the cost function for Gradient Descent that we want to minimize.
+The equation above is the MSE equation or the cost function for the Gradient Descent algorithm that we want to minimize.
+
 The equation means the sum of the distances of the predictions from the regression line.
 The distances are the errors. The further the data are from the regression line, the larger the cost function value, and vice versa.
+
 The cost function is denoted as $J(\Theta_0, \Theta_1)$ where
 
 $$
@@ -40,21 +105,14 @@ $$
 Second, it's **regression line equation**, and it goes like
 
 $$
-    y = a_0 + a_1 \cdot x_1
+    y = b_0 + b_1 \cdot x
 $$
 
-where $a_0$ is the intercept and $a_1$ is the first coefficient. Most people know this equation as
+where $y$ is the prediction, $b_0$ is the intercept and $b_1$ is the first coefficient. 
 
-$$
-    y = mx + b
-$$
+You can think the intercept is where the point starts, and the first coefficient determines the steepness and the direction of the line.
 
-where $y$ is the prediction, $m$ is the first coefficient and $b$ is the intercept.
-If we plot the equation above, it's going to look like the figure below.
-
-![Linear Regression Line](./lr.png)
-
-Last, **the parameter update equation**. In this example, the intercept and the first coefficient are the parameters that we want to update over time.
+Last, **the parameter update equation**. In this example, $b_0$ and $b_1$ are the parameters that we want to update over time.
 
 $$
 \Theta_{i} = \Theta_i - \alpha \cdot \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
@@ -62,27 +120,99 @@ $$
 
 where
 
-1. $\Theta_{i}$ is the weight
+1. $\Theta_{i}$ is the coefficients we want to update
 2. $\alpha$ is the learning rate
 3. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
+
+From this point, $b_0$ will be written as $\Theta_0$ and $b_1$ as $\Theta_1$.
+
+Let's express everything we want as mathematical expressions.
+
+The cost function
+$$
+    \begin{aligned}
+    J(\Theta_0, \Theta_1) 
+    &= \frac{1}{N} \sum_{i=1}^N (f(x) - y_i)^2  \\
+    &= \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2 \\
+    &= \frac{1}{N} \sum_{i=1}^N (\Theta_0 + \Theta_1 x - y_i)^2
+    \end{aligned}
+$$
+
+The objective function
+$$
+    \min_{\Theta_0, \Theta_1} J(\Theta_0, \Theta_1)
+$$
+
+The update rules
+$$
+    \Theta_{i} = \Theta_i - \alpha \cdot \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
+$$
+
+Bear with me! This is going to involve a lot of Maths, especially Calculus.
 
 Let's simplify the partial derivation in the equation above
 
 $$
-    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) = \frac{\partial}{\partial \Theta_i} \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
+\begin{aligned}
+    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) 
+    &= \frac{\partial}{\partial \Theta_i} (\frac{1}{N} \sum_{i=1}^N (f(x) - y_i)^2) \\
+    &= \frac{1}{N} \frac{\partial}{\partial \Theta_i} \sum_{i=1}^N (f(x) - y_i)^2
+\end{aligned}
 $$
 
-Solving the partial derivation above, we then have
+Solving the equality above with Power Rule, we then have
+$$
+    \begin{aligned}
+        \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) 
+        &= \frac{1}{N} \sum_{i=1}^N 2(f(x) - y_i) \frac{\partial}{\partial \Theta_i} (f(x) - y_i) \\
+        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_i} (f(x) - y_i) \\
+    \end{aligned}
+$$
+
+Since we want to update the $\Theta_0$ and $\Theta_1$ coefficients, we need to find the partial derivative of the cost function with respect to those coefficients.
 
 $$
-    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) = \frac{1}{N} (\hat{y}_i - y_i) \cdot x_i
+    \begin{aligned}
+        \frac{\partial}{\partial \Theta_0} J(\Theta_0, \Theta_1) 
+        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_0} (f(x) - y_i) \\
+        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_0} (\Theta_0 + \Theta_1 x - y_i) \\
+        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i)
+    \end{aligned}
 $$
 
-Plugging the result back to the original function, we have
+$$
+    \begin{aligned}
+        \frac{\partial}{\partial \Theta_1} J(\Theta_0, \Theta_1) 
+        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_1} (f(x) - y_i) \\
+        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_1} (\Theta_0 + \Theta_1 x - y_i) \\
+        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) x
+    \end{aligned}
+$$
+
+We can also remove the $2$ from the two equations above by multiplying the cost function, in this case the MSE equation, by $\frac{1}{2}$.
+Multiplying the cost function with a scalar will not affect its minimum value.
 
 $$
-\Theta_{i} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \cdot x_i
+    J(\Theta_0, \Theta_1) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
 $$
+
+Since the $2$ is removed, 
+
+$$
+    \frac{\partial}{\partial \Theta_0} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
+    \frac{\partial}{\partial \Theta_1} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
+$$
+
+Pluggin each of the equation above into the update rule with respect to those coefficients, we get
+$$
+    \Theta_{0} = \Theta_0 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
+    \Theta_{1} = \Theta_1 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
+$$
+
+The two equations above will help us to approximate the minimum value of the cost function by updating $\Theta_{0}$ and $\Theta_{1}$ over time.
+Now, let's translate those two equations above into Python code.
+
+# Implementing Gradient Descent
 
 Before we start with the implemetations, we should first import the iris dataset from `sklearn`.
 
@@ -189,10 +319,10 @@ def gd(x, y, epochs, df, alpha = 0.01):
     for epoch in range(epochs):
         sum_error = 0.0
         predictions = predict(intercept, coefficient, x)
-        b0_error = (1/length) * np.sum(predictions - y)
-        b1_error = (1/length) * np.sum((predictions - y) * x)
-        intercept = intercept - alpha * b0_error
-        coefficient = coefficient - alpha * b1_error
+        b0 = (1/length) * np.sum(predictions - y)
+        b1 = (1/length) * np.sum((predictions - y) * x)
+        intercept = intercept - alpha * b0
+        coefficient = coefficient - alpha * b1
         sum_error = sum_error + np.sum((predictions - y) ** 2) / (2 * length)
         df.loc[epoch] = [intercept, coefficient, sum_error]
     return df

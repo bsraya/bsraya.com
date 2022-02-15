@@ -190,6 +190,10 @@ span.grvsc-line-number {
 }
 
 /* Markdown elements */
+code {
+  white-space: nowrap;
+}
+
 blockquote {
   background: inherit;
   border-left: 0.5rem solid #696969;
