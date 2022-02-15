@@ -52,16 +52,11 @@ However, most predictions made by the regression line is not always accurate lik
 
 ![Most data points are far from the regression line](./far.png)
 
-With the green line, which is our regression line, when we have $x = 0$ then $y = -3$. 
-In reality, when $x = 0$, $y$ should be $0.5$. 
-Meaning that our regression line is very bad at prediction.
+With the green line, which is our regression line, see $x = 0$ then it predicts $y = -3$. 
+In reality, when $x = 0$, $y$ should be $0.5$. Meaning that our regression line is very bad at prediction.
 
 We can also use Mean Squared Error (MSE) to measure the quality of our regression line.
 Mean Squared Error is the sum of the squared difference from the regression line to the actual value.
-
-$$
-    \text{MSE} = \sum_{i=1}^N (\hat{y}_i - y_i)^2
-$$
 
 The larger the MSE, the worse the regression line. In this example, we will have a large MSE since most data points are far from the regression line.
 
@@ -74,7 +69,7 @@ Clearly, the MSE of our regression line is very small compared to the previous o
 
 The question is, how can we find the best regression line? We know that the equation for the regression line is $y = b + mx$ or can be written as $y = b_0 + b_1 \times x$. 
 
-One way, we can find the $b_0$ and $b-1$ values manually by mere guessing.
+One way, we can find the best values for $b_0$ and $b-1$ by mere guessing.
 However, it is going to take a significant amount of time.
 
 Another way is that we can use Calculus to help us to find the best values for $b_0$ and $b_1$ by updating those two values after each iteration.
@@ -84,61 +79,13 @@ Another way is that we can use Calculus to help us to find the best values for $
 Remember that we want to have a regression line that is located as closer to most data points as possible. 
 Meaning that we want to minimize the MSE value.
 
-There are several equations that we need to familiar with before working on these implementations,
-namely: **Mean Squared Error**, **the regression line equation**, and **the parameter update equation**.
-
-First, it's **Mean Squared Error** (MSE) which is the cost function we are going to minimize.
-Let $y$ be the actual label, and $\hat{y}$ be the prediction label.
-
-$$
-    \text{MSE} = \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
-$$
-
-The equation above is the MSE equation or the cost function for the Gradient Descent algorithm that we want to minimize.
-
-The equation means the sum of the distances of the predictions from the regression line.
-The distances are the errors. The further the data are from the regression line, the larger the cost function value, and vice versa.
-
-The cost function is denoted as $J(\Theta_0, \Theta_1)$ where
-
-$$
-    \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
-$$
-
-Second, it's **regression line equation**, and it goes like
-
-$$
-    y = b_0 + b_1 \cdot x
-$$
-
-where $y$ is the prediction, $b_0$ is the intercept and $b_1$ is the first coefficient. 
-
-You can think the intercept is where the point starts, and the first coefficient determines the steepness and the direction of the line.
-
-Last, **the parameter update equation**. In this example, $b_0$ and $b_1$ are the parameters that we want to update over time.
-
-$$
-    \Theta_{i} = \Theta_i - \alpha \cdot \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
-$$
-
-where
-
-1. $\Theta_{i}$ is the coefficients we want to update
-2. $\alpha$ is the learning rate
-3. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
-
 From this point, $b_0$ will be written as $\Theta_0$ and $b_1$ as $\Theta_1$.
 
-Let's express everything we want as mathematical expressions.
+Let's express everything we want do in mathematical expressions.
 
 The cost function
 $$
-    \begin{aligned}
-    J(\Theta_0, \Theta_1) 
-    &= \frac{1}{N} \sum_{i=1}^N (f(x) - y_i)^2  \\
-    &= \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2 \\
-    &= \frac{1}{N} \sum_{i=1}^N (\Theta_0 + \Theta_1 x - y_i)^2
-    \end{aligned}
+    J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i)^2
 $$
 
 The objective function
@@ -150,6 +97,12 @@ The update rules
 $$
     \Theta_{i} = \Theta_i - \alpha \cdot \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
 $$
+
+where
+
+1. $\Theta_{i}$ is the coefficients we want to update
+2. $\alpha$ is the learning rate
+3. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
 
 Bear with me! This is going to involve a lot of Maths, especially Calculus.
 
@@ -165,11 +118,7 @@ $$
 
 Solving the equality above with Power Rule, we then have
 $$
-    \begin{aligned}
-        \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) 
-        &= \frac{1}{N} \sum_{i=1}^N 2(f(x) - y_i) \frac{\partial}{\partial \Theta_i} (f(x) - y_i) \\
-        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_i} (f(x) - y_i) \\
-    \end{aligned}
+    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) = \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_i} (f(x) - y_i) 
 $$
 
 Since we want to update the $\Theta_0$ and $\Theta_1$ coefficients, we need to find the partial derivative of the cost function with respect to those coefficients.
@@ -177,19 +126,13 @@ Since we want to update the $\Theta_0$ and $\Theta_1$ coefficients, we need to f
 $$
     \begin{aligned}
         \frac{\partial}{\partial \Theta_0} J(\Theta_0, \Theta_1) 
-        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_0} (f(x) - y_i) \\
         &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_0} (\Theta_0 + \Theta_1 x - y_i) \\
         &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i)
     \end{aligned}
 $$
 
 $$
-    \begin{aligned}
-        \frac{\partial}{\partial \Theta_1} J(\Theta_0, \Theta_1) 
-        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_1} (f(x) - y_i) \\
-        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) \frac{\partial}{\partial \Theta_1} (\Theta_0 + \Theta_1 x - y_i) \\
-        &= \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) x
-    \end{aligned}
+    \frac{\partial}{\partial \Theta_1} J(\Theta_0, \Theta_1) = \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) x
 $$
 
 We can also remove the $2$ from the two equations above by multiplying the cost function, in this case the MSE equation, by $\frac{1}{2}$.
