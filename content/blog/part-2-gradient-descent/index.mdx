@@ -1,5 +1,5 @@
 ---
-title: 'Part 1: Gradient Descent'
+title: 'Part 2: Gradient Descent'
 type: 'blog'
 date: 2022-02-16
 published: true
@@ -29,8 +29,8 @@ $$
 We have also acquired two equations that are reponsible for updating $b_0$ and $b_1$. Namely,
 $$
     \begin{aligned}
-        \Theta_{0} = \Theta_0 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
-        \Theta_{1} = \Theta_1 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
+        \Theta_{0} = \Theta_0 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) \\
+        \Theta_{1} = \Theta_1 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) x 
     \end{aligned}
 $$
 
