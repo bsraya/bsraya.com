@@ -115,7 +115,7 @@ You can think the intercept is where the point starts, and the first coefficient
 Last, **the parameter update equation**. In this example, $b_0$ and $b_1$ are the parameters that we want to update over time.
 
 $$
-\Theta_{i} = \Theta_i - \alpha \cdot \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
+    \Theta_{i} = \Theta_i - \alpha \cdot \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1)
 $$
 
 where
@@ -153,11 +153,11 @@ Bear with me! This is going to involve a lot of Maths, especially Calculus.
 Let's simplify the partial derivation in the equation above
 
 $$
-\begin{aligned}
-    \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) 
-    &= \frac{\partial}{\partial \Theta_i} (\frac{1}{N} \sum_{i=1}^N (f(x) - y_i)^2) \\
-    &= \frac{1}{N} \frac{\partial}{\partial \Theta_i} \sum_{i=1}^N (f(x) - y_i)^2
-\end{aligned}
+    \begin{aligned}
+        \frac{\partial}{\partial \Theta_i} J(\Theta_0, \Theta_1) 
+        &= \frac{\partial}{\partial \Theta_i} (\frac{1}{N} \sum_{i=1}^N (f(x) - y_i)^2) \\
+        &= \frac{1}{N} \frac{\partial}{\partial \Theta_i} \sum_{i=1}^N (f(x) - y_i)^2
+    \end{aligned}
 $$
 
 Solving the equality above with Power Rule, we then have
@@ -199,14 +199,18 @@ $$
 Since the $2$ is removed, 
 
 $$
-    \frac{\partial}{\partial \Theta_0} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
-    \frac{\partial}{\partial \Theta_1} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
+    \begin{align}
+        \frac{\partial}{\partial \Theta_0} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
+        \frac{\partial}{\partial \Theta_1} J(\Theta_0, \Theta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
+    \end{align}
 $$
 
 Pluggin each of the equation above into the update rule with respect to those coefficients, we get
 $$
-    \Theta_{0} = \Theta_0 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
-    \Theta_{1} = \Theta_1 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
+    \begin{align}
+        \Theta_{0} = \Theta_0 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) \\
+        \Theta_{1} = \Theta_1 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i) x 
+    \end{align}
 $$
 
 The two equations above will help us to approximate the minimum value of the cost function by updating $\Theta_{0}$ and $\Theta_{1}$ over time.
