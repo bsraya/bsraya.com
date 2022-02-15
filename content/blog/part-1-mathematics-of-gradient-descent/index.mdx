@@ -65,14 +65,14 @@ Let's see another example where the data points are close to the regression line
 ![Most data points are close from the regression line](./close.png)
 
 In this example, we can see that our regression line can predict the value of $y$ accurately at two $x$ values, namely at $0$ and $1.5$.
-Clearly, the MSE of our regression line is very small compared to the previous one.
+Clearly, the MSE of our regression line is relatively smaller compared to the previous one.
 
-The question is, how can we find the best regression line? We know that the equation for the regression line is $y = b + mx$ or can be written as $y = b_0 + b_1 \times x$. 
+The question is, **how do we find the best value for $b_0$ and $b_1$ so that the regression line is so close to most data points in the dataset?**
 
-One way, we can find the best values for $b_0$ and $b-1$ by mere guessing.
+One way, we can find the best values for $b_0$ and $b_1$ by mere guessing.
 However, it is going to take a significant amount of time.
 
-Another way is that we can use Calculus to help us to find the best values for $b_0$ and $b_1$ by updating those two values after each iteration.
+Another way is that we can use Calculus to help us to find the best values for $b_0$ and $b_1$ by updating those two values over time.
 
 # Mathematics of Gradient Descent
 
