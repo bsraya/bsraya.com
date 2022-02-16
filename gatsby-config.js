@@ -64,7 +64,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-gifs`,
     `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-remark-images`,
@@ -94,6 +93,12 @@ module.exports = {
           `gatsby-remark-smartypants`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-copy-linked-files`,
+          {
+            resolve: "gatsby-transformer-remark",
+            options: {
+                plugins: ["gatsby-remark-gifs"],
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {

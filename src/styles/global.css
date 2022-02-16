@@ -190,10 +190,6 @@ span.grvsc-line-number {
 }
 
 /* Markdown elements */
-code {
-  white-space: nowrap;
-}
-
 blockquote {
   background: inherit;
   border-left: 0.5rem solid #696969;
@@ -213,7 +209,7 @@ td {
   width: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
   main {
     padding: 0.5rem;
   }
@@ -222,7 +218,7 @@ td {
   th,
   body,
   code {
-    font-size: 0.7rem !important;
+    font-size: 0.8rem !important;
   }
 
   .inlineMath,

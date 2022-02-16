@@ -3,7 +3,7 @@ title: 'Part 1: Mathematics of Gradient Descent'
 type: 'blog'
 date: 2022-02-13
 published: true
-description: 'A gentle introduction to the Gradient Descent algorithm'
+description: 'A mathematical adventure into the gradient descent algorithm'
 tags: ['Calculus', 'Optimization', 'Machine Learning']
 ---
 
@@ -23,63 +23,14 @@ This is part 1 of the series on Gradient Descent.
 
 # Introduction
 
-First of all, let's get a bit familiar with the concept of a gradient line before implementing this idea into Python code.
-
-I am sure most of you reading this post right now are familiar with the following graph,
-and we have been using it in high school or college to find the distance between two points in 2D coordinates.
-
-![Linear Regression Line](./lr.png)
-
-Looking at this graph, especially the equation, left us wondering and ask "when is the time to apply this equation in real life problems?"
-
-Let's say that we have an `iris` dataset from `sklearn`. Plotting it will give us the following visualization.
-
-![Iris Dataset Scatter Plot](./iris_scatter.png)
-
-Clearly, we can see that there are two features involved in the classification: `sepal_length` and `petal_width`.
-
-From these two features, you want to see their correlations whether they are correlated or inversely correlated.
-
-`sepal_length` and `petal_width` are said to be correlated when `sepal_length` increases, the `petal_length` increases.
-Conversely, `sepal_length` and `petal_width` are said to be inversely correlated when `sepal_length` increases, the `petal_width` decreases.
-
-![Positively Correlated Regression Line](./positively-correlated.png)
-
-![Inversely Correlated Regression Line](./inversely-correlated.png)
-
-With the regression line, it can help us to predict a $y$ value given a $x$ value.
-However, most predictions made by the regression line is not always accurate like in the graph below.
-
-![Most data points are far from the regression line](./far.png)
-
-With the green line, which is our regression line, see $x = 0$ then it predicts $y = -3$. 
-In reality, when $x = 0$, $y$ should be $0.5$. Meaning that our regression line is very bad at prediction.
-
-We can also use Mean Squared Error (MSE) to measure the quality of our regression line.
-Mean Squared Error is the sum of the squared difference from the regression line to the actual value.
-
-The larger the MSE, the worse the regression line. In this example, we will have a large MSE since most data points are far from the regression line.
-
-Let's see another example where the data points are close to the regression line.
-
-![Most data points are close from the regression line](./close.png)
-
-In this example, we can see that our regression line can predict the value of $y$ accurately at two $x$ values, namely at $0$ and $1.5$.
-Clearly, the MSE of our regression line is relatively smaller compared to the previous one.
-
-The question is, **how do we find the best value for $b_0$ and $b_1$ so that the regression line is so close to most data points in the dataset?**
-
-One way, we can find the best values for $b_0$ and $b_1$ by mere guessing.
-However, it is going to take a significant amount of time.
-
-Another way is that we can use Calculus to help us to find the best values for $b_0$ and $b_1$ by updating those two values over time.
+Remember in the <Link to="/blog/linear-regression">the Linear Regression post</Link>, I mentioned that we can use gradient descent to descrease the MSE of a Linear Regression model.
+Let's see how it works at glance. 
 
 # Mathematics of Gradient Descent
 
-Remember that we want to have a regression line that is located as closer to most data points as possible. 
-Meaning that we want to minimize the MSE value.
+Since we want to minimize the MSE value of the Linear Regression model, we want to find the best value for $\beta_0$ and $\beta_0$ so that the regression line that is located as close to most data points as possible. 
 
-From this point, $b_0$ will be written as $\Theta_0$ and $b_1$ as $\Theta_1$.
+From this point, $\beta_0$ will be written as $\Theta_0$ and $\beta_1$ as $\Theta_1$.
 
 Let's express everything we want do in mathematical expressions.
 
@@ -102,7 +53,6 @@ where
 
 1. $\Theta_{i}$ is the coefficients we want to update
 2. $\alpha$ is the learning rate
-3. $J(\Theta_0, \Theta_1)$ is the cost function with respect to the weights
 
 Bear with me! This is going to involve a lot of Maths, especially Calculus.
 
@@ -137,6 +87,8 @@ $$
 
 We can also remove the $2$ from the two equations above by multiplying the cost function, in this case the MSE equation, by $\frac{1}{2}$.
 Multiplying the cost function with a scalar will not affect its minimum value.
+
+This new modified cost function is called **One Half Mean Squared Error**.
 
 $$
     J(\Theta_0, \Theta_1) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2

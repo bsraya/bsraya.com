@@ -3,7 +3,7 @@ title: 'Part 2: Gradient Descent'
 type: 'blog'
 date: 2022-02-16
 published: true
-description: 'A Gradient Descent implementation with Linear Regression in Python'
+description: 'Linear Regression + Gradient Descent in Python'
 tags: ['Machine Learning', 'Optimization', 'Python']
 ---
 
@@ -21,26 +21,15 @@ This is part 2 of the series on Gradient Descent.
     Part 4: Stochastic Gradient Descent
   </Link>
 
-Remember that in the first part of this series, we have customized our cost function. Namely,
-$$
-    J(\Theta_0, \Theta_1) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
-$$
+Before we implement Gradient Descent in Python, we need to set a baseline to compare against our own implementation.
+So, we are going to train our dataset into the Linear Regression built-in function made by `scikit-learn`
 
-We have also acquired two equations that are reponsible for updating $b_0$ and $b_1$. Namely,
-$$
-    \begin{aligned}
-        \Theta_{0} = \Theta_0 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) \\
-        \Theta_{1} = \Theta_1 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) x 
-    \end{aligned}
-$$
+# Setting Up The Dataset
 
-Now, let's translate these three equations into Python code.
+In this example, we are going to include the [Iris Dataset](https://archive.ics.uci.edu/ml/datasets/iris) from UCI Machine Learning Repository imported from `scikit-learn`.
+There are two features in the dataset that we are going to analyse, namely `sepal_length` and `petal_width` shown in line 7 and 8.
 
-# implementation of Gradient Descent
-
-Before we start with the implemetations, we should first import the iris dataset from `sklearn`.
-
-```python
+```python {7-8, numberLines}
 from sklearn.datasets import load_iris
 
 iris = load_iris()
@@ -62,7 +51,6 @@ for i in target:
 ```
 
 First, let's fit our dataset to `python:LinearRegression()` model that we imported from `python:sklearn.linear_model`.
-
 ```python
 linreg = LinearRegression()
 
@@ -71,6 +59,15 @@ linreg.fit(
     y = petal_width.reshape(-1,1)
 )
 
+print("Intercept: ",linreg.intercept_[0])
+# Intercept: -3.200215 
+print("First coefficient:", linreg.coef_[0][0])
+# First coeficient: 0.75291757
+```
+
+Once we have the intercept and the coefficient values, let's make a regression line to see if the line is close to most data points.
+
+```python
 sns.scatterplot(
     x = sepal_length,
     y = petal_width,
@@ -85,17 +82,13 @@ plt.plot(
 )
 ```
 
-Let's see the intercept and the coefficient that `python:LinearRegression()` produced from our dataset.
-We are also want to see how much the MSE is, so let's print that as well.
+Clearly, the line is indeed very close to the most data points and we want to see the MSE of this regression line.
 
 ```python
-print(linreg.intercept_, linreg.coefficient_)
-# [-3.200215] [[0.75291757]]
-
 linreg_predictions = linreg.predict(sepal_length.reshape(-1,1))
 linreg_mse = mean_squared_error(linreg_predictions, petal_width)
-print(f"Linear Regression's MSE is {linreg_mse}")
-# Linear Regression's MSE is 0.19101500769427357
+print(f"The MSE is {linreg_mse}")
+# The MSE is 0.19101500769427357
 ```
 
 From the result we got from `python:sklearn`, the best regression line is
@@ -104,39 +97,28 @@ $$
     y = -3.200215 + 0.75291757 \cdot x
 $$
 
-which most data points are located near it.
+The equation above is going to be our base line for this experiment to determine how good our own Gradient Descent implementation.
 
 ![The iris dataset regression line with Scikit](./scikit-lr.png)
 
-Since most data points are near the regression line, the MSE tends to be low which is $0.19101500769427357$.
-So if most data points are far from the regression line, the MSE tends to be high.
+# Implementing Gradient Descent
 
-We're going to use that MSE, and compare it to our own MSE from the Gradient Descent algorithm.
-
-# Gradient Descent
-
+Remember that in the first part of this series, we have customized the cost function, which is the MSE, simply by multiplying it by $\frac{1}{2}$ and named it **One Half Mean Squared Error**.
 $$
-    \Theta_{i} = \Theta_i - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \cdot x_i
+    J(\Theta_0, \Theta_1) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
 $$
 
-The equation above is what helps us to minimize the intercept and the first coefficient.
-Let's denote the intercept $b_0$ and the first coefficient $b_1$.
-Since we have two weights that we have to update over time, let's change $\Theta_i$ to the variables we intend to use.
-In this case, they are $b_0$ and $b_1$.
-
+We have also acquired two equations that are reponsible for updating $\beta_0$ and $\beta_1$. Namely,
 $$
-    b_0 = b_0 - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i)
-$$
-
-and to update the first coefficient
-
-$$
-    b_1 = b_1 - \frac{\alpha}{N} \sum^{N}_{i=1} (\hat{y}_i - y_i) \cdot x_i
+    \begin{aligned}
+        \beta_0 = \beta_0 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) \\
+        \beta_1 = \beta_1 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) x 
+    \end{aligned}
 $$
 
-Converting those two equations above to python code, we then have
+Now, let's translate these three equations into Python code.
 
-```python {7-10}
+```python {7-11}
 def gd(x, y, epochs, df, alpha = 0.01):
     length = len(x)
     intercept, coefficient = 0.0, 0.0
@@ -147,16 +129,16 @@ def gd(x, y, epochs, df, alpha = 0.01):
         b1 = (1/length) * np.sum((predictions - y) * x)
         intercept = intercept - alpha * b0
         coefficient = coefficient - alpha * b1
-        sum_error = sum_error + np.sum((predictions - y) ** 2) / (2 * length)
-        df.loc[epoch] = [intercept, coefficient, sum_error]
+        cost_function = sum_error + np.sum((predictions - y) ** 2) / (2 * length)
+        df.loc[epoch] = [intercept, coefficient, cost_function]
     return df
 ```
 
-Then we create a dataframe to store the result and run the `python:gd()` function for over 10,000 times.
+Then we create a dataframe to store the result at each iteration and run the `python:gd()` function for over 10,000 times.
 
 ```python
 gd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
-gd_loss = gd(sepal_length, petal_width, epochs = 10000, df = gd_loss)
+gd_loss = gd(sepal_length, petal_width, epochs = 10_000, df = gd_loss)
 ```
 
 Below is the figure of the regression lines tend to look like at the 1,000th, the 5,000th, and the 10,000th iterations.
@@ -167,7 +149,7 @@ So let's see the MSE values at the 1000th, the 5000th, and the 1000th iterations
 
 ![MSE value at n-th iteration](./cost-function.png)
 
-After 10000 iterations, our GD's MSE, `0.19557315833450503`, is quite close to Scikit-Learn's Linear Regression's MSE which is `0.19101500769427357`.
+After 10,000 iterations, the MSE value of our own Gradient Descent is $0.19557315833450503$ which is quite close to our baseline, which is `0.19101500769427357`.
 
 Combining everything, here is how the regression line changes over time.
 
