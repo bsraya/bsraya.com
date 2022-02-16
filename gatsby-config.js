@@ -92,13 +92,7 @@ module.exports = {
           `gatsby-remark-smartypants`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-copy-linked-files`,
-          {
-            resolve: `gatsby-remark-mermaid`,
-            options: {
-              language: `mermaid`,
-              theme: `neutral`,
-            },
-          },
+          `gatsby-remark-mermaid`,
           {
             resolve: `gatsby-transformer-remark`,
             options: {

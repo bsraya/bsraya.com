@@ -113,6 +113,15 @@ h6 {
   font-family: 'Stratos', sans-serif;
 }
 
+p > a {
+  color: var(--important-color);
+  text-decoration: none;
+}
+
+p > a:hover {
+  text-decoration: underline;
+}
+
 /* images */
 .gatsby-resp-image-figure {
   margin: 0 0 1rem 0;
