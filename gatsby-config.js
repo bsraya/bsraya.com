@@ -91,7 +91,6 @@ module.exports = {
           `gatsby-remark-smartypants`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-mermaid`,
           {
             resolve: `gatsby-transformer-remark`,
             options: {
@@ -103,7 +102,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 650,
+              maxWidth: 768,
               showCaptions: true,
               loading: `lazy`,
               withWebp: true,
