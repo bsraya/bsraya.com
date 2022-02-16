@@ -86,7 +86,6 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
           default: require.resolve(`${__dirname}/src/templates/blogpost.js`),
-          portfolio: require.resolve(`${__dirname}/src/templates/portfolio.js`),
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`,
