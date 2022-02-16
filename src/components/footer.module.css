@@ -6,7 +6,7 @@
 .footerlink {
   position: relative;
   color: gray;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .footerlink::before {

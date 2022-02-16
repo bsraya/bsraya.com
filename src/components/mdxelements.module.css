@@ -10,6 +10,18 @@
 
 .li {
   margin: 0;
+  text-decoration: none;
+}
+
+.li > a,
+.p > a {
+  text-decoration: none;
+  color: var(--important-color);
+}
+
+.li > a:hover,
+.p > a:hover {
+  text-decoration: underline;
 }
 
 .headers {
@@ -38,4 +50,8 @@
 
 .table {
   margin: 0;
+}
+
+.link {
+  color: var(--important-color);
 }
