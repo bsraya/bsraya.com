@@ -12,7 +12,7 @@ import { Link } from 'gatsby'
 # Linear Regression
 
 I am sure most of you reading this post right now are familiar with the following graph,
-and we did use $y = mx + b$ uquation in high school or college to find the distance between two points in a 2D coordinate.
+and we did use $y = b + ax$ equation in high school or college to find the distance between two points in a 2D coordinate.
 
 ![A Gradient Line](./lr.png)
 
@@ -30,7 +30,11 @@ $$
     y = \beta_0 + \beta_1 \times x
 $$
 
-In this case is 
+You should know that the intercept or $\beta_0$ is the lowest value in the line.
+If $\beta_0 = 0$, the lowest value $y$ can get is $0$.
+
+Expressing the equation like we did above is quite cryptic for people who don't have strong mathematical background.
+Since we are using the Iris Dataset, we can translate the equation into a more readable form.
 
 $$
     \text{petal width} = \beta_0 + \beta_1 \times \text{sepal length}

@@ -86,17 +86,25 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
           default: require.resolve(`${__dirname}/src/templates/blogpost.js`),
+          portfolio: require.resolve(`${__dirname}/src/templates/portfolio.js`),
         },
         gatsbyRemarkPlugins: [
-          `gatsby-remark-gifs`,
-          `gatsby-remark-grid-tables`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-copy-linked-files`,
           {
-            resolve: "gatsby-transformer-remark",
+            resolve: `gatsby-remark-mermaid`,
             options: {
-                plugins: ["gatsby-remark-gifs"],
+              language: `mermaid`,
+              theme: `neutral`,
+            },
+          },
+          {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [
+                `gatsby-remark-gifs`,
+              ],
             },
           },
           {
