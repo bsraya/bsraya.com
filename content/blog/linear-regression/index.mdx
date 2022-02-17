@@ -31,7 +31,7 @@ $$
 $$
 
 You should know that the intercept or $\beta_0$ is the lowest value in the line.
-If $\beta_0 = 0$, the lowest value $y$ can get is $0$.
+If $\beta_0 = 0$, it means that our regression line will start from $0$.
 
 Expressing the equation like we did above is quite cryptic for people who don't have strong mathematical background.
 Since we are using the Iris Dataset, we can translate the equation into a more readable form.
@@ -40,7 +40,8 @@ $$
     \text{petal width} = \beta_0 + \beta_1 \times \text{sepal length}
 $$
 
-From these two features, you want to see their correlations whether `sepal_length` and `petal_width` are correlated or inversely correlated.
+From the translation above can tell us the relationship between those two variables.
+Now you will be wondering their correlations whether `sepal_length` and `petal_width` are correlated or inversely correlated.
 
 `sepal_length` and `petal_width` are said to be correlated when `sepal_length` increases, the `petal_length` also increases.
 Conversely, `sepal_length` and `petal_width` are said to be inversely correlated when `sepal_length` increases, but the `petal_width` decreases.
@@ -50,7 +51,9 @@ Conversely, `sepal_length` and `petal_width` are said to be inversely correlated
 ![Inversely Correlated Regression Line](./inversely-correlated.png)
 
 With a regression line, it can help us to predict the $y$ value given a single $x$ value.
-However, most predictions made by the regression line is not always accurate like in the graph below.
+However, most predictions made by the regression line are not always accurate 
+since its ability to predict depends heavily on $\beta_0$ and $\beta_1$.
+If the values $\beta_0$ and $\beta_1$ are not tweaked correctly, the regression line will sit right far from most data points.
 Let's see an example down below where datapoints are far from the regression line.
 
 ![Most data points are far from the regression line](./far.png)
@@ -59,16 +62,7 @@ When the regression line, which is the green line, sees $x = 0$ then it predicts
 In reality, $y$ should be $0.5$ when $x = 0$. Meaning that our regression line is very bad at prediction.
 Since our regression line is bad at predicting, that indicates that we have a huge Mean Squared Erorr value.
 
-Mean Squared Error (MSE) has always been used to measure the quality of regression lines.
-Mean Squared Error is the sum of the squared difference from the regression line to the actual value.
-
-$$
-MSE = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2
-$$
-
-where $n$ is the number of data points, $\hat{y}_i$ is the predicted value, and $y_i$ is the actual value.
-
-The larger the MSE, the worse the regression line. In the example above, we will have a large MSE since most data points are far from the regression line.
+Calculating the MSE for the graph above, we have
 
 $$
     \begin{aligned}
@@ -77,13 +71,22 @@ $$
     \end{aligned}
 $$
 
+Mean Squared Error (MSE) has always been used to measure the quality of regression lines.
+If the MSE of a certain regression line is miniscule, we can say that the regression line is relatively better at prediction.
+If the MSE of a certain regression line is large, then it's the opposite. Here is the equation for MSE.
+
+$$
+MSE = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2
+$$
+
+where $n$ is the number of data points, $\hat{y}_i$ is the predicted value, and $y_i$ is the actual value.
+
 Let's see another example where the data points are close to the regression line.
 
 ![Most data points are close from the regression line](./close.png)
 
-In this example, we can see that the new regression line is much better at prediction compared to the previous one.
-Since most data points are closer to the regression line, the MSE of our regression line is relatively smaller compared to the previous one.
-Let's calculate the MSE for this example.
+Let's calculate the MSE for this example to see if the MSE is small when the regression line is close to most data points.
+
 
 $$
     \begin{aligned}
@@ -91,6 +94,9 @@ $$
         &= 0.348
     \end{aligned}
 $$
+
+From the MSE value above, we can verify that when the regression line is close to most data points, the MSE value will be small.
+Although this regression line is not really that good at predicting, but it still predicted better than the one in the previous example.
 
 After seeing two example, you might be wondering **how do we find the best value for $\beta_0$ and $\beta_1$ so that the regression line can have a small MSE?**
 
