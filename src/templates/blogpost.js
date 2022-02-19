@@ -2,7 +2,6 @@ import React from "react"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 import MdxElement from "../components/mdxelements"
-import Donation from "../components/donation"
 import * as styles from './template.module.css'
 
 import { graphql } from "gatsby"
@@ -36,7 +35,6 @@ export default function blogpostTemplate({ data }) {
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </article>
-      <Donation />
     </Layout>
   )
 }
