@@ -150,6 +150,30 @@ $$
 
 The two equations above will help us to approximate the minimum value of the cost function by updating $\beta_0$ and $\beta_1$ over time.
 
+# Conclusion
+
+Here are the takeaway keypoints from this entire post.
+1. Gradient Descent is a technique that helps a model get better at predicting.
+2. The cost function 
+    $$
+        J(\beta_0, \beta_1) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
+    $$
+3. The update rule for $\beta_0$ 
+    $$
+        \beta_0 = \beta_0 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i)
+    $$
+4. The update rule for $\beta_1$ 
+    $$
+        \beta_1 = \beta_1 - \alpha \cdot \frac{1}{N} \sum_{i=1}^N (f(x) - y_i)x
+    $$
+5. The weights $\beta_0$ and $\beta_1$ are updated after all the data points are processed.
+6. The learning rate $\alpha$ is a hyperparameter that controls the speed of the gradient descent on any slopes.
+7. High learning rate may cause the model's MSE to bounce here and there or to converge at a suboptimial minimum.
+8. Low learning rate will cause the model to stuck in a suboptimial minimum.
+
+In the next part, we are going to implement Batch Gradient Descent using the mathematical equations that we have derived.
+See you in the next one.
+
 # References
 
 1. R. Sebastian. _An overview of gradient descent optimization algorithms_. Source [https://ruder.io/optimizing-gradient-descent](https://ruder.io/optimizing-gradient-descent)
