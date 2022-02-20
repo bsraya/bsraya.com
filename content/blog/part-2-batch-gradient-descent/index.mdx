@@ -7,7 +7,7 @@ description: 'Linear Regression + Gradient Descent in Python'
 tags: ['Machine Learning', 'Optimization', 'Python']
 ---
 
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
 
 This is part 2 of the series on Gradient Descent.
 
@@ -51,6 +51,7 @@ for i in target:
 ```
 
 First, let's fit our dataset to `python:LinearRegression()` model that we imported from `python:sklearn.linear_model`.
+
 ```python
 linreg = LinearRegression()
 
@@ -60,7 +61,7 @@ linreg.fit(
 )
 
 print("Intercept: ",linreg.intercept_[0])
-# Intercept: -3.200215 
+# Intercept: -3.200215
 print("First coefficient:", linreg.coef_[0][0])
 # First coeficient: 0.75291757
 ```
@@ -104,22 +105,24 @@ The equation above is going to be our base line for this experiment to determine
 # Implementing Gradient Descent
 
 Remember that in the first part of this series, we have customized the cost function, which is the MSE, simply by multiplying it by $\frac{1}{2}$ and named it **One Half Mean Squared Error**.
+
 $$
     J(\Theta_0, \Theta_1) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
 $$
 
 We have also acquired two equations that are reponsible for updating $\beta_0$ and $\beta_1$. Namely,
+
 $$
     \begin{aligned}
         \beta_0 = \beta_0 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) \\
-        \beta_1 = \beta_1 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) x 
+        \beta_1 = \beta_1 - \frac{\alpha}{N} \sum_{i=1}^N (f(x) - y_i) x
     \end{aligned}
 $$
 
 Now, let's translate these three equations into Python code.
 
 ```python {7-11}
-def gd(x, y, epochs, df, alpha = 0.01):
+def bgd(x, y, epochs, df, alpha = 0.01):
     length = len(x)
     intercept, coefficient = 0.0, 0.0
     for epoch in range(epochs):
@@ -134,11 +137,11 @@ def gd(x, y, epochs, df, alpha = 0.01):
     return df
 ```
 
-Then we create a dataframe to store the result at each iteration and run the `python:gd()` function for over 10,000 times.
+Then we create a dataframe to store the result at each iteration and run the `python:bgd()` function for over 10,000 times.
 
 ```python
-gd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
-gd_loss = gd(sepal_length, petal_width, epochs = 10_000, df = gd_loss)
+bgd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
+bgd_loss = bgd(sepal_length, petal_width, epochs = 10_000, df = bgd_loss)
 ```
 
 Below is the figure of the regression lines tend to look like at the 1,000th, the 5,000th, and the 10,000th iterations.
@@ -149,7 +152,7 @@ So let's see the MSE values at the 1000th, the 5000th, and the 1000th iterations
 
 ![MSE value at n-th iteration](./cost-function.png)
 
-After 10,000 iterations, the MSE value of our own Gradient Descent is $0.19557315833450503$ which is quite close to our baseline, which is `0.19101500769427357`.
+After 10,000 iterations, the MSE value of our own Gradient Descent is $0.1955$ which is quite close to our baseline, which is $0.1910$.
 
 Combining everything, here is how the regression line changes over time.
 
@@ -159,15 +162,20 @@ Let's animate the movement of the regression lines.
 
 ![Regression line animation](./gd.gif)
 
-I am not including most of the codes in this blog post. So if you want to know how those graphs were generated, [click here](https://www.kaggle.com/bijonsetyawan/part-1-gradient-descent) to check the Python notebook on Kaggle.
-
 # Conclusion
 
 Here are some keypoints for Batch Gradient Descent.
 
-1. 
+1. Batch Gradient Descent only updates the parameters once after considering all the data points.
+2. Since the parameters are updated once after considering all the data points, it takes longer time for the algorithm to converge.
+3. Not only does Batch Gradient Descent takes a significant amount time to converge due to the large number of data points, but it also takes up a lot of computational resources.
+4. Batch Gradient Descent is not the best algorithm for large datasets.
+5. Since the gradients we get over time are pretty much the same, then it may stuck in a local minima. Noisy gradients would allow the algorithm to escape local minima.
 
+Since I wanted to present you an easy and succint explanation of Batch Gradient Descent, so I decided to not to include all the codes for the sake of simplicity.
+If you want to know how those graphs were generated, [click here](https://www.kaggle.com/bijonsetyawan/part-1-gradient-descent) to check the Python notebook on Kaggle.
 
 # References
+
 1. M. Jack. _3D Gradient Descent in Python_. Source [https://jackmckew.dev/3d-gradient-descent-in-python.html](https://jackmckew.dev/3d-gradient-descent-in-python.html)
 2. T. Arseny. _Gradient Descent From Scratch_. Source [https://towardsdatascience.com/gradient-descent-from-scratch-e8b75fa986cc](https://towardsdatascience.com/gradient-descent-from-scratch-e8b75fa986cc)
