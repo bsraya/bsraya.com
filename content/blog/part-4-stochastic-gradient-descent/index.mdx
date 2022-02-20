@@ -7,23 +7,27 @@ description: 'A Stochastic Gradient Descent implementation with Linear Regressio
 tags: ['Machine Learning', 'Optimization', 'Python']
 ---
 
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
 
 This is part 3 of the series on Gradient Descent.
 
 - <Link to="/blog/part-1-mathematics-of-gradient-descent">
     Part 1: Mathematics of Gradient Descent
   </Link>
-- <Link to="/blog/part-2-gradient-descent">
+- <Link to="/blog/part-2-batch-gradient-descent">
     Part 2: Batch Gradient Descent
   </Link>
-- <Link to="/blog/part-3-batch-gradient-descent">
+- <Link to="/blog/part-3-mini-batch-gradient-descent">
     Part 3: Mini-Batch Gradient Descent
   </Link>
 
-# Definition
+Previously, we have learned that Batch Gradient Descent only updates the parameters only after it has seen the entire dataset.
+However, in this post, we are going to implement Mini-Batch Gradient Descent where it updates the parameters after it has seen a fraction of a dataset.
+Not only that, we are going to find out the best batch size to make the algorithm converge faster.
 
+# Conclusion
 
+If you want to know how to implement it in more details, please [click here](https://www.kaggle.com/bijonsetyawan/stochastic-gradient-descent) to check the Python notebook on Kaggle.
 
 # References
 
