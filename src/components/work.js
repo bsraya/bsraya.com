@@ -14,9 +14,9 @@ export default function Work() {
       <Experience
         title="Teaching Assistant"
         location="National Tsing Hua University (Hsinchu, Taiwan)"
-        date="Sep 2020 - Jan 2021 & Sep 2021 - Present"
+        date="Sep 2020 - Jan 2021 & Sep 2021 - Jan 2022"
         descriptions={[
-          "Facilitating and mentoring students in the Introduction to C and C++ course"
+          "Facilitated and mentored students in the Introduction to C and C++ course"
         ]}
         imageLocation={NTHU}
         alt="NTHU logo"
@@ -30,8 +30,6 @@ export default function Work() {
           "Developed and NLP model and an automation model"
         ]}
         imageLocation={RTK}
-        height={100}
-        width={350}
         alt="Richtek logo"
       />
 
@@ -43,8 +41,6 @@ export default function Work() {
           "Developed user interfaces and automatic testings"
         ]}
         imageLocation={MOLDEX}
-        height={100}
-        width={350}
         alt="Moldex3D logo"
       />
       
@@ -56,8 +52,6 @@ export default function Work() {
           "Developed user interfaces and automatic testings"
         ]}
         imageLocation={VPON}
-        height={100}
-        width={350}
         alt="Vpon logo"
       />
     </>
