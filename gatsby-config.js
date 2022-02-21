@@ -74,13 +74,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src`,
-        name: 'src',
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
@@ -176,11 +169,18 @@ module.exports = {
               },
               extensions: [`synthwave-vscode`],
             },
-          }
+          },
         ],
         remarkPlugins: [
           require('remark-html-katex')
         ]
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src`,
+        name: 'src',
       },
     },
     {

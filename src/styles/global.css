@@ -43,7 +43,7 @@
   border-radius: 0px;
 }
 
-html {
+* {
   box-sizing: border-box;
 }
 
@@ -61,14 +61,14 @@ body {
   --header-font: 'Blimone', -apple-system, BlinkMacSystem, 'Helvetica Neue',
     Helvetica, Arial, sans-serif;
 
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  height: 100%;
   background: var(--background-color);
   color: var(--font-color);
   font-family: var(--main-font);
   text-rendering: optimizeLegibility;
   filter: var(--filter);
-  -webkit-font-smoothing: antialiased;
   transition: background 0.5s ease-in-out;
 }
 
@@ -82,19 +82,9 @@ body.dark {
 }
 
 main {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
+  margin: 0 auto 0 auto;
   padding: 2rem 0 2rem 0;
   max-width: 75ch;
-  margin: auto;
-}
-
-img {
-  margin-bottom: 1rem;
-  filter: var(--filter);
 }
 
 /* Headers */
