@@ -57,7 +57,7 @@ export default function Work() {
         ]}
         imageLocation={VPON}
         height={100}
-        width={300}
+        width={350}
         alt="Vpon logo"
       />
     </>
