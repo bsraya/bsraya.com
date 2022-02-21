@@ -1,6 +1,10 @@
 import React from 'react'
 import Line from './line'
 import Experience from './experience'
+import NTHU from '../assets/nthu.png'
+import RTK from '../assets/rtk.png'
+import MOLDEX from '../assets/moldex.png'
+import VPON from '../assets/vpon.png'
 
 export default function Work() {
   return (
@@ -14,6 +18,8 @@ export default function Work() {
         descriptions={[
           "Facilitating and mentoring students in the Introduction to C and C++ course"
         ]}
+        imageLocation={NTHU}
+        alt="NTHU logo"
       />
 
       <Experience
@@ -23,6 +29,8 @@ export default function Work() {
         descriptions={[
           "Developed and NLP model and an automation model"
         ]}
+        imageLocation={RTK}
+        alt="Richtek logo"
       />
 
       <Experience
@@ -32,6 +40,8 @@ export default function Work() {
         descriptions={[
           "Developed user interfaces and automatic testings"
         ]}
+        imageLocation={MOLDEX}
+        alt="Moldex3D logo"
       />
       
       <Experience
@@ -41,6 +51,8 @@ export default function Work() {
         descriptions={[
           "Developed user interfaces and automatic testings"
         ]}
+        imageLocation={VPON}
+        alt="Vpon logo"
       />
     </>
   )

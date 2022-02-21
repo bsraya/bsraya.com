@@ -1,6 +1,7 @@
 import React from 'react'
 import Line from './line'
 import Experience from './experience'
+import NTHULogo from '../assets/nthu.png'
 
 export default function Education() {
   return (
@@ -15,6 +16,8 @@ export default function Education() {
           "Being a TA in the Introduction to C and C++ 2021 class at NTHU EECS Department",
           "Currently working on Distributed Deep Learning System that capable of assessing how much computing resource that a ML/DL model need and assigned the model to multiple GPUs to be run in parallel"
         ]}
+        imageLocation={NTHULogo}
+        alt="NTHU logo"
       />
 
       <Experience
@@ -26,6 +29,8 @@ export default function Education() {
           "Won 3rd place in Taiwan Civil Internet of Things Competition in 2017",
           "Was a TA in the Introduction to C and C++ 2020 class at NTHU EECS Department"
         ]}
+        imageLocation={NTHULogo}
+        alt="NTHU logo"
       />
     </>
   )
