@@ -30,6 +30,8 @@ export default function Work() {
           "Developed and NLP model and an automation model"
         ]}
         imageLocation={RTK}
+        height={100}
+        width={350}
         alt="Richtek logo"
       />
 
@@ -41,6 +43,8 @@ export default function Work() {
           "Developed user interfaces and automatic testings"
         ]}
         imageLocation={MOLDEX}
+        height={100}
+        width={350}
         alt="Moldex3D logo"
       />
       
@@ -52,6 +56,8 @@ export default function Work() {
           "Developed user interfaces and automatic testings"
         ]}
         imageLocation={VPON}
+        height={100}
+        width={300}
         alt="Vpon logo"
       />
     </>
