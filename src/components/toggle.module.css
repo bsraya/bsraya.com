@@ -1,0 +1,8 @@
+.dark {
+  --background-color: #101010;
+  --font-color: #eee;
+  --header-color: eee;
+  --important-color: #9999ff;
+  --bold-color: #ff6666;
+  --filter: opacity(0.8) contrast(1.2);
+}

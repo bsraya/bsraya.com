@@ -1,0 +1,13 @@
+.container {
+  margin-bottom: 1rem;
+}
+.text {
+  margin-bottom: 1rem;
+}
+.button {
+  color: white;
+  border: none;
+  background: rgba(15, 83, 168, 0.8);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+}
