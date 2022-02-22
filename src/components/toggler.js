@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import "react-toggle/style.css"
 import { DarkModeSwitch } from 'react-toggle-dark-mode'
 
 export default function Toggler() {
-    const [isDarkMode, setDarkMode] = useState(false);
-    let theme = localStorage.getItem('theme')
+    if (localStorage.getItem('theme') === null)
+        localStorage.setItem('theme', 'dark')
+    
+    const [isDarkMode, setDarkMode] = useState(localStorage.getItem('theme') || 'dark');
 
     const toggleDarkMode = (checked) => {
         setDarkMode(checked);
         if (isDarkMode) {
-            localStorage.setItem('dark', isDarkMode)
+            localStorage.setItem('theme', 'light')
         } else {
-            localStorage.setItem('light', isDarkMode)
+            localStorage.setItem('theme', 'dark')
         }
     };
-
-    useEffect(() => {
-        if (localStorage.getItem('theme') === 'dark') {
-            isDarkMode(true)
-        } else if (localStorage.getItem('theme') === 'light') {
-            isDarkMode(false)
-        }
-    }, [theme])
 
     return (
         <>
@@ -29,18 +23,15 @@ export default function Toggler() {
                 moonColor={isDarkMode ? 'white' : 'black'}
                 sunColor={isDarkMode ? 'white' : 'black'}
                 checked={isDarkMode}
-                onChange={toggleDarkMode}
                 size={28}
                 onClick={() => {
                     if (isDarkMode) {
                         document.body.classList.remove('dark')
                         toggleDarkMode(false)
-                        localStorage.setItem('theme', 'light')
                     }
                     else {
                         document.body.classList.add('dark');
                         toggleDarkMode(true);
-                        localStorage.setItem('theme', 'dark')
                     }
                 }}
             />
