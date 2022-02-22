@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Stratos Light';
+  src: url('../fonts/Stratos-Light.woff2') format('woff2'),
+    url('../fonts/Stratos-Light.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Stratos Regular';
+  src: url('../fonts/Stratos-Regular.woff2') format('woff2'),
+    url('../fonts/Stratos-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Share';
+  src: url('../fonts/Share-Regular.woff2') format('woff2'),
+    url('../fonts/Share-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blimone';
+  src: url('../fonts/Blimone-Medium.woff2') format('woff2'),
+    url('../fonts/Blimone-Medium.woff') format('woff');
+  font-display: swap;
+}

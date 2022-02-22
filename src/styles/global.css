@@ -1,49 +1,8 @@
-@font-face {
-  font-family: 'Stratos Light';
-  src: url('../fonts/Stratos-Light.woff2') format('woff2'),
-    url('../fonts/Stratos-Light.woff') format('woff');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Stratos Regular';
-  src: url('../fonts/Stratos-Regular.woff2') format('woff2'),
-    url('../fonts/Stratos-Regular.woff') format('woff');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Share';
-  src: url('../fonts/Share-Regular.woff2') format('woff2'),
-    url('../fonts/Share-Regular.woff') format('woff');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Blimone';
-  src: url('../fonts/Blimone-Medium.woff2') format('woff2'),
-    url('../fonts/Blimone-Medium.woff') format('woff');
-  font-display: swap;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 0;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #808080;
-  border-radius: 0px;
-}
+@import 'fonts';
+@import 'scrollbar';
 
 * {
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -81,10 +40,11 @@ body.dark {
   --filter: opacity(0.8) contrast(1.2);
 }
 
-main {
+.container {
   margin: 0 auto 0 auto;
-  padding: 2rem 0 2rem 0;
+  padding: 2rem 0 0 0;
   max-width: 75ch;
+  justify-content: space-between;
 }
 
 /* Headers */
