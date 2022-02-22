@@ -20,13 +20,13 @@ const Layout = ({ children }) => {
     `)
 
   return (
-    <main itemScope itemType="http://schema.org/Layout">
+    <div itemScope itemType="http://schema.org/Layout">
       <Header menuLinks={data.site.siteMetadata.menuLinks} />
-        <div style={{ margin: `2rem 0 0 0` }}>
+        <main className="container">
           {children}
-      </div>
+        </main>
       <Footer />
-    </main>
+    </div>
   )
 }
 
