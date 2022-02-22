@@ -3,7 +3,7 @@ import "react-toggle/style.css"
 import { DarkModeSwitch } from 'react-toggle-dark-mode'
 
 export default function Toggler() {
-    const [isDarkMode, setDarkMode] = useState(localStorage.getItem('theme') || 'dark');
+    const [isDarkMode, setDarkMode] = useState('dark');
 
     const toggleDarkMode = (checked) => {
         setDarkMode(checked);
