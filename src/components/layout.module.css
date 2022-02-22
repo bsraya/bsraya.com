@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto 0 auto;
-  padding: 2rem 0 0 0;
+  padding: 2rem 0 0.5rem 0;
   max-width: 75ch;
   justify-content: space-between;
 }
