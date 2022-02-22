@@ -19,6 +19,8 @@ export default function Work() {
           "Facilitated and mentored students in the Introduction to C and C++ course"
         ]}
         imageLocation={NTHU}
+        height={50}
+        width={200}
         alt="NTHU logo"
       />
 
@@ -30,6 +32,8 @@ export default function Work() {
           "Developed and NLP model and an automation model"
         ]}
         imageLocation={RTK}
+        height={50}
+        width={200}
         alt="Richtek logo"
       />
 
@@ -41,6 +45,8 @@ export default function Work() {
           "Developed user interfaces and automatic testings"
         ]}
         imageLocation={MOLDEX}
+        height={50}
+        width={200}
         alt="Moldex3D logo"
       />
       
@@ -52,6 +58,8 @@ export default function Work() {
           "Developed user interfaces and automatic testings"
         ]}
         imageLocation={VPON}
+        height={50}
+        width={200}
         alt="Vpon logo"
       />
     </>

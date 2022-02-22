@@ -17,6 +17,8 @@ export default function Education() {
           "Currently working on Distributed Deep Learning System that capable of assessing how much computing resource that a ML/DL model need and assigned the model to multiple GPUs to be run in parallel"
         ]}
         imageLocation={NTHULogo}
+        height={50}
+        width={200}
         alt="NTHU logo"
       />
 
@@ -30,6 +32,8 @@ export default function Education() {
           "Was a TA in the Introduction to C and C++ 2020 class at NTHU EECS Department"
         ]}
         imageLocation={NTHULogo}
+        height={50}
+        width={200}
         alt="NTHU logo"
       />
     </>
