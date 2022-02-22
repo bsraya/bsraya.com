@@ -17,8 +17,8 @@ export default function Toggler() {
     return (
         <>
             <DarkModeSwitch
-                moonColor={!isDarkMode ? 'black' : 'white'}
-                sunColor={!isDarkMode ? 'black' : 'white'}
+                moonColor={isDarkMode ? 'white' : 'black'}
+                sunColor={isDarkMode ? 'white' : 'black'}
                 checked={isDarkMode}
                 size={28}
                 onClick={() => {

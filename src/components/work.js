@@ -9,7 +9,7 @@ import VPON from '../assets/vpon.png'
 export default function Work() {
   return (
     <>
-      <h1 style={{marginBottom: `0.25rem`}}>Work Experience</h1>
+      <h2 style={{marginBottom: `0.25rem`}}>Work Experience</h2>
       <Line />
       <Experience
         title="Teaching Assistant"

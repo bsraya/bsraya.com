@@ -5,7 +5,7 @@ import Me from '../assets/me.jpg'
 export default function Introduction({ author, email }) {
   return (
     <article itemScope itemType="http://schema.org/About" >
-      <h1>About Me</h1>
+      <h2>About Me</h2>
       <img height={300} width={300} src={Me} alt="bijon's avatar" itemProp="image" />
       <p>
         Hey, I am <span itemProp="author" itemType="http://schema.org/Author">{author}</span>!

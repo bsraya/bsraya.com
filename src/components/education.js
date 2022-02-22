@@ -6,7 +6,7 @@ import NTHULogo from '../assets/nthu.png'
 export default function Education() {
   return (
     <>
-      <h1 style={{marginBottom: `0.25rem`}}>Education</h1>
+      <h2 style={{marginBottom: `0.25rem`}}>Education</h2>
       <Line />
       <Experience
         title="M. Sc. in Computer Science"
