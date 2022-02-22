@@ -16,7 +16,7 @@ export default function Footer() {
     `)
 
     return (
-        <footer className="container" itemScope itemType="http://schema.org/Links">
+        <footer className={styles.container} itemScope itemType="http://schema.org/Links">
             <Links
                 email={query.site.siteMetadata.email}
                 link={query.site.siteMetadata.resume}

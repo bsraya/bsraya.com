@@ -40,13 +40,6 @@ body.dark {
   --filter: opacity(0.8) contrast(1.2);
 }
 
-.container {
-  margin: 0 auto 0 auto;
-  padding: 2rem 0 0 0;
-  max-width: 75ch;
-  justify-content: space-between;
-}
-
 /* Headers */
 h1,
 h2,
@@ -160,10 +153,6 @@ td {
 }
 
 @media (max-width: 1080px) {
-  main {
-    padding: 0.5rem;
-  }
-
   td,
   th,
   body,

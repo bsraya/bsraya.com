@@ -5,7 +5,7 @@ import * as styles from './header.module.css'
 
 export default function Header({menuLinks}) {
     return (
-        <header className="container" itemScope itemType="http://schema.org/Menu">
+        <header className={styles.container} itemScope itemType="http://schema.org/Menu">
             <Menu links={menuLinks} />
         </header>
     )

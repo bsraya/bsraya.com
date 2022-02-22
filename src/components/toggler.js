@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import "react-toggle/style.css"
 import { DarkModeSwitch } from 'react-toggle-dark-mode'
+import "react-toggle/style.css"
 
 export default function Toggler() {
     const [isDarkMode, setDarkMode] = useState('dark');
@@ -17,8 +17,8 @@ export default function Toggler() {
     return (
         <>
             <DarkModeSwitch
-                moonColor={isDarkMode ? 'white' : 'black'}
-                sunColor={isDarkMode ? 'white' : 'black'}
+                moonColor={!isDarkMode ? 'black' : 'white'}
+                sunColor={!isDarkMode ? 'black' : 'white'}
                 checked={isDarkMode}
                 size={28}
                 onClick={() => {

@@ -1,0 +1,12 @@
+.container {
+  margin: 0 auto 0 auto;
+  padding: 2rem 0 0 0;
+  max-width: 75ch;
+  justify-content: space-between;
+}
+
+@media (max-width: 1080px) {
+  .container {
+    padding: 0.5rem;
+  }
+}

@@ -1,3 +1,10 @@
+.container {
+  margin: 0 auto 0 auto;
+  padding: 0 0 0 0;
+  max-width: 75ch;
+  justify-content: space-between;
+}
+
 .copyright {
   margin: 0;
   color: gray;
@@ -28,4 +35,10 @@
 
 .footerlink:hover {
   color: var(--font-color);
+}
+
+@media (max-width: 1080px) {
+  .container {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
 }

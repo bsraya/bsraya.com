@@ -10,8 +10,8 @@ export default function Experience({title, location, height, width, date, descri
             <p className={styles.date}>{date}</p>
             <ul>
                 {
-                    descriptions.map(description =>{
-                        return <li>{description}</li>
+                    descriptions.map((description, index) => {
+                        return <li key={index}>{description}</li>
                     })
                 }
             </ul>
