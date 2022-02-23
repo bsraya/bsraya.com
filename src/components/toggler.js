@@ -1,37 +1,23 @@
-import React, { useState } from "react"
-import { DarkModeSwitch } from 'react-toggle-dark-mode'
+import React from "react"
+import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import "react-toggle/style.css"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAdjust } from '@fortawesome/free-solid-svg-icons'
+
 export default function Toggler() {
-    const [isDarkMode, setDarkMode] = useState('dark');
-
-    const toggleDarkMode = (checked) => {
-        setDarkMode(checked);
-        if (isDarkMode) {
-            localStorage.setItem('theme', 'light')
-        } else {
-            localStorage.setItem('theme', 'dark')
-        }
-    };
-
     return (
-        <>
-            <DarkModeSwitch
-                moonColor={isDarkMode ? 'white' : 'black'}
-                sunColor={isDarkMode ? 'white' : 'black'}
-                checked={isDarkMode}
-                size={28}
-                onClick={() => {
-                    if (isDarkMode) {
-                        document.body.classList.remove('dark')
-                        toggleDarkMode(false)
-                    }
-                    else {
-                        document.body.classList.add('dark');
-                        toggleDarkMode(true);
-                    }
-                }}
-            />
-        </>
+        <ThemeToggler>
+            {({ theme, toggleTheme }) => (
+                <div>
+                    <FontAwesomeIcon
+                        icon={faAdjust}
+                        onClick={() =>
+                            theme === "dark" ? toggleTheme("light") : toggleTheme("dark")
+                        }
+                    />
+                </div>
+            )}
+        </ThemeToggler>
     )
 }
