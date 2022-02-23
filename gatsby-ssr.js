@@ -25,17 +25,17 @@ setHeadComponents([
                 var preferredTheme;
                 try {
                 preferredTheme = localStorage.getItem('preferred-theme');
-                } catch (e) {}
+            } catch (e) {}
             window.__themeListeners = [];
             var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
             darkQuery.addListener(function(e) {
-            window.__setPreferredTheme(e.matches ? 'dark' : 'light');
-            window.__themeListeners.forEach(function(listener) {
-                listener();
-            });
+                window.__setPreferredTheme(e.matches ? 'dark' : 'light');
+                window.__themeListeners.forEach(function(listener) {
+                    listener();
+                });
             });
             setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-        })();
+            })();
         `
         .replace(/\n/g, ' ')
         .replace(/ {2}/g, ''),
