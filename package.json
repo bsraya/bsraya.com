@@ -16,15 +16,11 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.17",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "cross-env": "^7.0.3",
     "gatsby": "^3.3.0",
     "gatsby-plugin-dark-mode": "^1.1.2",
-    "gatsby-plugin-feed": "^3.3.0",
     "gatsby-plugin-google-analytics": "^3.3.0",
     "gatsby-plugin-manifest": "^3.3.0",
     "gatsby-plugin-mdx": "^2.3.0",
@@ -56,11 +52,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-toggle": "^4.1.2",
-    "react-toggle-dark-mode": "^1.0.4",
+    "react-icons": "^4.3.1",
     "react-typography": "^0.16.20",
     "remark-html-katex": "^3.0.0",
-    "styled-components": "^5.3.3",
     "synthwave-vscode": "github:robb0wen/synthwave-vscode",
     "typography": "^0.16.21"
   },

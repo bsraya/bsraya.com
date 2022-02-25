@@ -1,23 +1,27 @@
-import React from "react"
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
-import "react-toggle/style.css"
+import React from 'react';
+import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdjust } from '@fortawesome/free-solid-svg-icons'
-
+import { BsMoonFill } from 'react-icons/bs';
+import { BsSun } from 'react-icons/bs';
 export default function Toggler() {
-    return (
-        <ThemeToggler>
-            {({ theme, toggleTheme }) => (
-                <div>
-                    <FontAwesomeIcon
-                        icon={faAdjust}
-                        onClick={() =>
-                            theme === "dark" ? toggleTheme("light") : toggleTheme("dark")
-                        }
-                    />
-                </div>
-            )}
-        </ThemeToggler>
-    )
+  return (
+    <ThemeToggler>
+      {({ theme, toggleTheme }) =>
+        // if theme is dark
+        theme === 'dark' ? (
+          <BsSun
+            onClick={() =>
+              theme === 'dark' ? toggleTheme('light') : toggleTheme('dark')
+            }
+          />
+        ) : (
+          <BsMoonFill
+            onClick={() =>
+              theme === 'dark' ? toggleTheme('light') : toggleTheme('dark')
+            }
+          />
+        )
+      }
+    </ThemeToggler>
+  );
 }
