@@ -1,8 +1,8 @@
 import React from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
-
 import { BsMoonFill } from 'react-icons/bs';
 import { BsSun } from 'react-icons/bs';
+
 export default function Toggler() {
   return (
     <ThemeToggler>
@@ -18,7 +18,6 @@ export default function Toggler() {
         ) : (
           <BsMoonFill
             style={{ display: `flex`, margin: `auto` }}
-            size={`1rem`}
             onClick={() =>
               theme === 'dark' ? toggleTheme('light') : toggleTheme('dark')
             }
