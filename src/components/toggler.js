@@ -10,12 +10,14 @@ export default function Toggler() {
         // if theme is dark
         theme === 'dark' ? (
           <BsSun
+            size={33}
             onClick={() =>
               theme === 'dark' ? toggleTheme('light') : toggleTheme('dark')
             }
           />
         ) : (
           <BsMoonFill
+            size={33}
             onClick={() =>
               theme === 'dark' ? toggleTheme('light') : toggleTheme('dark')
             }
