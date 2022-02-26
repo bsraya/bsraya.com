@@ -62,8 +62,9 @@ module.exports = {
         pathToConfigModule: `${__dirname}/src/utils/typography`,
       },
     },
-    `gatsby-transformer-sharp`,
+    // `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-remark-images`,
