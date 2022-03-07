@@ -1,13 +1,12 @@
-import React from "react"
-import Seo from "../components/seo"
-import Layout from "../components/layout"
-import MdxElement from "../components/mdxelements"
-import Donation from "../components/donation"
-import * as styles from './template.module.css'
+import React from 'react';
+import Seo from '../components/seo';
+import Layout from '../components/layout';
+import MdxElement from '../components/mdxelements';
+import * as styles from './template.module.css';
 
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import { MDXProvider } from '@mdx-js/react'
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 
 export default function blogpostTemplate({ data }) {
   return (
@@ -20,30 +19,27 @@ export default function blogpostTemplate({ data }) {
       />
       <article itemScope itemType="http://schema.org/Post">
         <div className={styles.container}>
-          <p className={styles.date}>
-            {data.mdx.frontmatter.date}
-          </p>
-          <h1 className={styles.title}>
-            {data.mdx.frontmatter.title}
-          </h1>
+          <p className={styles.date}>{data.mdx.frontmatter.date}</p>
+          <h1 className={styles.title}>{data.mdx.frontmatter.title}</h1>
           <ul className={styles.taglist}>
-            {
-              data.mdx.frontmatter.tags.map(tag => <li key={tag} className={styles.tag}>{tag}</li>)
-            }
+            {data.mdx.frontmatter.tags.map((tag) => (
+              <li key={tag} className={styles.tag}>
+                {tag}
+              </li>
+            ))}
           </ul>
         </div>
         <MDXProvider components={MdxElement}>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </article>
-      <Donation />
     </Layout>
-  )
+  );
 }
 
 export const pageQuery = graphql`
   query BlogpostQuery($slug: String) {
-    mdx(fields: {slug: {eq: $slug}}){
+    mdx(fields: { slug: { eq: $slug } }) {
       body
       fields {
         slug
@@ -57,4 +53,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
