@@ -85,6 +85,8 @@ plt.plot(
 )
 ```
 
+![The iris dataset regression line with Scikit](./scikit-lr.png)
+
 Clearly, the line is indeed very close to the most data points and we want to see the MSE of this regression line.
 
 ```python
@@ -100,9 +102,7 @@ $$
     y = -3.200215 + 0.75291757 \cdot x
 $$
 
-The equation above is going to be our base line for this experiment to determine how good our own Gradient Descent implementation.
-
-![The iris dataset regression line with Scikit](./scikit-lr.png)
+with MSE value around `0.191`. The equation above is going to be our base line for this experiment to determine how good our own Gradient Descent implementation.
 
 # Implemetation
 
@@ -123,23 +123,30 @@ $$
 
 Now, let's translate these three equations into Python code.
 
-```python {7-11}
+```python {13-14}
 def bgd(x, y, epochs, df, alpha = 0.01):
-    length = len(x)
-    intercept, coefficient = 0.0, 0.0
-    for epoch in range(epochs):
-        sum_error = 0.0
+    intercept, coefficient = 2.0, -7.5
+
+    # first sum_error
+    predictions = predict(intercept, coefficient, x)
+    sum_error = np.sum((predictions - y) ** 2) / (2 * len(x))
+    df.loc[0] = [intercept, coefficient, sum_error]
+
+    for epoch in range(1, epochs):
         predictions = predict(intercept, coefficient, x)
-        b0 = (1/length) * np.sum(predictions - y)
-        b1 = (1/length) * np.sum((predictions - y) * x)
-        intercept = intercept - alpha * b0
-        coefficient = coefficient - alpha * b1
-        cost_function = sum_error + np.sum((predictions - y) ** 2) / (2 * length)
-        df.loc[epoch] = [intercept, coefficient, cost_function]
+        b0_error = (1/len(x)) * np.sum(predictions - y)
+        b1_error = (1/len(x)) * np.sum((predictions - y) * x)
+        intercept = intercept - alpha * b0_error
+        coefficient = coefficient - alpha * b1_error 
+        sum_error = sum_error + np.sum((predictions - y) ** 2) / (2 * len(x))
+        df.loc[epoch] = [intercept, coefficient, sum_error]
+        sum_error = 0
     return df
 ```
 
-Then we create a dataframe to store the result at each iteration and run the `python:bgd()` function for over 10,000 times.
+The highlighted codes is where the parameters update happens.
+
+Once the parameters were updated, we then calculate the cost function for each iteration and save it into the dataframe we created.
 
 ```python
 bgd_loss = pd.DataFrame(columns=['intercept', 'coefficient', 'sum_error'])
@@ -148,13 +155,9 @@ bgd_loss = bgd(sepal_length, petal_width, epochs = 10_000, df = bgd_loss)
 
 Below is the figure of the regression lines tend to look like at the 1,000th, the 5,000th, and the 10,000th iterations.
 
-![Regression lines at n-th iteration](./iterations.png)
+![BGD Loss Function Graph](./iterations.png)
 
-So let's see the MSE values at the 1000th, the 5000th, and the 1000th iterations.
-
-![MSE value at n-th iteration](./cost-function.png)
-
-After 10,000 iterations, the MSE value of our own Gradient Descent is $0.1955$ which is quite close to our baseline, which is $0.1910$.
+After 10,000 iterations, the MSE value of our own Gradient Descent is $0.195$ which is quite close to our baseline, which is $0.191$.
 
 Combining everything, here is how the regression line changes over time.
 
@@ -185,3 +188,4 @@ If you want to know how to implement it in more details, please [click here](htt
 4. P. Sushant. _Batch, Mini Batch, and Stochastic Gradient Descent_. Source [https://towardsdatascience.com/batch-mini-batch-stochastic-gradient-descent-7a62ecba642a](https://towardsdatascience.com/batch-mini-batch-stochastic-gradient-descent-7a62ecba642a)
 5. Geeksforgeeks. _Difference between Batch Gradient Descent and Stochastic Gradient Descent_. Source [https://www.geeksforgeeks.org/difference-between-batch-gradient-descent-and-stochastic-gradient-descent/](https://www.geeksforgeeks.org/difference-between-batch-gradient-descent-and-stochastic-gradient-descent/)
 6. Sweta. _Batch, Mini Batch, and Stochastic Gradient Descent_. Source [https://sweta-nit.medium.com/batch-mini-batch-and-stochastic-gradient-descent-e9bc4cacd461](https://sweta-nit.medium.com/batch-mini-batch-and-stochastic-gradient-descent-e9bc4cacd461)
+7. Geeksforgeeks. _ML | Mini-Batch Gradient Descent with Python_. Source [https://www.geeksforgeeks.org/ml-mini-batch-gradient-descent-with-python/](https://www.geeksforgeeks.org/ml-mini-batch-gradient-descent-with-python/)
