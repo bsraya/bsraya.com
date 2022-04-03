@@ -93,11 +93,11 @@ $$
     \Theta_{i} = \beta_i - \alpha \cdot \frac{\partial}{\partial \beta_i} J(\beta_0, \beta_1)
 $$
 
-where $\beta_i$ is the coefficients we want to update and $\alpha$ is the learning rate.
+where $\beta_i$ is the parameters we want to update and $\alpha$ is the learning rate.
 
 Bear with me! This is going to involve a lot of Maths, especially Calculus.
 
-Let's simplify the partial derivation in the equation above
+Let's simplify the cost function that we want to minimize.
 
 $$
     \begin{aligned}
@@ -127,8 +127,8 @@ $$
     \frac{\partial}{\partial \beta_1} J(\beta_0, \beta_1) = \frac{2}{N} \sum_{i=1}^N (f(x) - y_i) x
 $$
 
-We can also remove the $2$ from the two equations above by multiplying the cost function, in this case the MSE equation, by $\frac{1}{2}$.
-Multiplying the cost function with a scalar will not affect its minimum value.
+We can remove the scalar $2$ from the two equations above by dividing the cost function, in this case the MSE equation, by $2$.
+Multiplying the cost function with a scalar will not affect how it's going to reach the minimum MSE value.
 
 This new modified cost function is called **One Half Mean Squared Error**.
 
@@ -136,7 +136,7 @@ $$
     J(\beta_0, \beta_1) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}_i - y_i)^2
 $$
 
-Since the $2$ is removed,
+Deriving the new cost function above, the scalar $2$ will be cancelled out from the partial derivations with respect to $\beta_0$ and $\beta_1$,
 
 $$
     \begin{aligned}
@@ -145,7 +145,7 @@ $$
     \end{aligned}
 $$
 
-Pluggin each of the equation above into the update rule with respect to those coefficients, we get
+Plugging each of the equation above into the update rules with respect to those coefficients, we get
 
 $$
     \begin{aligned}
