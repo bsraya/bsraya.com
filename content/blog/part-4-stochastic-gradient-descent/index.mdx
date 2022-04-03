@@ -1,7 +1,7 @@
 ---
 title: 'Part 4: Stochastic Gradient Descent'
 type: 'blog'
-date: 2022-03-30
+date: 2022-04-04
 published: true
 description: 'Linear Regression + another version of Gradient Descent in Python'
 tags: ['Machine Learning', 'Optimization', 'Python']
@@ -30,7 +30,7 @@ In this post, we are going to implement another variation of Gradient Descent ca
 
 # Introduction
 
-SGD is an optimization algorithm that is very similar to BGD and MBGD.
+SGD is an optimization algorithm that is derived from BGD and MBGD.
 Since we are dealing with Linear Regresison, this algorithm helps us to find the best fit line for our data.
 In other words, we want to find the best value for $\beta_0$ and $\beta_1$ so that the line sits right in a position where it's close to most data points.
 As the regression line moves toward where most data points sit, the lost function, in this case the Mean Square Error value, will decrease.
@@ -39,7 +39,78 @@ Before we start, we should get ourselves familiar with the mathematical part of 
 
 # Mathematics of SGD
 
+The whole idea of SGD is that it updates the parameters each time we see a random data points.
 
+So, we are going to do a litle review to refresh our memory from the first post in this series.
+
+Remember that the cost function that we are going to minimized in BGD is
+
+$$
+  J(\beta_0, \beta_1) = \frac{1}{N} \sum_{i=1}^N (f(x) - y_1)^2
+$$
+
+However, since SGD updates $\beta_0$ and $\beta_1$ after seeing a random data points, we do not have to divide the summation by $N$.
+
+Thus, the cost function will be
+
+$$
+  J(\beta_0, \beta_1) = (f(x) - y_1)^2
+$$
+
+The update rules stay the same
+
+$$
+  \Theta_{i} = \beta_i - \alpha \cdot \frac{\partial}{\partial \beta_i} J(\beta_0, \beta_1)
+$$
+
+where $\beta_i$ is the coefficients we want to update and $\alpha$ is the learning rate.
+
+Applying Power Rule to the cost function, we have
+
+$$
+    \frac{\partial}{\partial \beta_i} J(\beta_0, \beta_1) = 2(f(x) - y_i) \frac{\partial}{\partial \beta_i} (f(x) - y_i)
+$$
+
+Let's partially derive the cost function with respect to $\beta_0$ and $\beta_1$.
+
+$$
+    \begin{aligned}
+        \frac{\partial}{\partial \beta_0} J(\beta_0, \beta_1)
+        &= 2 (f(x) - y_i) \frac{\partial}{\partial \beta_0} (\beta_0 + \beta_1 x - y_i) \\
+        &= 2 (f(x) - y_i)
+    \end{aligned}
+$$
+
+$$
+    \frac{\partial}{\partial \beta_1} J(\beta_0, \beta_1) = 2(f(x) - y_i)x
+$$
+
+Remember that the scalar $2$ in the partial derivative equations above can be cancelled out by dividing the SGD cost function by $2$.
+We called the new customized cost function **One Half Mean Squared Error**.
+
+$$
+  J(\beta_0, \beta_1) = \frac{1}{2}(f(x) - y_1)^2
+$$
+
+Thus the partial derivatives with respect to $\beta_0$ and $\beta_1$ will be
+
+$$
+    \begin{aligned}
+        \frac{\partial}{\partial \beta_0} J(\beta_0, \beta_1) = (f(x) - y_i) \\
+        \frac{\partial}{\partial \beta_1} J(\beta_0, \beta_1) = (f(x) - y_i) x
+    \end{aligned}
+$$
+
+Plugging each of the equation above into the update rules with respect to those coefficients, we get
+
+$$
+    \begin{aligned}
+        \beta_0 = \beta_0 - \alpha \cdot (f(x) - y_i) \\
+        \beta_1 = \beta_1 - \alpha \cdot (f(x) - y_i)x
+    \end{aligned}
+$$
+
+The equations above is a variation of Gradient Descent algorithm that helps us to approximate the minimum value of the cost function by updating $\beta_0$ and $\beta_1$ iteratively.
 
 # Conclusion
 
