@@ -2,7 +2,7 @@
 title: 'Part 4: Stochastic Gradient Descent'
 type: 'blog'
 date: 2022-03-30
-published: false
+published: true
 description: 'Linear Regression + another version of Gradient Descent in Python'
 tags: ['Machine Learning', 'Optimization', 'Python']
 ---
@@ -21,9 +21,25 @@ This is part 3 of the series on Gradient Descent.
     Part 3: Mini-Batch Gradient Descent
   </Link>
 
-Previously, we have learned that Batch Gradient Descent only updates the parameters only after it has seen the entire dataset.
-However, in this post, we are going to implement Mini-Batch Gradient Descent where it updates the parameters after it has seen a fraction of a dataset.
-Not only that, we are going to find out the best batch size to make the algorithm converge faster.
+In this series of post, there two parameters that are crucial in making our model accurate, namely an intercept $\beta_0$ and a coefficient $\beta_1$.
+
+Previously, we have learned that BGD updates them only after it has seen the entire dataset. 
+As for MBGD, it only updates them after it has seen a fraction of of the entire dataset.
+
+In this post, we are going to implement another variation of Gradient Descent called Stochastic Gradient Descent, and now I am going to call it SGD throught this post.
+
+# Introduction
+
+SGD is an optimization algorithm that is very similar to BGD and MBGD.
+Since we are dealing with Linear Regresison, this algorithm helps us to find the best fit line for our data.
+In other words, we want to find the best value for $\beta_0$ and $\beta_1$ so that the line sits right in a position where it's close to most data points.
+As the regression line moves toward where most data points sit, the lost function, in this case the Mean Square Error value, will decrease.
+
+Before we start, we should get ourselves familiar with the mathematical part of this algorithm.
+
+# Mathematics of SGD
+
+
 
 # Conclusion
 

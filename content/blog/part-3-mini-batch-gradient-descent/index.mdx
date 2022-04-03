@@ -25,10 +25,12 @@ Previously, we have learned that Batch Gradient Descent only updates the paramet
 However, in this post, we are going to implement Mini-Batch Gradient Descent which updates the parameters after it has seen a fraction of a dataset.
 Not only that, but we are also going to find out the best batch size to make the algorithm converge faster.
 
+From now on, I will use two abbreviations, namely BGD for Batch Gradient Descent and Mini-Batch Gradient Descent, throughout this post.
+
 # Implementation
 
 In this implementation, we are going to use some of the codes from the previous posts. 
-However, we are going to customize Batch Gradient Descent function
+However, we are going to customize BGD function
 so the parameters are updated after it has seen a fraction of the dataset.
 
 First, we need a function that splits the dataset into mini-batches.
@@ -40,7 +42,7 @@ def create_batches(x, y, batch_size):
     return x_batches, y_batches
 ```
 
-Second, we need a customized version of Batch Gradient Descent function that updates the required parameters after seeing a small number of data points.
+Second, we need a customized version of BGD function that updates the required parameters after seeing a small number of data points.
 Since there are $150$ data points in the Iris dataset, we will use a batch size of $64$ and there will be two batches in total.
 
 ```python
@@ -87,14 +89,14 @@ mbgd_loss = mbgd(sepal_length, petal_width, epochs = epochs, batch_size=64, df =
 mbgd_loss['epoch'] = mbgd_loss['epoch'].astype(int)
 ```
 
-Althought the size of the batches matters in Mini Batch Gradient descent, we will stick to size $64$ this time.
+Althought the size of the batches matters in MBGD, we will stick to size $64$ this time.
 
 ![MSE values produced by BGD and MBGD](./iterations.png)
 
-From the picture, we can see that the MSE line produced by MBGD is thicker because the values goes up and down, following a zig-zag pattern,
-unlike the one produced by `bgd()` which goes down in a straight line.
+From the picture, we can see that the cost function produced by MBGD is thicker because the values goes up and down, following a zig-zag pattern,
+unlike the one produced by BGD which goes down in a straight line.
 
-Even though Mini Batch Gradient Descent was done in $5000$ iterations, the number of parameter updates happened in MBGD is the same with one in BGD.
+Even though MBGD was done in $5000$ iterations, the number of parameter updates happened in MBGD is the same with one in BGD.
 You should know that there are two batches for the Iris dataset since the dataset contains $150$ data points. 
 Therefore there will be two parameter updates in each iteration, and the number of parameter updates in BGD and MBGD are the same.
 
