@@ -45,8 +45,7 @@ def create_batches(x, y, batch_size):
 Second, we need a customized version of BGD function that updates the required parameters after seeing a small number of data points.
 Since there are $150$ data points in the Iris dataset, we will use a batch size of $64$ and there will be two batches in total.
 
-```python
-the following code is the customized `bgd()` function that updates the parameters after it has seen a fraction of the dataset.
+The following code is the customized `bgd()` function that updates the parameters after it has seen a fraction of the dataset.
 
 ```python {12-21}
 def mbgd(x, y, epochs, df, batch_size = 64, alpha = 0.01):
