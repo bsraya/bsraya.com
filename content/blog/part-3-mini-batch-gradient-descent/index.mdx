@@ -112,8 +112,12 @@ There are 4 batch sizes that I want to try, namely $8$, $16$, $32$, and $64$.
 
 As you can see that, as the number of batch sizes increases, the time complexity reduces by half and the cost function becomes thinner and thinner.
 
+So, the smaller batch sizes will the model reach the convergence point early with the expense of the noise during training.
+On the contrary, the larger batch sizes will produce more accurate model with the expense of reaching the convergence point slower.
+
 To answer what is the best batch size, it depends a lot on the hardware you have.
-Let's say you have multiple latest and advanced GPUs, then you can try to use $32$ or $64$ as the best batch size.
+Let's say you have multiple latest and advanced GPUs, then you can try to use $32$ or $64$. 
+These two sizes are recommended since those are how much the memory in CPUs and GPUs can store at a time.
 
 Not only it depends only the hardware you have, you should consider how your model reacts to the number of batch sizes. 
 So, there is no clear answer to this question. I personally think it's all down to trial and error.
@@ -144,7 +148,7 @@ There are several key points to be noted in this post.
 3. The size of mini batches might affect MBGD's efficiency.
 4. The closer the batch size is to the number of data points, the thinner the cost function line gets.
 5. The MSE line produced by MBGD follows a zig-zag pattern, and that's why it looks thicker.
-6. The ideal batch size is around $32$ or $64$ depending on the hardware you have.
+6. The ideal batch size is around $32$ or $64$.
 
 If you want to know how to implement MBGD in more details, please [click here](https://www.kaggle.com/bijonsetyawan/mini-batch-gradient-descent) to check the Python notebook on Kaggle.
 I also include some code on how to generate those graphs.
