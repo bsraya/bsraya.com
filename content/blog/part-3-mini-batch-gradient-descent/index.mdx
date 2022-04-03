@@ -40,10 +40,14 @@ def create_batches(x, y, batch_size):
     return x_batches, y_batches
 ```
 
-Second, the following code is the customized `bgd()` function that updates the parameters after it has seen a fraction of the dataset.
+Second, we need a customized version of Batch Gradient Descent function that updates the required parameters after seeing a small number of data points.
+Since there are $150$ data points in the Iris dataset, we will use a batch size of $64$ and there will be two batches in total.
+
+```python
+the following code is the customized `bgd()` function that updates the parameters after it has seen a fraction of the dataset.
 
 ```python {12-21}
-def mbgd(x, y, epochs, df, batch_size, alpha = 0.01):
+def mbgd(x, y, epochs, df, batch_size = 64, alpha = 0.01):
     intercept, coefficient = 2.0, -7.5
 
     # first sum_error
@@ -91,7 +95,7 @@ From the picture, we can see that the MSE line produced by MBGD is thicker becau
 unlike the one produced by `bgd()` which goes down in a straight line.
 
 Even though Mini Batch Gradient Descent was done in $5000$ iterations, the number of parameter updates happened in MBGD is the same with one in BGD.
-You should know that there are $150$ data points in the Iris dataset, so when set the number of mini batches to be $64$, we get two batches for each iteration.
+You should know that there are two batches for the Iris dataset since the dataset contains $150$ data points. 
 Therefore there will be two parameter updates in each iteration, and the number of parameter updates in BGD and MBGD are the same.
 
 # Best Batch Size
@@ -114,11 +118,11 @@ So, there is no clear answer to this question. I personally think it's all down 
 
 # Regression Lines
 
-I will present you two graphs, one contains how the regression line movement pattern over $n$ number of updates, and the other is the animation of the regression line movements.
+There will be two graphs, one contains how the regression line movement pattern over $n$ number of updates, and the other is the animation of the regression line movements.
 
 ![Regression Lines](./regression_lines.png)
 
-I am sure because the cost function follows a zig-zag pattern, the regression line moves in a zig-zag pattern as well like a graph shown above.
+I am sure since the cost function follows a zig-zag pattern, the regression line moves in a zig-zag pattern as well like a graph shown above.
 
 ![Regression Line Movements](./movements.gif)
 
@@ -128,7 +132,7 @@ Now, let's see how the cost function looks like in a contour map.
 
 ![MSE Contour Map](./contour_map.png)
 
-In the right figure above, the zoomed in one in particular, the line looks like is walking up a stair-step. 
+In the right figure above, the zoomed in one in particular, the line looks like is walking up the stairs. 
 
 # Conclusion
 
