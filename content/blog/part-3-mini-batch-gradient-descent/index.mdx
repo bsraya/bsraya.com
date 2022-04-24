@@ -76,7 +76,7 @@ First, the initial point is set to be $(2.0, -7.5)$ because I want our initial g
 
 After that, the batches will be created just before the `for-loop` started. The parameter updates will happen in the `for-loop` over time.
 
-# Cost Function
+# Mean Square Error
 
 In the previous section, I just explained on how to implement MBGD in Python.
 Now, let's find out what we can get from this experimentation.
@@ -88,31 +88,39 @@ mbgd_loss = mbgd(sepal_length, petal_width, epochs = epochs, batch_size=64, df =
 mbgd_loss['epoch'] = mbgd_loss['epoch'].astype(int)
 ```
 
-Althought the size of the batches matters in MBGD, we will stick to size $64$ this time.
+Althought the size of the batches matters in MBGD, I will explain it later in the next part and we will stick to size $64$ this time.
 
-![MSE values produced by BGD and MBGD](./iterations.png)
+![MSE values produced by MBGD with different batch sizes](./mse.png)
 
-From the picture, we can see that the cost function produced by MBGD is thicker because the values goes up and down, following a zig-zag pattern,
-unlike the one produced by BGD which goes down in a straight line.
+From the picture, we can see that the MSE graphs are thick because the graph goes up and down, following a zig-zag pattern,
+unlike the one produced by BGD which goes down in a straight line. 
 
-Even though MBGD was done in $5000$ iterations, the number of parameter updates happened in MBGD is the same with one in BGD.
-You should know that there are two batches for the Iris dataset since the dataset contains $150$ data points. 
-Therefore there will be two parameter updates in each iteration, and the number of parameter updates in BGD and MBGD are the same.
+In addition to the zig-zag pattern, the time complexity increases by half as the number of batch sizes decreases, but 
+the MSE graphs gets closer and closer to zero. The difference is more obvious shown in the first graph and the fifth graph.
+
+Note that the number of updates increases when the number of batch size decreases. Take example of batch size of $8$.
+Since the number of data points is $150$, the number of updates is $\lfloor 150 / 8 \rfloor = 18$ per epoch.
+In total, there will be $18$ batches $\times$ $500$ epochs $= 9000$ updates.
 
 # Best Batch Size
 
-Here we are going to do a little experiment to see how MBGD reacts to the number data points in each batch. 
+In the previous part, showing the MSE values from different batch sizes doesn't tell us much if our model is getting better.
+So, we are going to use the Total of Sum Squares to find the best batch size.
 
-First, we are going to iteratively train MBGD with different batch sizes.
+$$
+  \text{TSS} = \sum_{i=1}^{N} (\hat{y}_i - y_i)^2
+$$
 
-There are 4 batch sizes that I want to try, namely $8$, $16$, $32$, and $64$.
+where $y_i$ represents the predicted value and $\hat{y}_i$ represents the actual value.
 
-![MSE values produced by MBGD with different batch sizes](./batch_sizes.png)
+There are 4 batch sizes that I want to observe, namely $8$, $16$, $32$, and $64$.
 
-As you can see that, as the number of batch sizes increases, the time complexity reduces by half and the cost function becomes thinner and thinner.
+![TSS values produced by MBGD with different batch sizes](./rss.png)
 
-So, the smaller batch sizes will the model reach the convergence point early with the expense of the noise during training.
-On the contrary, the larger batch sizes will produce more accurate model with the expense of reaching the convergence point slower.
+The TSS graphs provide us a clearer picture on how the regression model react to the batch size.
+Similar to the MSE graphs with different batch sizes, the TSS graphs get closer and closer to zero as the number of batch sizes decreases
+
+On the contrary, the larger batch sizes will produce more accurate model without noise. Yet it comes with the expense of reaching the convergence point slower.
 
 To answer what is the best batch size, it depends a lot on the hardware you have.
 Let's say you have multiple latest and advanced GPUs, then you can try to use $32$ or $64$. 
