@@ -112,6 +112,52 @@ $$
 
 The equations above is a variation of Gradient Descent algorithm that helps us to approximate the minimum value of the cost function by updating $\beta_0$ and $\beta_1$ iteratively.
 
+# Coding
+
+We are going to need two functions to implement SGD.
+1. `python:predict(...)` which received a single data point and returns the predicted value of the data point.
+2. `python:sgd(...)` which received a list of data points and returns the updated coefficients presented in a dataframe.
+
+```python {16, 18}
+def predict(intercept, coefficient, x):
+    return intercept + coefficient * x
+
+def sgd(x, y, df, epochs, alpha = 0.01):
+    intercept = 2.0
+    coefficient = -7.5
+    sum_error = 0
+    
+    rand = np.random.randint(0, len(x))
+    prediction = predict(intercept, coefficient, x[rand])
+    sum_error = sum_error + (((prediction - y[rand]) ** 2) / 2)
+    df.loc[0] = [intercept, coefficient, sum_error]
+
+    for i in range(1,epochs):
+        # get random index
+        rand = np.random.randint(0, len(x))
+        # get random x and y
+        x_i, y_i = x[rand], y[rand]
+        # get prediction
+        prediction = predict(intercept, coefficient, x_i)
+        b0_error = prediction - y_i
+        b1_error = (prediction - y_i) * x_i
+
+        intercept = intercept - alpha * b0_error
+        coefficient = coefficient - alpha * b1_error 
+
+        sum_error = (((prediction - y_i) ** 2) / 2)
+        df.loc[i] = [intercept, coefficient, sum_error]
+    return df
+```
+
+From the name of the optimization itself, it behaves in a stochastic ways, meaning we pick a random data point and update the intercept and the coefficient iteratively.
+That's exactly what the 16th and 18th lines of the code above are doing.
+
+Apart from that, the rest of the code looks exactly the same like the ones in BGD and MBGD.
+
+# Observation
+
+
 # Conclusion
 
 If you want to know how to implement it in more details, please [click here](https://www.kaggle.com/bijonsetyawan/stochastic-gradient-descent) to check the Python notebook on Kaggle.
