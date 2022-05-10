@@ -18,13 +18,13 @@
 
 .li {
   margin: 0 0.5rem 0 0;
+  font-size: 0.9rem;
 }
 
 .headerlink {
   position: relative;
   text-decoration: none !important;
   color: var(--font-color);
-  font-family: var(--menu-font) !important;
 }
 
 .headerlink::before {
@@ -51,8 +51,5 @@
 @media (max-width: 1080px) {
   .container {
     padding: 0.5rem;
-  }
-  .li {
-    font-size: 0.8rem;
   }
 }
