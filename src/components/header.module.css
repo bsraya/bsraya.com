@@ -52,4 +52,7 @@
   .container {
     padding: 0.5rem;
   }
+  .li {
+    font-size: 0.8rem;
+  }
 }

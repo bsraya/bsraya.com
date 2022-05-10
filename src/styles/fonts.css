@@ -25,3 +25,10 @@
     url('../fonts/Blimone-Medium.woff') format('woff');
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('../fonts/eb-garamond.woff2') format('woff2'),
+    url('../fonts/eb-garamond.woff') format('woff');
+  font-display: swap;
+}

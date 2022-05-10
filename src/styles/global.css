@@ -13,8 +13,9 @@ body {
   --important-color: #0000bf;
   --bold-color: #ff4040;
   --filter: opacity(1) contrast(1);
-  --main-font: 'Stratos Light', -apple-system, BlinkMacSystem, 'Helvetica Neue',
-    Helvetica, Arial, sans-serif;
+  /* --main-font: 'Stratos Light', -apple-system, BlinkMacSystem, 'Helvetica Neue',
+    Helvetica, Arial, sans-serif; */
+  --main-font: 'EB Garamond', serif;
   --menu-font: 'Stratos Regular', -apple-system, BlinkMacSystem,
     'Helvetica Neue', Helvetica, Arial, sans-serif;
   --header-font: 'Blimone', -apple-system, BlinkMacSystem, 'Helvetica Neue',
@@ -29,6 +30,7 @@ body {
   text-rendering: optimizeLegibility;
   filter: var(--filter);
   transition: background 0.5s ease-in-out;
+  word-spacing: 0.15rem;
 }
 
 body.dark {
@@ -81,7 +83,7 @@ figcaption {
 .inlineMath,
 .katex-html {
   width: auto;
-  font-size: 1.21rem;
+  font-size: 1rem;
 }
 
 span.katex-display {
@@ -93,11 +95,12 @@ span.katex-display {
 code,
 code.grvsc-code {
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.7rem;
 }
 
 span.grvsc-source {
   width: 100%;
+  font-size: 0.7rem;
 }
 
 code.monokai,
@@ -106,7 +109,7 @@ code.synthwave-84 {
   white-space: nowrap;
   color: var(--codeColor);
   transition: color 0.2s ease-out;
-  padding: 3px 0.5rem;
+  padding: 5px 0.3rem;
   background: #303030 !important;
 }
 
@@ -153,16 +156,9 @@ td {
 }
 
 @media (max-width: 1080px) {
-  td,
-  th,
-  body,
-  code {
-    font-size: 0.8rem !important;
-  }
-
-  .inlineMath,
-  .katex-html {
-    font-size: 0.9rem;
+  span.grvsc-source {
+    width: 100%;
+    font-size: 0.6rem;
   }
 
   div.math {

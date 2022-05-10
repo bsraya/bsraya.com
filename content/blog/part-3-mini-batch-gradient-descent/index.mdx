@@ -29,7 +29,7 @@ From now on, I will use two abbreviations, namely BGD for Batch Gradient Descent
 
 # Implementation
 
-In this implementation, we are going to use some of the codes from the previous posts. 
+In this implementation, we are going to use some of the codes from the previous posts.
 However, we are going to customize BGD function
 so the parameters are updated after it has seen a fraction of the dataset.
 
@@ -37,9 +37,9 @@ First, we need a function that splits the dataset into mini-batches.
 
 ```python
 def create_batches(x, y, batch_size):
-    x_batches = np.array_split(x, len(x) // batch_size)
-    y_batches = np.array_split(y, len(y) // batch_size)
-    return x_batches, y_batches
+  x_batches = np.array_split(x, len(x) // batch_size)
+  y_batches = np.array_split(y, len(y) // batch_size)
+  return x_batches, y_batches
 ```
 
 Second, we need a customized version of BGD function that updates the required parameters after seeing a small number of data points.
@@ -49,27 +49,27 @@ The following code is the customized `bgd()` function that updates the parameter
 
 ```python {12-21}
 def mbgd(x, y, epochs, df, batch_size = 64, alpha = 0.01):
-    intercept, coefficient = 2.0, -7.5
+  intercept, coefficient = 2.0, -7.5
 
-    # first sum_error
-    predictions = predict(intercept, coefficient, x)
-    sum_error = np.sum((predictions - y) ** 2) / (2 * batch_size)
-    df.loc[0] = [-1, intercept, coefficient, sum_error]
-    index = 1
+  # first sum_error
+  predictions = predict(intercept, coefficient, x)
+  sum_error = np.sum((predictions - y) ** 2) / (2 * batch_size)
+  df.loc[0] = [-1, intercept, coefficient, sum_error]
+  index = 1
 
-    x_batches, y_batches = create_batches(x, y, batch_size)
-    for epoch in range(epochs):
-        for x, y in zip(x_batches, y_batches):
-            sum_error = 0.0
-            predictions = predict(intercept, coefficient, x)
-            b0_error = (1/batch_size) * np.sum(predictions - y)
-            b1_error = (1/batch_size) * np.sum((predictions - y) * x)
-            intercept = intercept - alpha * b0_error
-            coefficient = coefficient - alpha * b1_error 
-            sum_error = sum_error + np.sum((predictions - y) ** 2) / (2 * batch_size)
-            df.loc[index] = [int(epoch), intercept, coefficient, sum_error]
-            index += 1
-    return df
+  x_batches, y_batches = create_batches(x, y, batch_size)
+  for epoch in range(epochs):
+    for x, y in zip(x_batches, y_batches):
+      sum_error = 0.0
+      predictions = predict(intercept, coefficient, x)
+      b0_error = (1/batch_size) * np.sum(predictions - y)
+      b1_error = (1/batch_size) * np.sum((predictions - y) * x)
+      intercept = intercept - alpha * b0_error
+      coefficient = coefficient - alpha * b1_error
+      sum_error = sum_error + np.sum((predictions - y) ** 2) / (2 * batch_size)
+      df.loc[index] = [int(epoch), intercept, coefficient, sum_error]
+      index += 1
+  return df
 ```
 
 First, the initial point is set to be $(2.0, -7.5)$ because I want our initial guess to be far from the convergence point.
@@ -83,8 +83,16 @@ Now, let's find out what we can get from this experimentation.
 
 ```python
 epochs = 5000
-mbgd_loss = pd.DataFrame(columns=['epoch', 'intercept', 'coefficient', 'sum_error'])
-mbgd_loss = mbgd(sepal_length, petal_width, epochs = epochs, batch_size=64, df = mbgd_loss)
+mbgd_loss = pd.DataFrame(
+  columns=['epoch', 'intercept', 'coefficient', 'sum_error']
+)
+mbgd_loss = mbgd(
+  sepal_length,
+  petal_width,
+  epochs = epochs,
+  batch_size=64,
+  df = mbgd_loss
+)
 mbgd_loss['epoch'] = mbgd_loss['epoch'].astype(int)
 ```
 
@@ -93,9 +101,9 @@ Althought the size of the batches matters in MBGD, I will explain it later in th
 ![MSE values produced by MBGD with different batch sizes](./mse.png)
 
 From the picture, we can see that the MSE graphs are thick because the graph goes up and down, following a zig-zag pattern,
-unlike the one produced by BGD which goes down in a straight line. 
+unlike the one produced by BGD which goes down in a straight line.
 
-In addition to the zig-zag pattern, the time complexity increases by half as the number of batch sizes decreases, but 
+In addition to the zig-zag pattern, the time complexity increases by half as the number of batch sizes decreases, but
 the MSE graphs gets closer and closer to zero. The difference is more obvious shown in the first graph and the fifth graph.
 
 Note that the number of updates increases when the number of batch size decreases. Take example of batch size of $8$.
@@ -123,10 +131,10 @@ Similar to the MSE graphs with different batch sizes, the TSS graphs get closer 
 On the contrary, the larger batch sizes will produce more accurate model without noise. Yet it comes with the expense of reaching the convergence point slower.
 
 To answer what is the best batch size, it depends a lot on the hardware you have.
-Let's say you have multiple latest and advanced GPUs, then you can try to use $32$ or $64$. 
+Let's say you have multiple latest and advanced GPUs, then you can try to use $32$ or $64$.
 These two sizes are recommended since those are how much the memory in CPUs and GPUs can store at a time.
 
-Not only it depends only the hardware you have, you should consider how your model reacts to the number of batch sizes. 
+Not only it depends only the hardware you have, you should consider how your model reacts to the number of batch sizes.
 So, there is no clear answer to this question. I personally think it's all down to trial and error.
 
 # Regression Lines
@@ -146,11 +154,12 @@ Now, let's see how the movement of the intercept and the coefficient variabels o
 ![The movement of the intercept and the coefficient variabels on a contour map](./contour.png)
 
 If you compare the contour map in the BGD page, you will notice that the contour map made by BGD is much more smooth.
-Unlike the one in BGD, the size of the line above is thicker, and it looks like is walking up the stairs. 
+Unlike the one in BGD, the size of the line above is thicker, and it looks like is walking up the stairs.
 
 # Conclusion
 
 There are several key points to be noted in this post.
+
 1. MBGD requires less iterations to reach the convergence point compared to BGD.
 2. The number of parameter updates in MBGD is the same with BGD, except the size of mini batches.
 3. The size of mini batches might affect MBGD's efficiency.
