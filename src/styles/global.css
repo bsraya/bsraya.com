@@ -80,15 +80,13 @@ figcaption {
 }
 
 /* LaTex components */
-.inlineMath,
-.katex-html {
-  width: auto;
-  font-size: 1rem;
+.inlineMath {
+  font-size: 0.9rem;
 }
 
-span.katex-display {
+span.katex-display, .katex-html {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Markdown code */
