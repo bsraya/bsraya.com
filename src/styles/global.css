@@ -95,7 +95,7 @@ span.katex-display {
 code,
 code.grvsc-code {
   width: 100%;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 span.grvsc-source {
@@ -158,7 +158,7 @@ td {
 @media (max-width: 1080px) {
   span.grvsc-source {
     width: 100%;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   div.math {
