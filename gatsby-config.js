@@ -10,7 +10,7 @@ module.exports = {
     ],
     email: `nathan.setyawan96@gapp.nthu.edu.tw`,
     siteUrl: `https://www.bsraya.com`,
-    resume: `https://drive.google.com/file/d/1MVkMj3jRxBpQ4dVJfiTkhuvTvcUsa-pG/view?usp=sharing`,
+    resume: `https://drive.google.com/file/d/1PcglGv_xyzoUilezhSQs9ZLH51kVMvK5/view?usp=sharing`,
     menuLinks: [
       {
         name: 'Home',
